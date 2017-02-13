@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GSEveryDayViewController.h
 //  gushici
 //
 //  Created by 李江波 on 2017/2/11.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface GSEveryDayViewController : UIViewController
 
 @end
-
