@@ -1,14 +1,14 @@
 //
-//  GSEveryDayViewController.h
+//  GSMineController.h
 //  gushici
 //
-//  Created by 李江波 on 2017/2/11.
+//  Created by 李江波 on 2017/2/13.
 //  Copyright © 2017年 lijiangbo. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "GSBaseController.h"
 
-@interface GSEveryDayViewController : GSBaseController
+@interface GSMineController : GSBaseController
 
 @end

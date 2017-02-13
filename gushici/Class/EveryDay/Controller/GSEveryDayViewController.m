@@ -10,6 +10,7 @@
 #import "CCDraggableContainer.h"
 #import "GSGushiContentModel.h"
 #import "GSCustomCardView.h"
+#import "GSDetailController.h"
 
 
 @interface GSEveryDayViewController ()<CCDraggableContainerDelegate,CCDraggableContainerDataSource>
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet CCDraggableContainer *container;
 
 @property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *contentModels;
+@property(nonatomic ,strong) NSMutableArray *dataArrays;
 
 @property(nonatomic ,assign) BOOL isReload;
 
@@ -27,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.contentModels = [NSMutableArray array];
+    self.dataArrays = [NSMutableArray array];
     
     for (int i = 0; i <5; i++) {
 
@@ -52,13 +55,23 @@
            }
            
            GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_gushiwen"]];
+
+           NSArray *fanyiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_fanyis"][@"fanyis"]];
+           
+           NSArray *shangxiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_shangxis"][@"shangxis"]];
+           
+           GSGushiContentModel *authorModel = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
            //可能参数返回没有数据
            if (model.nameStr == nil) {
                return;
            }
            
+           NSMutableArray *array = [NSMutableArray arrayWithObjects:model,fanyiArray,shangxiArray,authorModel, nil];
+           
            
            [weakSelf.contentModels addObject:model];
+           [weakSelf.dataArrays addObject:array];
+           
         dispatch_async(dispatch_get_main_queue(), ^{
             if (weakSelf.contentModels.count == 5) {
                 
@@ -94,6 +107,11 @@
 }
 
 -(void)draggableContainer:(CCDraggableContainer *)draggableContainer cardView:(CCDraggableCardView *)cardView didSelectIndex:(NSInteger)didSelectIndex{
+    
+    GSDetailController *detailVc = [[GSDetailController alloc]init];
+    
+    detailVc.dataArray = self.dataArrays[didSelectIndex];
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
 -(void)draggableContainer:(CCDraggableContainer *)draggableContainer finishedDraggableLastCard:(BOOL)finishedDraggableLastCard{
     

@@ -29,6 +29,8 @@
     _cont1.layoutManager.allowsNonContiguousLayout = false;
     [_cont1 scrollRangeToVisible:NSMakeRange(0, 1)];
     
+    self.title.font = [UIFont systemFontOfSize:_Font(18)];
+    
 }
 
 

@@ -10,4 +10,8 @@
 
 @implementation GSGushiContentModel
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"gushiID"  : @"id"};
+}
+
 @end

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PYSearchViewController.h"
+#import "GSBaseNavController.h"
 
-@interface GSSearchController : UINavigationController
+@interface GSSearchController : GSBaseNavController
 
 @end
