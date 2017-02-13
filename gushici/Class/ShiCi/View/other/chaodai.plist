@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>不限</string>
+	<string>先秦</string>
+	<string>两汉</string>
+	<string>魏晋</string>
+	<string>南北朝</string>
+	<string>隋代</string>
+	<string>唐代</string>
+	<string>五代</string>
+	<string>宋代</string>
+	<string>金朝</string>
+	<string>元代</string>
+	<string>明代</string>
+	<string>清代</string>
+</array>
+</plist>

@@ -51,6 +51,10 @@
 		B75A48051E50A51700FCC0C5 /* GSSearchSuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48041E50A51700FCC0C5 /* GSSearchSuggestionView.m */; };
 		B75A48071E50A52000FCC0C5 /* GSSearchSuggestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B75A48061E50A52000FCC0C5 /* GSSearchSuggestionView.xib */; };
 		B75A480A1E50A74400FCC0C5 /* GSSearchEditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48091E50A74400FCC0C5 /* GSSearchEditModel.m */; };
+		B75A480D1E5195A900FCC0C5 /* Gushitype.plist in Resources */ = {isa = PBXBuildFile; fileRef = B75A480C1E5195A900FCC0C5 /* Gushitype.plist */; };
+		B75A480F1E51985A00FCC0C5 /* chaodai.plist in Resources */ = {isa = PBXBuildFile; fileRef = B75A480E1E51985A00FCC0C5 /* chaodai.plist */; };
+		B75A48111E5198CB00FCC0C5 /* form.plist in Resources */ = {isa = PBXBuildFile; fileRef = B75A48101E5198CB00FCC0C5 /* form.plist */; };
+		B75A48131E519B7800FCC0C5 /* mingjuTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = B75A48121E519B7800FCC0C5 /* mingjuTheme.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +144,10 @@
 		B75A48061E50A52000FCC0C5 /* GSSearchSuggestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSSearchSuggestionView.xib; sourceTree = "<group>"; };
 		B75A48081E50A74400FCC0C5 /* GSSearchEditModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSearchEditModel.h; sourceTree = "<group>"; };
 		B75A48091E50A74400FCC0C5 /* GSSearchEditModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSSearchEditModel.m; sourceTree = "<group>"; };
+		B75A480C1E5195A900FCC0C5 /* Gushitype.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Gushitype.plist; sourceTree = "<group>"; };
+		B75A480E1E51985A00FCC0C5 /* chaodai.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = chaodai.plist; sourceTree = "<group>"; };
+		B75A48101E5198CB00FCC0C5 /* form.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = form.plist; sourceTree = "<group>"; };
+		B75A48121E519B7800FCC0C5 /* mingjuTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mingjuTheme.plist; sourceTree = "<group>"; };
 		C92E1C5FDAE68782CCA88BC4 /* Pods-gushici.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gushici.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gushici/Pods-gushici.debug.xcconfig"; sourceTree = "<group>"; };
 		ED8D547B01B79F5D740D2BCD /* libPods-gushici.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gushici.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -334,6 +342,7 @@
 				B75A47851E4F42E600FCC0C5 /* Controller */,
 				B75A47861E4F42E600FCC0C5 /* Model */,
 				B75A47871E4F42E600FCC0C5 /* View */,
+				B75A480B1E51952200FCC0C5 /* other */,
 			);
 			path = ShiCi;
 			sourceTree = "<group>";
@@ -481,6 +490,18 @@
 			path = PYSearch;
 			sourceTree = "<group>";
 		};
+		B75A480B1E51952200FCC0C5 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				B75A480C1E5195A900FCC0C5 /* Gushitype.plist */,
+				B75A480E1E51985A00FCC0C5 /* chaodai.plist */,
+				B75A48101E5198CB00FCC0C5 /* form.plist */,
+				B75A48121E519B7800FCC0C5 /* mingjuTheme.plist */,
+			);
+			name = other;
+			path = View/other;
+			sourceTree = "<group>";
+		};
 		FF574AE64003B92DCE3F4ED8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,11 +574,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B75A480F1E51985A00FCC0C5 /* chaodai.plist in Resources */,
 				B75A47DF1E4F6F8000FCC0C5 /* GushiContent.xib in Resources */,
 				B75A47FA1E508AB700FCC0C5 /* PYSearch.bundle in Resources */,
 				B75A48071E50A52000FCC0C5 /* GSSearchSuggestionView.xib in Resources */,
+				B75A480D1E5195A900FCC0C5 /* Gushitype.plist in Resources */,
 				B75A478D1E4F445900FCC0C5 /* Main.storyboard in Resources */,
+				B75A48111E5198CB00FCC0C5 /* form.plist in Resources */,
 				B75A47701E4F3A9300FCC0C5 /* LaunchScreen.storyboard in Resources */,
+				B75A48131E519B7800FCC0C5 /* mingjuTheme.plist in Resources */,
 				B75A476D1E4F3A9300FCC0C5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

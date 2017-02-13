@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>不限</key>
+	<array>
+		<string>不限</string>
+	</array>
+	<key>抒情</key>
+	<array>
+		<string>不限</string>
+		<string>爱情</string>
+		<string>友情</string>
+		<string>离别</string>
+		<string>思念</string>
+		<string>思乡</string>
+		<string>伤感</string>
+	</array>
+	<key>四季</key>
+	<array>
+		<string>不限</string>
+		<string>春天</string>
+		<string>夏天</string>
+		<string>秋天</string>
+		<string>冬天</string>
+	</array>
+	<key>山水</key>
+	<array>
+		<string>不限</string>
+		<string>庐山</string>
+		<string>泰山</string>
+		<string>江河</string>
+		<string>长江</string>
+		<string>黄河</string>
+		<string>西湖</string>
+	</array>
+</dict>
+</plist>

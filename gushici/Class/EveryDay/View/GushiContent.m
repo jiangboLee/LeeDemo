@@ -25,8 +25,10 @@
 -(void)awakeFromNib{
 
     [super awakeFromNib];
-    
+    [_cont1 layoutIfNeeded];
     _cont1.layoutManager.allowsNonContiguousLayout = false;
+    [_cont1 scrollRangeToVisible:NSMakeRange(0, 1)];
+    
 }
 
 

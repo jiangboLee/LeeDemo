@@ -10,6 +10,7 @@
 
 @interface GSSearchSuggestionView : UITableViewCell
 
+@property(nonatomic ,copy) NSString *searchText;
 @property(nonatomic ,strong) NSDictionary *dict;
 
 @end

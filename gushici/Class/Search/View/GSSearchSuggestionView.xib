@@ -12,15 +12,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="197" id="dwj-7E-HyI" customClass="GSSearchSuggestionView">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CELLID" rowHeight="197" id="dwj-7E-HyI" customClass="GSSearchSuggestionView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dwj-7E-HyI" id="Xvu-rK-R3Q">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="196.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="We1-HW-o78">
-                        <rect key="frame" x="50" y="0.0" width="325" height="196.5"/>
+                        <rect key="frame" x="50" y="0.0" width="325" height="196"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
                             <outlet property="dataSource" destination="dwj-7E-HyI" id="jJw-Es-Ihb"/>
@@ -33,12 +33,20 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="og8-fB-Xno">
+                        <rect key="frame" x="8" y="8" width="42" height="180"/>
+                    </button>
                 </subviews>
+                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="ZRo-e7-ipc" firstAttribute="leading" secondItem="Xvu-rK-R3Q" secondAttribute="leadingMargin" id="7R1-8R-wV6"/>
+                    <constraint firstItem="We1-HW-o78" firstAttribute="leading" secondItem="og8-fB-Xno" secondAttribute="trailing" id="B7a-2g-bCz"/>
                     <constraint firstItem="We1-HW-o78" firstAttribute="leading" secondItem="ZRo-e7-ipc" secondAttribute="trailing" id="Otw-Qr-lDH"/>
                     <constraint firstItem="ZRo-e7-ipc" firstAttribute="centerY" secondItem="We1-HW-o78" secondAttribute="centerY" id="Tck-lS-a0T"/>
+                    <constraint firstItem="og8-fB-Xno" firstAttribute="top" secondItem="Xvu-rK-R3Q" secondAttribute="topMargin" id="gUa-3H-nTx"/>
+                    <constraint firstItem="og8-fB-Xno" firstAttribute="bottom" secondItem="Xvu-rK-R3Q" secondAttribute="bottomMargin" id="i5D-Li-Bfg"/>
                     <constraint firstItem="We1-HW-o78" firstAttribute="top" secondItem="Xvu-rK-R3Q" secondAttribute="top" id="rLA-df-K29"/>
+                    <constraint firstItem="og8-fB-Xno" firstAttribute="leading" secondItem="Xvu-rK-R3Q" secondAttribute="leadingMargin" id="ryw-jP-O8k"/>
                     <constraint firstAttribute="bottom" secondItem="We1-HW-o78" secondAttribute="bottom" id="sNe-tU-KNK"/>
                     <constraint firstAttribute="trailing" secondItem="We1-HW-o78" secondAttribute="trailing" id="wam-3k-7Ut"/>
                 </constraints>
@@ -47,7 +55,7 @@
                 <outlet property="tableView" destination="We1-HW-o78" id="kuK-nv-O9D"/>
                 <outlet property="titleLable" destination="ZRo-e7-ipc" id="Dt7-SZ-iz7"/>
             </connections>
-            <point key="canvasLocation" x="-58.5" y="259.5"/>
+            <point key="canvasLocation" x="-103.5" y="256.5"/>
         </tableViewCell>
     </objects>
 </document>

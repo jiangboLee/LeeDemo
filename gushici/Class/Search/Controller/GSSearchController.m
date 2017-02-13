@@ -22,6 +22,8 @@
 @property(nonatomic ,strong) NSMutableDictionary *dict4;
 @property(nonatomic ,strong) NSMutableArray *arrays;
 
+@property(nonatomic ,copy) NSString *searchText;
+
 @end
 
 
@@ -61,7 +63,12 @@
    //边输入边弹框
     if (searchText.length) { // 与搜索条件再搜索
         NSLog(@"searchText :%@",searchText);
+        self.searchText = searchText;
         [self.arrays removeAllObjects];
+        self.dict1[@"gushiwens"] = nil;
+        self.dict2[@"mingjus"] = nil;
+        self.dict3[@"authors"] = nil;
+        self.dict4[@"typekeys"] = nil;
         
         NSString *urlStr = [NSString stringWithFormat:@"http://app.gushiwen.org/api/ajaxSearch.aspx?n=232105204&token=gswapi&valuekey=%@",searchText];
         urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -139,20 +146,33 @@
 - (UITableViewCell *)searchSuggestionView:(UITableView *)searchSuggestionView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *cellID = @"CELLID";
     [searchSuggestionView registerNib:[UINib nibWithNibName:@"GSSearchSuggestionView" bundle:nil] forCellReuseIdentifier:cellID];
+    searchSuggestionView.estimatedRowHeight = 150;
+    searchSuggestionView.rowHeight = UITableViewAutomaticDimension;
     GSSearchSuggestionView *cell = [searchSuggestionView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if(self.arrays.count != 0){
         cell.dict = self.arrays[indexPath.row];
+        cell.searchText = self.searchText;
         return cell;
     }else{
     
-        cell.dict = @{@"wu":@"搜不到哦"};
+        cell.dict = @{@"wu":@[@"搜不到"]};
         return cell;
     }
 }
 /** 返回用户自定义搜索建议cell高度 */
 - (CGFloat)searchSuggestionView:(UITableView *)searchSuggestionView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(self.arrays.count != 0){
+        NSDictionary *dic = self.arrays[indexPath.row];
+        NSArray *array = (NSArray *)dic[[[dic allKeys] lastObject]];
+        return array.count * 44;
+    }else{
+        
+        return 44;
+    }
 
-    return 100;
 }
 
 
@@ -161,7 +181,15 @@
     
 }
 
+/** 点击搜索历史时调用，如果实现该代理方法则搜索历史时searchViewController:didSearchWithsearchBar:searchText:失效 */
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchHistoryAtIndex:(NSInteger)index searchText:(NSString *)searchText{
 
+    NSLog(@"%@",searchText);
+}
+/** 点击搜索建议时调用，如果实现该代理方法则点击搜索建议时searchViewController:didSearchWithsearchBar:searchText:失效 */
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchSuggestionAtIndex:(NSInteger)index searchText:(NSString *)searchText{
+
+}
 
 
 @end

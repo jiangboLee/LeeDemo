@@ -22,7 +22,7 @@
 #import "UIBarButtonItem+Item.h"
 #import "UIImage+Antialias.h"
 #import "UIImage+Image.h"
-#import "UIImageView+Download.h"
+//#import "UIImageView+Download.h"
 #import "UITextField+Placeholder.h"
 #import "UIView+Frame.h"
 #import "UIView+UIView_UIViewController.h"
