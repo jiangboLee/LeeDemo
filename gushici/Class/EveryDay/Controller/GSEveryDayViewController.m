@@ -35,7 +35,7 @@
 
         [self loadData];
     }
-
+    [self showHudInView:self.view hint:@"~正在刷新~"];
 }
 
 -(void)loadData{
@@ -65,16 +65,27 @@
            if (model.nameStr == nil) {
                return;
            }
-           
-           NSMutableArray *array = [NSMutableArray arrayWithObjects:model,fanyiArray,shangxiArray,authorModel, nil];
-           
+           NSMutableArray *array = [NSMutableArray arrayWithObject:model];
+           if (((GSGushiContentModel *)(fanyiArray.firstObject)).nameStr != nil) {
+               
+               [array addObject:fanyiArray.firstObject];
+           }
+           if (((GSGushiContentModel *)(shangxiArray.firstObject)).cont != nil) {
+               
+               [array addObject:shangxiArray.firstObject];
+           }
+           if (authorModel.nameStr != nil) {
+               
+               [array addObject:authorModel];
+           }
+
            
            [weakSelf.contentModels addObject:model];
            [weakSelf.dataArrays addObject:array];
            
         dispatch_async(dispatch_get_main_queue(), ^{
             if (weakSelf.contentModels.count == 5) {
-                
+                [weakSelf hideHud];
                 [weakSelf loadUI:0];
             }
                 
@@ -122,6 +133,8 @@
 - (IBAction)reloadDataAction:(id)sender {
     [self.contentModels removeAllObjects];
     [self viewDidLoad];
+    
+    [self showHudInView:self.view hint:@"~正在刷新~"];
     
 }
 - (IBAction)nextGushiAction:(id)sender {

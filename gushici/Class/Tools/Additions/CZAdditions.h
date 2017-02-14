@@ -26,3 +26,4 @@
 #import "UITextField+Placeholder.h"
 #import "UIView+Frame.h"
 #import "UIView+UIView_UIViewController.h"
+#import "NSString+pinyin.h"

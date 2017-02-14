@@ -28,6 +28,7 @@
 
 
 @property(nonatomic ,copy) NSString *pic;
+@property(nonatomic ,assign) NSInteger shiID;
 
 @property(nonatomic ,assign) CGFloat rowHeight;
 

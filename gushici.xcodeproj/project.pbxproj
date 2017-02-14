@@ -12,6 +12,17 @@
 		B721FF301E51FA31006546E5 /* GSBaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = B721FF2F1E51FA31006546E5 /* GSBaseNavController.m */; };
 		B721FF3B1E51FE56006546E5 /* GSDetailContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = B721FF3A1E51FE56006546E5 /* GSDetailContent.xib */; };
 		B721FF3E1E520B63006546E5 /* GSDetailContent.m in Sources */ = {isa = PBXBuildFile; fileRef = B721FF3D1E520B63006546E5 /* GSDetailContent.m */; };
+		B72653031E52CF8600D6CA5F /* RemarksCellHeightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B72652FE1E52CF8600D6CA5F /* RemarksCellHeightModel.m */; };
+		B72653041E52CF8600D6CA5F /* RemarksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653011E52CF8600D6CA5F /* RemarksTableViewCell.m */; };
+		B726530A1E52DAD700D6CA5F /* NSObject+BoboHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653071E52DAD700D6CA5F /* NSObject+BoboHUD.m */; };
+		B726530B1E52DAD700D6CA5F /* UIViewController+SLHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653091E52DAD700D6CA5F /* UIViewController+SLHUD.m */; };
+		B726530E1E52F6D800D6CA5F /* GSShiwenController.m in Sources */ = {isa = PBXBuildFile; fileRef = B726530D1E52F6D800D6CA5F /* GSShiwenController.m */; };
+		B72653111E52FF0B00D6CA5F /* GSGushiwenController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653101E52FF0B00D6CA5F /* GSGushiwenController.m */; };
+		B72653141E52FF1800D6CA5F /* GSMingjuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653131E52FF1800D6CA5F /* GSMingjuController.m */; };
+		B72653171E52FF2400D6CA5F /* GSAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653161E52FF2400D6CA5F /* GSAuthorController.m */; };
+		B726531E1E53246F00D6CA5F /* GSBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B726531C1E53246F00D6CA5F /* GSBaseTableViewCell.m */; };
+		B726531F1E53246F00D6CA5F /* GSBaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B726531D1E53246F00D6CA5F /* GSBaseTableViewCell.xib */; };
+		B72653221E53573300D6CA5F /* NSString+pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653211E53573300D6CA5F /* NSString+pinyin.m */; };
 		B75A47621E4F3A9300FCC0C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47611E4F3A9300FCC0C5 /* main.m */; };
 		B75A47651E4F3A9300FCC0C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47641E4F3A9300FCC0C5 /* AppDelegate.m */; };
 		B75A476D1E4F3A9300FCC0C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75A476C1E4F3A9300FCC0C5 /* Assets.xcassets */; };
@@ -73,6 +84,27 @@
 		B721FF3A1E51FE56006546E5 /* GSDetailContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSDetailContent.xib; sourceTree = "<group>"; };
 		B721FF3C1E520B63006546E5 /* GSDetailContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDetailContent.h; sourceTree = "<group>"; };
 		B721FF3D1E520B63006546E5 /* GSDetailContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSDetailContent.m; sourceTree = "<group>"; };
+		B72652FD1E52CF8600D6CA5F /* RemarksCellHeightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemarksCellHeightModel.h; sourceTree = "<group>"; };
+		B72652FE1E52CF8600D6CA5F /* RemarksCellHeightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemarksCellHeightModel.m; sourceTree = "<group>"; };
+		B72653001E52CF8600D6CA5F /* RemarksTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemarksTableViewCell.h; sourceTree = "<group>"; };
+		B72653011E52CF8600D6CA5F /* RemarksTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemarksTableViewCell.m; sourceTree = "<group>"; };
+		B72653061E52DAD700D6CA5F /* NSObject+BoboHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BoboHUD.h"; sourceTree = "<group>"; };
+		B72653071E52DAD700D6CA5F /* NSObject+BoboHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BoboHUD.m"; sourceTree = "<group>"; };
+		B72653081E52DAD700D6CA5F /* UIViewController+SLHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SLHUD.h"; sourceTree = "<group>"; };
+		B72653091E52DAD700D6CA5F /* UIViewController+SLHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SLHUD.m"; sourceTree = "<group>"; };
+		B726530C1E52F6D800D6CA5F /* GSShiwenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSShiwenController.h; sourceTree = "<group>"; };
+		B726530D1E52F6D800D6CA5F /* GSShiwenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSShiwenController.m; sourceTree = "<group>"; };
+		B726530F1E52FF0B00D6CA5F /* GSGushiwenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSGushiwenController.h; sourceTree = "<group>"; };
+		B72653101E52FF0B00D6CA5F /* GSGushiwenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSGushiwenController.m; sourceTree = "<group>"; };
+		B72653121E52FF1800D6CA5F /* GSMingjuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSMingjuController.h; sourceTree = "<group>"; };
+		B72653131E52FF1800D6CA5F /* GSMingjuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSMingjuController.m; sourceTree = "<group>"; };
+		B72653151E52FF2400D6CA5F /* GSAuthorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAuthorController.h; sourceTree = "<group>"; };
+		B72653161E52FF2400D6CA5F /* GSAuthorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAuthorController.m; sourceTree = "<group>"; };
+		B726531B1E53246F00D6CA5F /* GSBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSBaseTableViewCell.h; sourceTree = "<group>"; };
+		B726531C1E53246F00D6CA5F /* GSBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSBaseTableViewCell.m; sourceTree = "<group>"; };
+		B726531D1E53246F00D6CA5F /* GSBaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSBaseTableViewCell.xib; sourceTree = "<group>"; };
+		B72653201E53573300D6CA5F /* NSString+pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+pinyin.h"; sourceTree = "<group>"; };
+		B72653211E53573300D6CA5F /* NSString+pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+pinyin.m"; sourceTree = "<group>"; };
 		B75A475D1E4F3A9300FCC0C5 /* gushici.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gushici.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75A47611E4F3A9300FCC0C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B75A47631E4F3A9300FCC0C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -200,8 +232,47 @@
 				B721FF3C1E520B63006546E5 /* GSDetailContent.h */,
 				B721FF3D1E520B63006546E5 /* GSDetailContent.m */,
 				B721FF3A1E51FE56006546E5 /* GSDetailContent.xib */,
+				B72652F81E52CF8600D6CA5F /* Cell中文字自适应高度 */,
 			);
 			path = "诗文详情页";
+			sourceTree = "<group>";
+		};
+		B72652F81E52CF8600D6CA5F /* Cell中文字自适应高度 */ = {
+			isa = PBXGroup;
+			children = (
+				B72652FC1E52CF8600D6CA5F /* Model */,
+				B72652FF1E52CF8600D6CA5F /* View */,
+			);
+			path = "Cell中文字自适应高度";
+			sourceTree = "<group>";
+		};
+		B72652FC1E52CF8600D6CA5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B72652FD1E52CF8600D6CA5F /* RemarksCellHeightModel.h */,
+				B72652FE1E52CF8600D6CA5F /* RemarksCellHeightModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B72652FF1E52CF8600D6CA5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B72653001E52CF8600D6CA5F /* RemarksTableViewCell.h */,
+				B72653011E52CF8600D6CA5F /* RemarksTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B72653051E52DAD700D6CA5F /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				B72653061E52DAD700D6CA5F /* NSObject+BoboHUD.h */,
+				B72653071E52DAD700D6CA5F /* NSObject+BoboHUD.m */,
+				B72653081E52DAD700D6CA5F /* UIViewController+SLHUD.h */,
+				B72653091E52DAD700D6CA5F /* UIViewController+SLHUD.m */,
+			);
+			path = HUD;
 			sourceTree = "<group>";
 		};
 		B75A47541E4F3A9200FCC0C5 = {
@@ -385,6 +456,14 @@
 		B75A47851E4F42E600FCC0C5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B726530C1E52F6D800D6CA5F /* GSShiwenController.h */,
+				B726530D1E52F6D800D6CA5F /* GSShiwenController.m */,
+				B726530F1E52FF0B00D6CA5F /* GSGushiwenController.h */,
+				B72653101E52FF0B00D6CA5F /* GSGushiwenController.m */,
+				B72653121E52FF1800D6CA5F /* GSMingjuController.h */,
+				B72653131E52FF1800D6CA5F /* GSMingjuController.m */,
+				B72653151E52FF2400D6CA5F /* GSAuthorController.h */,
+				B72653161E52FF2400D6CA5F /* GSAuthorController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -399,6 +478,9 @@
 		B75A47871E4F42E600FCC0C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B726531B1E53246F00D6CA5F /* GSBaseTableViewCell.h */,
+				B726531C1E53246F00D6CA5F /* GSBaseTableViewCell.m */,
+				B726531D1E53246F00D6CA5F /* GSBaseTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -406,6 +488,7 @@
 		B75A47881E4F42E600FCC0C5 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				B72653051E52DAD700D6CA5F /* HUD */,
 				B75A47E31E4F700200FCC0C5 /* Theme */,
 				B75A47C91E4F46AE00FCC0C5 /* Network */,
 				B75A478E1E4F45BD00FCC0C5 /* Additions */,
@@ -444,6 +527,8 @@
 				B75A47931E4F45BD00FCC0C5 /* NSAttributedString+CZAdditon.m */,
 				B75A47941E4F45BD00FCC0C5 /* NSObject+CZRuntime.h */,
 				B75A47951E4F45BD00FCC0C5 /* NSObject+CZRuntime.m */,
+				B72653201E53573300D6CA5F /* NSString+pinyin.h */,
+				B72653211E53573300D6CA5F /* NSString+pinyin.m */,
 				B75A47961E4F45BD00FCC0C5 /* NSString+CZBase64.h */,
 				B75A47971E4F45BD00FCC0C5 /* NSString+CZBase64.m */,
 				B75A47981E4F45BD00FCC0C5 /* NSString+CZHash.h */,
@@ -619,6 +704,7 @@
 				B75A47DF1E4F6F8000FCC0C5 /* GushiContent.xib in Resources */,
 				B75A47FA1E508AB700FCC0C5 /* PYSearch.bundle in Resources */,
 				B721FF3B1E51FE56006546E5 /* GSDetailContent.xib in Resources */,
+				B726531F1E53246F00D6CA5F /* GSBaseTableViewCell.xib in Resources */,
 				B75A48071E50A52000FCC0C5 /* GSSearchSuggestionView.xib in Resources */,
 				B75A480D1E5195A900FCC0C5 /* Gushitype.plist in Resources */,
 				B75A478D1E4F445900FCC0C5 /* Main.storyboard in Resources */,
@@ -687,19 +773,24 @@
 				B721FF3E1E520B63006546E5 /* GSDetailContent.m in Sources */,
 				B75A47FB1E508AB700FCC0C5 /* PYSearchConst.m in Sources */,
 				B75A47B71E4F45BD00FCC0C5 /* NSAttributedString+CZAdditon.m in Sources */,
+				B72653031E52CF8600D6CA5F /* RemarksCellHeightModel.m in Sources */,
 				B721FF301E51FA31006546E5 /* GSBaseNavController.m in Sources */,
+				B72653171E52FF2400D6CA5F /* GSAuthorController.m in Sources */,
 				B75A47DD1E4F6D8100FCC0C5 /* GSCustomCardView.m in Sources */,
 				B75A47BC1E4F45BD00FCC0C5 /* UIBarButtonItem+Item.m in Sources */,
 				B75A47C31E4F45BD00FCC0C5 /* UIScreen+CZAddition.m in Sources */,
 				B75A47F91E508AB700FCC0C5 /* NSBundle+PYSearchExtension.m in Sources */,
+				B726530B1E52DAD700D6CA5F /* UIViewController+SLHUD.m in Sources */,
 				B75A47BD1E4F45BD00FCC0C5 /* UIButton+CZAddition.m in Sources */,
 				B75A47D91E4F671C00FCC0C5 /* CCDraggableCardView.m in Sources */,
 				B75A47C41E4F45BD00FCC0C5 /* UITextField+Placeholder.m in Sources */,
+				B72653141E52FF1800D6CA5F /* GSMingjuController.m in Sources */,
 				B75A47BB1E4F45BD00FCC0C5 /* NSString+CZPath.m in Sources */,
 				B75A47BF1E4F45BD00FCC0C5 /* UIImage+Antialias.m in Sources */,
 				B75A47B61E4F45BD00FCC0C5 /* NSArray+Log.m in Sources */,
 				B75A47651E4F3A9300FCC0C5 /* AppDelegate.m in Sources */,
 				B75A47C01E4F45BD00FCC0C5 /* UIImage+Image.m in Sources */,
+				B72653221E53573300D6CA5F /* NSString+pinyin.m in Sources */,
 				B75A47C61E4F45BD00FCC0C5 /* UIView+Frame.m in Sources */,
 				B75A47D21E4F473000FCC0C5 /* GSEveryDayViewController.m in Sources */,
 				B75A47E91E5005AD00FCC0C5 /* GSGushiContentModel.m in Sources */,
@@ -709,8 +800,10 @@
 				B75A47FE1E508AB700FCC0C5 /* UIColor+PYSearchExtension.m in Sources */,
 				B75A480A1E50A74400FCC0C5 /* GSSearchEditModel.m in Sources */,
 				B75A47C71E4F45BD00FCC0C5 /* UIView+UIView_UIViewController.m in Sources */,
+				B726530E1E52F6D800D6CA5F /* GSShiwenController.m in Sources */,
 				B75A47BA1E4F45BD00FCC0C5 /* NSString+CZHash.m in Sources */,
 				B75A47BE1E4F45BD00FCC0C5 /* UIColor+CZAddition.m in Sources */,
+				B72653041E52CF8600D6CA5F /* RemarksTableViewCell.m in Sources */,
 				B75A47CF1E4F46AE00FCC0C5 /* Reachability.m in Sources */,
 				B75A48161E51C97200FCC0C5 /* GSTheme.m in Sources */,
 				B75A47FC1E508AB700FCC0C5 /* PYSearchSuggestionViewController.m in Sources */,
@@ -723,10 +816,13 @@
 				B75A47CE1E4F46AE00FCC0C5 /* LEEHTTPManager.m in Sources */,
 				B721FF2D1E51F416006546E5 /* GSDetailController.m in Sources */,
 				B75A47B81E4F45BD00FCC0C5 /* NSObject+CZRuntime.m in Sources */,
+				B726530A1E52DAD700D6CA5F /* NSObject+BoboHUD.m in Sources */,
 				B75A48021E508BC200FCC0C5 /* GSSearchController.m in Sources */,
 				B75A47621E4F3A9300FCC0C5 /* main.m in Sources */,
 				B75A481C1E51D07B00FCC0C5 /* GSBaseController.m in Sources */,
 				B75A47E21E4F6F9E00FCC0C5 /* GushiContent.m in Sources */,
+				B726531E1E53246F00D6CA5F /* GSBaseTableViewCell.m in Sources */,
+				B72653111E52FF0B00D6CA5F /* GSGushiwenController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

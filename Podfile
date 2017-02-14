@@ -10,5 +10,6 @@ target 'gushici' do
   pod 'AFNetworking'
   pod 'SDWebImage'
   pod 'Masonry'
-
+  pod 'MBProgressHUD'
+  pod 'MJRefresh'
 end
