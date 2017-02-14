@@ -29,4 +29,6 @@
 
 @property(nonatomic ,copy) NSString *pic;
 
+@property(nonatomic ,assign) CGFloat rowHeight;
+
 @end

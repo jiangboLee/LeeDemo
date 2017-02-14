@@ -42,7 +42,9 @@
     self.title.text = model.nameStr;
     //内容处理
 //    [self.cont1 setContentOffset:CGPointZero animated:NO];
-    NSString *cont1 = [model.cont stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
+    NSString *cont_0 = [model.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
+    NSString *cont0 = [cont_0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    NSString *cont1 = [cont0 stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
     NSString *cont2 = [cont1 stringByReplacingOccurrencesOfString:@"。" withString:@"。\n"];
     NSString *cont3 = [cont2 stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
     NSString *cont4 = [cont3 stringByReplacingOccurrencesOfString:@"." withString:@"。\n"];

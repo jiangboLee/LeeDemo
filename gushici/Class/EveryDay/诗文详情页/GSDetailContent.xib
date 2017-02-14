@@ -11,60 +11,57 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GSDetailContent">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="295"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+        <view contentMode="scaleToFill" id="48P-Dx-c6X" customClass="GSDetailContent">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="273"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94B-aN-kyr">
-                    <rect key="frame" x="20" y="0.0" width="335" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <rect key="frame" x="20" y="10" width="335" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朝代：唐朝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcQ-kY-3Ci">
-                    <rect key="frame" x="50" y="30" width="87" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="50" y="46" width="92" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者：李白" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lv-cd-Vbs">
-                    <rect key="frame" x="238" y="30" width="87" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="233" y="46" width="92" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbc-tO-NC7">
-                    <rect key="frame" x="20" y="60" width="335" height="215"/>
-                    <string key="text">你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbc-tO-NC7">
+                    <rect key="frame" x="20" y="75.5" width="335" height="209"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="0Lv-cd-Vbs" firstAttribute="top" secondItem="94B-aN-kyr" secondAttribute="bottom" id="E1y-Of-IUF"/>
-                <constraint firstAttribute="trailing" secondItem="0Lv-cd-Vbs" secondAttribute="trailing" constant="50" id="HPP-2v-mBI"/>
-                <constraint firstItem="Cbc-tO-NC7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Kib-Np-kUw"/>
-                <constraint firstItem="Cbc-tO-NC7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ORa-b4-R9A"/>
-                <constraint firstAttribute="trailing" secondItem="94B-aN-kyr" secondAttribute="trailing" constant="20" id="Og1-AG-Goz"/>
-                <constraint firstItem="Cbc-tO-NC7" firstAttribute="top" secondItem="94B-aN-kyr" secondAttribute="bottom" constant="30" id="XXH-7P-XNd"/>
-                <constraint firstItem="mcQ-kY-3Ci" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="a1i-lf-3Nh"/>
-                <constraint firstAttribute="bottom" secondItem="Cbc-tO-NC7" secondAttribute="bottom" constant="20" id="dTS-KH-ZpF"/>
-                <constraint firstItem="mcQ-kY-3Ci" firstAttribute="top" secondItem="94B-aN-kyr" secondAttribute="bottom" id="fLv-hg-QSY"/>
-                <constraint firstItem="94B-aN-kyr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fTM-7H-NYL"/>
-                <constraint firstAttribute="trailing" secondItem="Cbc-tO-NC7" secondAttribute="trailing" constant="20" id="qjW-5e-ybQ"/>
-                <constraint firstItem="94B-aN-kyr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="wYN-qh-cF1"/>
-                <constraint firstItem="94B-aN-kyr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zW3-ac-lCL"/>
+                <constraint firstItem="mcQ-kY-3Ci" firstAttribute="top" secondItem="94B-aN-kyr" secondAttribute="bottom" id="2PJ-mv-lMl"/>
+                <constraint firstAttribute="trailing" secondItem="Cbc-tO-NC7" secondAttribute="trailing" constant="20" id="Dqy-gm-NwN"/>
+                <constraint firstItem="94B-aN-kyr" firstAttribute="centerX" secondItem="48P-Dx-c6X" secondAttribute="centerX" id="Dug-TC-jLb"/>
+                <constraint firstItem="94B-aN-kyr" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="20" id="JT4-AE-xy0"/>
+                <constraint firstItem="94B-aN-kyr" firstAttribute="top" secondItem="48P-Dx-c6X" secondAttribute="top" constant="10" id="MUf-gL-9Pp"/>
+                <constraint firstItem="Cbc-tO-NC7" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="20" id="V9C-ue-cA5"/>
+                <constraint firstItem="0Lv-cd-Vbs" firstAttribute="top" secondItem="94B-aN-kyr" secondAttribute="bottom" id="bB9-gq-SKm"/>
+                <constraint firstAttribute="trailing" secondItem="0Lv-cd-Vbs" secondAttribute="trailing" constant="50" id="f99-nG-wwS"/>
+                <constraint firstItem="mcQ-kY-3Ci" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="50" id="vHQ-fR-7UH"/>
+                <constraint firstAttribute="trailing" secondItem="94B-aN-kyr" secondAttribute="trailing" constant="20" id="whT-Dv-cmO"/>
+                <constraint firstItem="Cbc-tO-NC7" firstAttribute="top" secondItem="0Lv-cd-Vbs" secondAttribute="bottom" constant="8" id="x8u-yj-amc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="author" destination="0Lv-cd-Vbs" id="c1s-le-QPJ"/>
-                <outlet property="chaodai" destination="mcQ-kY-3Ci" id="Off-yP-88o"/>
-                <outlet property="cont" destination="Cbc-tO-NC7" id="Y5a-mi-zd8"/>
-                <outlet property="nameStr" destination="94B-aN-kyr" id="m1U-y1-hfk"/>
+                <outlet property="author" destination="0Lv-cd-Vbs" id="RrN-4V-kYp"/>
+                <outlet property="chaodai" destination="mcQ-kY-3Ci" id="aFc-MG-EWa"/>
+                <outlet property="cont" destination="Cbc-tO-NC7" id="Tjn-j9-ru6"/>
+                <outlet property="nameStr" destination="94B-aN-kyr" id="T0L-my-yb0"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="-108.5"/>
+            <point key="canvasLocation" x="387.5" y="161.5"/>
         </view>
     </objects>
 </document>

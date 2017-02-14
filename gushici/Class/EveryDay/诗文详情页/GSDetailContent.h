@@ -12,4 +12,8 @@
 
 @property(nonatomic ,strong) GSGushiContentModel *gushi;
 
+@property (weak, nonatomic) IBOutlet UILabel *cont;
+
+@property(nonatomic ,copy) void(^heightBlock)(CGFloat height);
+
 @end

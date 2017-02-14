@@ -29,6 +29,23 @@ static NSString *tableV_cellID = @"tableV_cellID";
     return _headerView;
 }
 
+-(UITableView *)tableV{
+
+    if (_tableV == nil) {
+        _tableV = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        
+        [_tableV registerClass:[UITableViewCell class] forCellReuseIdentifier:tableV_cellID];
+        
+        _tableV.delegate = self;
+        _tableV.dataSource = self;
+        
+        [self.view addSubview:_tableV];
+
+    }
+    return _tableV;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -37,29 +54,28 @@ static NSString *tableV_cellID = @"tableV_cellID";
 
 -(void)setTableview{
     
-    _tableV = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+ 
     
-    [_tableV registerClass:[UITableViewCell class] forCellReuseIdentifier:tableV_cellID];
     
-    _tableV.delegate = self;
-    _tableV.dataSource = self;
-    
-    [self.view addSubview:_tableV];
-    
-    _tableV.tableHeaderView = self.headerView;
 }
 
 -(void)setDataArray:(NSArray *)dataArray{
 
     _dataArray = dataArray;
     
-    self.headerView.gushi = (GSGushiContentModel *)dataArray[0];
-
+    __weak typeof(self) weakSelf = self;
+    [self.headerView setHeightBlock:^(CGFloat x) {
+        
+        weakSelf.headerView.ljb_height = x - 44;
+        NSLog(@"%f",x);
+        weakSelf.tableV.tableHeaderView = weakSelf.headerView;
+    }];
+    self.headerView.gushi = dataArray[0];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return 10;
+    return self.dataArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -67,6 +83,9 @@ static NSString *tableV_cellID = @"tableV_cellID";
     
     return cell;
 }
+
+
+
 
 
 @end
