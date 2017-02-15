@@ -10,13 +10,15 @@
 #import "GSGushiwenController.h"
 #import "GSMingjuController.h"
 #import "GSAuthorController.h"
+#import "GSPickController.h"
 
-@interface GSShiwenController ()<UIScrollViewDelegate>
+@interface GSShiwenController ()<UIScrollViewDelegate,UIPopoverPresentationControllerDelegate>
 
 @property(nonatomic ,weak) UIScrollView *scrollV;
 @property(nonatomic ,weak) UIView *btnView;
 @property(nonatomic ,weak) UIView *lineView;
 @property(nonatomic ,weak) UIButton *preBotton;
+@property(nonatomic ,assign) NSInteger tag;
 
 @property(nonatomic ,strong) GSGushiwenController *gushiwenVC;
 @property(nonatomic ,strong) GSMingjuController *mingjuVC;
@@ -31,6 +33,45 @@
     self.title = @"诗文";
     
     [self setupUI];
+    [self setNavBarbutton];
+
+}
+
+
+
+
+-(void)setNavBarbutton{
+
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"筛选" style:UIBarButtonItemStyleDone target:self action:@selector(clickPick:)];
+    
+    self.navigationItem.rightBarButtonItem = item;
+    
+}
+
+-(void)clickPick:(UIBarButtonItem *)sender{
+
+    GSPickController *nextVC = [GSPickController new];
+    
+    nextVC.tag = self.tag;
+    //目的: 设置以popover的形式去弹出, 告诉指向谁
+    
+    //1. 模态视图的呈现样式
+    nextVC.modalPresentationStyle = UIModalPresentationPopover;
+    
+    //2. 设置代理
+    nextVC.popoverPresentationController.delegate = self;
+    
+    //3. 获取Popover控制器的 barButtonItem并设置即可
+    nextVC.popoverPresentationController.barButtonItem = sender;
+    
+    //4. 以模态视图去弹出即可
+    [self presentViewController:nextVC animated:YES completion:nil];
+}
+
+//设置popover的自适应效果 如果设置的是None, 就代表系统不会帮你做自适应, 所有iPad和iPhone效果是一致的
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    
+    return UIModalPresentationNone;
 }
 
 -(void)setupUI{
@@ -124,9 +165,6 @@
     _gushiwenVC = [[GSGushiwenController alloc]init];
     _mingjuVC = [[GSMingjuController alloc]init];
     _authorVC = [[GSAuthorController alloc]init];
-//    gushiwenVC.view.backgroundColor = [UIColor redColor];
-//    _mingjuVC.view.backgroundColor = [UIColor blueColor];
-//    _authorVC.view.backgroundColor = [UIColor blackColor];
     
     [scrollV addSubview:_gushiwenVC.view];
     [scrollV addSubview:_mingjuVC.view];
@@ -182,6 +220,9 @@
     }];
     
     [self.scrollV setContentOffset:CGPointMake(UISCREENW * (btn.tag - 1), 0) animated:YES];
+    
+    self.tag = btn.tag;
+    
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{

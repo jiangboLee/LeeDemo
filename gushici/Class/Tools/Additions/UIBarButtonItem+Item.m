@@ -42,7 +42,7 @@
     [backButton setImage:image forState:UIControlStateNormal];
     [backButton setImage:highImage forState:UIControlStateHighlighted];
     [backButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor orangeColor] forState:UIControlStateHighlighted];
+    [backButton setTitleColor:[UIColor blueColor] forState:UIControlStateHighlighted];
     
     backButton.titleLabel.font = [UIFont systemFontOfSize:15];
     
