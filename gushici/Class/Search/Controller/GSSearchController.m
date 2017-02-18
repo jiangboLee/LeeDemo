@@ -13,6 +13,7 @@
 #import "GSDetailController.h"
 #import "GSAuthorDetailController.h"
 #import "GSGushiwenController.h"
+#import "GSClickSearchViewController.h"
 
 @interface GSSearchController ()<PYSearchViewControllerDelegate,PYSearchViewControllerDataSource,GSSearchSuggestionViewDelegat>
 
@@ -230,14 +231,27 @@
     
 }
 
+//点击热门搜索
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectHotSearchAtIndex:(NSInteger)index searchText:(NSString *)searchText{
+
+    [self push:searchText];
+}
 /** 点击搜索历史时调用，如果实现该代理方法则搜索历史时searchViewController:didSearchWithsearchBar:searchText:失效 */
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchHistoryAtIndex:(NSInteger)index searchText:(NSString *)searchText{
 
-    NSLog(@"%@",searchText);
+    [self push:searchText];
 }
-/** 点击搜索建议时调用，如果实现该代理方法则点击搜索建议时searchViewController:didSearchWithsearchBar:searchText:失效 */
-- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchSuggestionAtIndex:(NSInteger)index searchText:(NSString *)searchText{
+/** 点击(开始)搜索时调用 */
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText{
 
+    [self push:searchText];
+}
+
+-(void)push:(NSString *)searchText{
+
+    GSClickSearchViewController *clickSearchVC = [[GSClickSearchViewController alloc]init];
+    clickSearchVC.searchStr = searchText;
+    [self.searchViewController.navigationController pushViewController:clickSearchVC animated:YES];
 }
 
 

@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwM-wd-bgq">
-                        <rect key="frame" x="78" y="10" width="33" height="20"/>
+                        <rect key="frame" x="78" y="10" width="227" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -50,6 +50,7 @@
                     <constraint firstItem="YwM-wd-bgq" firstAttribute="top" secondItem="5W0-le-Mo0" secondAttribute="top" id="EaZ-g1-fjD"/>
                     <constraint firstItem="Mhe-5W-Szb" firstAttribute="top" secondItem="sZT-JS-BjG" secondAttribute="bottom" constant="5" id="J8N-eJ-NxS"/>
                     <constraint firstItem="5W0-le-Mo0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ur2-dB-84e"/>
+                    <constraint firstAttribute="trailing" secondItem="YwM-wd-bgq" secondAttribute="trailing" constant="15" id="VHv-em-WYX"/>
                     <constraint firstItem="sZT-JS-BjG" firstAttribute="leading" secondItem="YwM-wd-bgq" secondAttribute="leading" id="eDp-QG-f3O"/>
                     <constraint firstItem="Mhe-5W-Szb" firstAttribute="leading" secondItem="sZT-JS-BjG" secondAttribute="leading" id="ful-og-aFG"/>
                     <constraint firstItem="sZT-JS-BjG" firstAttribute="top" secondItem="YwM-wd-bgq" secondAttribute="bottom" constant="2" id="hog-3d-Jd3"/>
@@ -64,6 +65,7 @@
                 <outlet property="cont" destination="Mhe-5W-Szb" id="Uy7-XZ-OSN"/>
                 <outlet property="nameStr" destination="YwM-wd-bgq" id="6wF-Ef-X1t"/>
                 <outlet property="pic" destination="5W0-le-Mo0" id="KVD-pN-tok"/>
+                <outlet property="searchHideConstrain" destination="J8N-eJ-NxS" id="vm7-yb-Pog"/>
             </connections>
             <point key="canvasLocation" x="34" y="133"/>
         </tableViewCell>

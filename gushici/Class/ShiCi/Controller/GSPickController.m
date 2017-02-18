@@ -196,7 +196,7 @@ static NSString *table1CellID = @"table1CellID";
             cell.indentationWidth = 30;
             
             cell.textLabel.text = model.name;
-            
+            cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(20)];
             return cell;
             break;
         }
@@ -205,6 +205,7 @@ static NSString *table1CellID = @"table1CellID";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:table1CellID forIndexPath:indexPath];
         
             cell.textLabel.text = self.caodaiArray[indexPath.row];
+            cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(20)];
             return cell;
             break;
         }

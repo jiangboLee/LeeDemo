@@ -144,7 +144,7 @@ static NSString *mingjuCellID = @"mingjuCellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:mingjuCellID forIndexPath:indexPath];
     
     cell.textLabel.text = self.dataArray[indexPath.row].nameStr;
-    
+    cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(20)];
     return cell;
 }
 

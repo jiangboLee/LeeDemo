@@ -24,9 +24,9 @@
     CGRect rect = [contentStr boundingRectWithSize:CGSizeMake(width, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:_FontName size:_Font(16)]} context:nil];
     if (rect.size.height > defaultHeight) {
         if (isShow) {
-            return fixedHeight + btnHeight + rect.size.height + 10;
+            return fixedHeight + btnHeight + rect.size.height + 5;
         }else{
-            return fixedHeight + btnHeight + defaultHeight;
+            return fixedHeight + btnHeight + defaultHeight + 5;
         }
     } else {
         return fixedHeight + rect.size.height;

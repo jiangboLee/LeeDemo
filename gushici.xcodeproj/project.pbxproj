@@ -78,6 +78,8 @@
 		B75A48161E51C97200FCC0C5 /* GSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48151E51C97200FCC0C5 /* GSTheme.m */; };
 		B75A48191E51CCAD00FCC0C5 /* GSMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48181E51CCAD00FCC0C5 /* GSMineController.m */; };
 		B75A481C1E51D07B00FCC0C5 /* GSBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A481B1E51D07B00FCC0C5 /* GSBaseController.m */; };
+		B78FF78B1E588923007EDD2A /* GSClickSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FF7891E588923007EDD2A /* GSClickSearchViewController.m */; };
+		B78FF78F1E588D10007EDD2A /* GSSearchGushiController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FF78E1E588D10007EDD2A /* GSSearchGushiController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -213,6 +215,10 @@
 		B75A48181E51CCAD00FCC0C5 /* GSMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSMineController.m; sourceTree = "<group>"; };
 		B75A481A1E51D07B00FCC0C5 /* GSBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSBaseController.h; sourceTree = "<group>"; };
 		B75A481B1E51D07B00FCC0C5 /* GSBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSBaseController.m; sourceTree = "<group>"; };
+		B78FF7881E588923007EDD2A /* GSClickSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSClickSearchViewController.h; sourceTree = "<group>"; };
+		B78FF7891E588923007EDD2A /* GSClickSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSClickSearchViewController.m; sourceTree = "<group>"; };
+		B78FF78D1E588D10007EDD2A /* GSSearchGushiController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSearchGushiController.h; sourceTree = "<group>"; };
+		B78FF78E1E588D10007EDD2A /* GSSearchGushiController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSSearchGushiController.m; sourceTree = "<group>"; };
 		C92E1C5FDAE68782CCA88BC4 /* Pods-gushici.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gushici.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gushici/Pods-gushici.debug.xcconfig"; sourceTree = "<group>"; };
 		ED8D547B01B79F5D740D2BCD /* libPods-gushici.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gushici.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -467,6 +473,10 @@
 			children = (
 				B75A48001E508BC200FCC0C5 /* GSSearchController.h */,
 				B75A48011E508BC200FCC0C5 /* GSSearchController.m */,
+				B78FF7881E588923007EDD2A /* GSClickSearchViewController.h */,
+				B78FF7891E588923007EDD2A /* GSClickSearchViewController.m */,
+				B78FF78D1E588D10007EDD2A /* GSSearchGushiController.h */,
+				B78FF78E1E588D10007EDD2A /* GSSearchGushiController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -858,6 +868,7 @@
 				B75A47C71E4F45BD00FCC0C5 /* UIView+UIView_UIViewController.m in Sources */,
 				B726530E1E52F6D800D6CA5F /* GSShiwenController.m in Sources */,
 				B75A47BA1E4F45BD00FCC0C5 /* NSString+CZHash.m in Sources */,
+				B78FF78B1E588923007EDD2A /* GSClickSearchViewController.m in Sources */,
 				B75A47BE1E4F45BD00FCC0C5 /* UIColor+CZAddition.m in Sources */,
 				B72653041E52CF8600D6CA5F /* RemarksTableViewCell.m in Sources */,
 				B75A47CF1E4F46AE00FCC0C5 /* Reachability.m in Sources */,
@@ -880,6 +891,7 @@
 				B75A47E21E4F6F9E00FCC0C5 /* GushiContent.m in Sources */,
 				B726531E1E53246F00D6CA5F /* GSBaseTableViewCell.m in Sources */,
 				B726532D1E54999F00D6CA5F /* ThreeTableView.m in Sources */,
+				B78FF78F1E588D10007EDD2A /* GSSearchGushiController.m in Sources */,
 				B72653111E52FF0B00D6CA5F /* GSGushiwenController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

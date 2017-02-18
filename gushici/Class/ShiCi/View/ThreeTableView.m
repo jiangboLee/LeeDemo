@@ -63,14 +63,14 @@ static NSString *table3CellID = @"table3CellID";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:table1CellID forIndexPath:indexPath];
         
         cell.textLabel.text = self.table1Array[indexPath.row];
-        
+        cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(20)];
         return cell;
     }else if ([tableView isEqual:_table2]){
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:table2CellID forIndexPath:indexPath];
         
         cell.textLabel.text = self.table2Array[indexPath.row];
-        
+        cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(20)];
         return cell;
     }else{
         
@@ -78,7 +78,7 @@ static NSString *table3CellID = @"table3CellID";
         
         cell.textLabel.text = self.table3Array[indexPath.row];
         
-        cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(16)];
+        cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(20)];
         return cell;
     }
     

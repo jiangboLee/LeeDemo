@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="48P-Dx-c6X" customClass="GSDetailContent">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="273"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="371"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94B-aN-kyr">
@@ -22,19 +22,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朝代：唐朝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcQ-kY-3Ci">
-                    <rect key="frame" x="50" y="46" width="92" height="21.5"/>
+                    <rect key="frame" x="50" y="46" width="92" height="22"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者：李白" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lv-cd-Vbs">
-                    <rect key="frame" x="233" y="46" width="92" height="21.5"/>
+                    <rect key="frame" x="233" y="46" width="92" height="22"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbc-tO-NC7">
-                    <rect key="frame" x="20" y="75.5" width="335" height="209"/>
+                    <rect key="frame" x="15" y="77" width="345" height="180"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -43,11 +43,11 @@
             <color key="backgroundColor" red="1" green="0.99615975478011598" blue="0.98143137643883116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="mcQ-kY-3Ci" firstAttribute="top" secondItem="94B-aN-kyr" secondAttribute="bottom" id="2PJ-mv-lMl"/>
-                <constraint firstAttribute="trailing" secondItem="Cbc-tO-NC7" secondAttribute="trailing" constant="20" id="Dqy-gm-NwN"/>
+                <constraint firstAttribute="trailing" secondItem="Cbc-tO-NC7" secondAttribute="trailing" constant="15" id="Dqy-gm-NwN"/>
                 <constraint firstItem="94B-aN-kyr" firstAttribute="centerX" secondItem="48P-Dx-c6X" secondAttribute="centerX" id="Dug-TC-jLb"/>
                 <constraint firstItem="94B-aN-kyr" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="20" id="JT4-AE-xy0"/>
                 <constraint firstItem="94B-aN-kyr" firstAttribute="top" secondItem="48P-Dx-c6X" secondAttribute="top" constant="10" id="MUf-gL-9Pp"/>
-                <constraint firstItem="Cbc-tO-NC7" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="20" id="V9C-ue-cA5"/>
+                <constraint firstItem="Cbc-tO-NC7" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="15" id="V9C-ue-cA5"/>
                 <constraint firstItem="0Lv-cd-Vbs" firstAttribute="top" secondItem="94B-aN-kyr" secondAttribute="bottom" id="bB9-gq-SKm"/>
                 <constraint firstAttribute="trailing" secondItem="0Lv-cd-Vbs" secondAttribute="trailing" constant="50" id="f99-nG-wwS"/>
                 <constraint firstItem="mcQ-kY-3Ci" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="50" id="vHQ-fR-7UH"/>
@@ -61,7 +61,7 @@
                 <outlet property="cont" destination="Cbc-tO-NC7" id="Tjn-j9-ru6"/>
                 <outlet property="nameStr" destination="94B-aN-kyr" id="T0L-my-yb0"/>
             </connections>
-            <point key="canvasLocation" x="387.5" y="161.5"/>
+            <point key="canvasLocation" x="387.5" y="210.5"/>
         </view>
     </objects>
 </document>

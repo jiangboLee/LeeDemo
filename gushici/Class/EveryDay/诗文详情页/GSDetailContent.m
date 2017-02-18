@@ -50,6 +50,8 @@
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<span style=\"font-family:KaiTi_GB2312;\">" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<div class=\"xhe-paste\" style=\"top: 0px;\">" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</div>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</strong>" withString:@" "];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<strong>" withString:@" "];
     if (self.mingju == nil || ![cont0 containsString:self.mingju]) {
         
         self.cont.text = cont0;
@@ -64,11 +66,14 @@
     
     [self layoutIfNeeded];
     
+}
+-(void)layoutSubviews{
+
+    [super layoutSubviews];
     if (self.heightBlock != nil ) {
         
         self.heightBlock(CGRectGetMaxY(self.cont.frame));
     }
- 
 }
 
 @end

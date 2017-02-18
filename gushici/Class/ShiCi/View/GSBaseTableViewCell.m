@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameStr;
 @property (weak, nonatomic) IBOutlet UILabel *author;
 @property (weak, nonatomic) IBOutlet UILabel *cont;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchHideConstrain;
 
 @end
 
@@ -30,31 +31,70 @@
 -(void)setModel:(GSGushiContentModel *)model{
 
     _model = model;
-    self.nameStr.text = model.nameStr;
+    if (self.searchStr != nil && [model.nameStr containsString:self.searchStr]) {
+        NSRange range = [model.nameStr rangeOfString:self.searchStr];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:model.nameStr];
+        
+        [str addAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} range:range];
+        self.nameStr.attributedText = str;
+
+    }else{
+    
+        self.nameStr.text = model.nameStr;
+    }
     if (self.isAuthor) {
-       self.author.text = [NSString stringWithFormat:@"朝代: %@",model.chaodai];
+        if (!self.isSearchAuthor) {
+
+            self.author.text = [NSString stringWithFormat:@"朝代: %@",model.chaodai];
+        }else{
+        
+            self.author.hidden = YES;
+            self.searchHideConstrain.constant = -5;
+        }
         NSString *picName = model.nameStr.transformToPinyin;
         picName = [NSString stringWithFormat:@"http://img.gushiwen.org/authorImg/%@.jpg",picName];
         
         [self.pic sd_setImageWithURL:[NSURL URLWithString:picName]];
     }else{
-    
-        self.author.text = [NSString stringWithFormat:@"作者: %@",model.author];
+        self.author.hidden = NO;
+        self.searchHideConstrain.constant = 5;
+        if (self.searchStr != nil && [model.author containsString:self.searchStr]) {
+            NSRange range = [[NSString stringWithFormat:@"作者: %@",model.author] rangeOfString:self.searchStr];
+            NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"作者: %@",model.author]];
+            
+            [str addAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} range:range];
+            self.author.attributedText = str;
+            
+        }else{
+            
+            self.author.text = [NSString stringWithFormat:@"作者: %@",model.author];
+        }
         NSString *picName = model.author.transformToPinyin;
         picName = [NSString stringWithFormat:@"http://img.gushiwen.org/authorImg/%@.jpg",picName];
         
         [self.pic sd_setImageWithURL:[NSURL URLWithString:picName]];
     }
-    NSString *cont_0 = [model.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
-    NSString *cont0 = [cont_0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    NSString *cont1 = [cont0 stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
-    NSString *cont3 = [cont1 stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
-    NSString *cont4 = [cont3 stringByReplacingOccurrencesOfString:@"." withString:@"。"];
-    NSString *cont5 = [cont4 stringByReplacingOccurrencesOfString:@"<br/>" withString:@""];
-    NSString *cont6 = [cont5 stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
-    NSString *cont7 = [cont6 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
-    NSString *cont8 = [cont7 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
-    self.cont.text = cont8;
+    NSString *cont0 = [model.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"." withString:@"。"];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<br/>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
+    if (self.searchStr != nil && [cont0 containsString:self.searchStr]) {
+        NSRange range = [cont0 rangeOfString:self.searchStr];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:cont0];
+        
+        [str addAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} range:range];
+        self.cont.attributedText = str;
+        
+    }else{
+       
+        self.cont.text = cont0;
+    }
+
    
 }
 

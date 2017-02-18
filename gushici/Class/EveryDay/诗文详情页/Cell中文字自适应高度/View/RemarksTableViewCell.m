@@ -40,7 +40,7 @@
     _cellIndexPath = indexPath;
     
      CGRect rect = [_textsLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:_FontName size:_Font(16)]} context:nil];
-    if (rect.size.height > 100) {
+    if (rect.size.height > 75) {
         // 文字大于三行，显示展开收起按钮
         self.moreBtn.hidden = NO;
         if (isShow) {
