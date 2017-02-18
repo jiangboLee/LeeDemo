@@ -28,6 +28,7 @@
 		B726532A1E5497C600D6CA5F /* ThreeTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72653291E5497C600D6CA5F /* ThreeTableView.xib */; };
 		B726532D1E54999F00D6CA5F /* ThreeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B726532C1E54999F00D6CA5F /* ThreeTableView.m */; };
 		B72653371E55A6FF00D6CA5F /* GSAuthorDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653361E55A6FF00D6CA5F /* GSAuthorDetailController.m */; };
+		B72653601E58443D00D6CA5F /* 方正清刻本悦宋简体.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B726535F1E58443D00D6CA5F /* 方正清刻本悦宋简体.TTF */; };
 		B75A47621E4F3A9300FCC0C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47611E4F3A9300FCC0C5 /* main.m */; };
 		B75A47651E4F3A9300FCC0C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47641E4F3A9300FCC0C5 /* AppDelegate.m */; };
 		B75A476D1E4F3A9300FCC0C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75A476C1E4F3A9300FCC0C5 /* Assets.xcassets */; };
@@ -70,7 +71,6 @@
 		B75A48021E508BC200FCC0C5 /* GSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48011E508BC200FCC0C5 /* GSSearchController.m */; };
 		B75A48051E50A51700FCC0C5 /* GSSearchSuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48041E50A51700FCC0C5 /* GSSearchSuggestionView.m */; };
 		B75A48071E50A52000FCC0C5 /* GSSearchSuggestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B75A48061E50A52000FCC0C5 /* GSSearchSuggestionView.xib */; };
-		B75A480A1E50A74400FCC0C5 /* GSSearchEditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48091E50A74400FCC0C5 /* GSSearchEditModel.m */; };
 		B75A480D1E5195A900FCC0C5 /* Gushitype.plist in Resources */ = {isa = PBXBuildFile; fileRef = B75A480C1E5195A900FCC0C5 /* Gushitype.plist */; };
 		B75A480F1E51985A00FCC0C5 /* chaodai.plist in Resources */ = {isa = PBXBuildFile; fileRef = B75A480E1E51985A00FCC0C5 /* chaodai.plist */; };
 		B75A48111E5198CB00FCC0C5 /* form.plist in Resources */ = {isa = PBXBuildFile; fileRef = B75A48101E5198CB00FCC0C5 /* form.plist */; };
@@ -119,6 +119,7 @@
 		B726532C1E54999F00D6CA5F /* ThreeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeTableView.m; sourceTree = "<group>"; };
 		B72653351E55A6FF00D6CA5F /* GSAuthorDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAuthorDetailController.h; sourceTree = "<group>"; };
 		B72653361E55A6FF00D6CA5F /* GSAuthorDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAuthorDetailController.m; sourceTree = "<group>"; };
+		B726535F1E58443D00D6CA5F /* 方正清刻本悦宋简体.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "方正清刻本悦宋简体.TTF"; sourceTree = "<group>"; };
 		B75A475D1E4F3A9300FCC0C5 /* gushici.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gushici.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75A47611E4F3A9300FCC0C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B75A47631E4F3A9300FCC0C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -202,8 +203,6 @@
 		B75A48031E50A51700FCC0C5 /* GSSearchSuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSearchSuggestionView.h; sourceTree = "<group>"; };
 		B75A48041E50A51700FCC0C5 /* GSSearchSuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSSearchSuggestionView.m; sourceTree = "<group>"; };
 		B75A48061E50A52000FCC0C5 /* GSSearchSuggestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSSearchSuggestionView.xib; sourceTree = "<group>"; };
-		B75A48081E50A74400FCC0C5 /* GSSearchEditModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSearchEditModel.h; sourceTree = "<group>"; };
-		B75A48091E50A74400FCC0C5 /* GSSearchEditModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSSearchEditModel.m; sourceTree = "<group>"; };
 		B75A480C1E5195A900FCC0C5 /* Gushitype.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Gushitype.plist; sourceTree = "<group>"; };
 		B75A480E1E51985A00FCC0C5 /* chaodai.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = chaodai.plist; sourceTree = "<group>"; };
 		B75A48101E5198CB00FCC0C5 /* form.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = form.plist; sourceTree = "<group>"; };
@@ -355,6 +354,7 @@
 		B75A47601E4F3A9300FCC0C5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B726535F1E58443D00D6CA5F /* 方正清刻本悦宋简体.TTF */,
 				B75A476C1E4F3A9300FCC0C5 /* Assets.xcassets */,
 				B75A476E1E4F3A9300FCC0C5 /* LaunchScreen.storyboard */,
 				B75A47711E4F3A9300FCC0C5 /* Info.plist */,
@@ -474,8 +474,6 @@
 		B75A47821E4F42E600FCC0C5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B75A48081E50A74400FCC0C5 /* GSSearchEditModel.h */,
-				B75A48091E50A74400FCC0C5 /* GSSearchEditModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -758,6 +756,7 @@
 				B75A480F1E51985A00FCC0C5 /* chaodai.plist in Resources */,
 				B75A47DF1E4F6F8000FCC0C5 /* GushiContent.xib in Resources */,
 				B726532A1E5497C600D6CA5F /* ThreeTableView.xib in Resources */,
+				B72653601E58443D00D6CA5F /* 方正清刻本悦宋简体.TTF in Resources */,
 				B75A47FA1E508AB700FCC0C5 /* PYSearch.bundle in Resources */,
 				B721FF3B1E51FE56006546E5 /* GSDetailContent.xib in Resources */,
 				B726531F1E53246F00D6CA5F /* GSBaseTableViewCell.xib in Resources */,
@@ -856,7 +855,6 @@
 				B75A47FF1E508AB700FCC0C5 /* UIView+PYSearchExtension.m in Sources */,
 				B75A47FD1E508AB700FCC0C5 /* PYSearchViewController.m in Sources */,
 				B75A47FE1E508AB700FCC0C5 /* UIColor+PYSearchExtension.m in Sources */,
-				B75A480A1E50A74400FCC0C5 /* GSSearchEditModel.m in Sources */,
 				B75A47C71E4F45BD00FCC0C5 /* UIView+UIView_UIViewController.m in Sources */,
 				B726530E1E52F6D800D6CA5F /* GSShiwenController.m in Sources */,
 				B75A47BA1E4F45BD00FCC0C5 /* NSString+CZHash.m in Sources */,

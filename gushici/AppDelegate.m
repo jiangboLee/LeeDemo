@@ -37,7 +37,6 @@
     
     [self configUSharePlatforms];
  
-
     return YES;
 }
 - (void)configUSharePlatforms

@@ -7,10 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GSGushiContentModel;
+
+typedef NS_ENUM(NSUInteger, didSelecteType) {
+    didSelecteTypeShiwen,
+    didSelecteTypeMingju,
+    didSelecteTypeAuthor,
+    didSelecteTypeLeixing
+};
+
+@protocol GSSearchSuggestionViewDelegat <NSObject>
+
+-(void)searchSuggestionViewDidSelecteType:(didSelecteType)type model:(GSGushiContentModel *)model iid:(NSInteger)iid;
+
+@end
 
 @interface GSSearchSuggestionView : UITableViewCell
 
 @property(nonatomic ,copy) NSString *searchText;
 @property(nonatomic ,strong) NSDictionary *dict;
+
+@property(nonatomic ,weak) id<GSSearchSuggestionViewDelegat> delegate;
 
 @end

@@ -15,4 +15,6 @@
 
 @property(nonatomic ,assign) NSInteger gushiID;
 
+@property(nonatomic ,assign) BOOL isMingjuSearch;
+
 @end

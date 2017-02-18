@@ -19,7 +19,6 @@
 
 @property(nonatomic ,strong) GSDetailController *detailVC;
 
-@property(nonatomic ,copy) NSString *leixing;
 @property(nonatomic ,copy) NSString *chaodai;
 @property(nonatomic ,copy) NSString *xingshi;
 
@@ -41,8 +40,9 @@ static NSString *baseTableCellID = @"baseTableCellID";
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UISCREENW, 44)];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GSBaseTableViewCell" bundle:nil] forCellReuseIdentifier:baseTableCellID];
-    
-    self.leixing = @"不限";
+    if (!self.isLeixingSearch) {
+        self.leixing = @"不限";
+    }
     self.chaodai = @"不限";
     self.xingshi = @"不限";
     [[NSUserDefaults standardUserDefaults] setObject:self.leixing forKey:@"lable1"];
@@ -164,64 +164,11 @@ static NSString *baseTableCellID = @"baseTableCellID";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self showRefresh:self.view];
     GSGushiContentModel *model = self.dataArray[indexPath.row];
-    [self loadDetailData:model.gushiID];
+    _detailVC = [[GSDetailController alloc]init];
+    _detailVC.gushiID = model.gushiID;
+    [self.navigationController pushViewController:_detailVC animated:YES];
     
-}
-
--(void)loadDetailData:(NSInteger)iid{
-
-//    NSInteger iid = arc4random_uniform(50000);
-    NSDictionary *parmeters = @{@"id":@(iid),@"token":@"gswapi",@"random":@(2672180210)};
-    NSString *urlStr = @"http://app.gushiwen.org/api/shiwen/view.aspx";
-    __weak typeof(self) weakSelf = self;
-    [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:parmeters finshed:
-     ^(NSDictionary *responseObject, NSError *error) {
-         
-         if (error != nil) {
-             
-             [self showHint:@"网络有问题"];
-             return ;
-         }
-         
-         GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_gushiwen"]];
-         
-         NSArray *fanyiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_fanyis"][@"fanyis"]];
-         
-         NSArray *shangxiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_shangxis"][@"shangxis"]];
-         
-         GSGushiContentModel *authorModel = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
-         //可能参数返回没有数据
-         if (model.nameStr == nil) {
-             [self hideHud];
-             return;
-         }
-         NSMutableArray *array = [NSMutableArray arrayWithObject:model];
-         if (((GSGushiContentModel *)(fanyiArray.firstObject)).nameStr != nil) {
-             
-             ((GSGushiContentModel *)(fanyiArray.firstObject)).cankao = @"fanyi";
-             [array addObject:fanyiArray.firstObject];
-         }
-         if (((GSGushiContentModel *)(shangxiArray.firstObject)).cont != nil) {
-             ((GSGushiContentModel *)(shangxiArray.firstObject)).cankao = @"shangxi";
-             [array addObject:shangxiArray.firstObject];
-         }
-         if (authorModel.nameStr != nil) {
-             
-             [array addObject:authorModel];
-         }
-         
-         dispatch_async(dispatch_get_main_queue(), ^{
-             
-             [self hideHud];
-             _detailVC = [[GSDetailController alloc]init];
-             weakSelf.detailVC.dataArray = array;
-             [self.navigationController pushViewController:_detailVC animated:YES];
-         });
-         
-     }];
-
 }
 
 

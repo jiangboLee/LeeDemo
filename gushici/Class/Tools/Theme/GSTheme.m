@@ -23,12 +23,23 @@ static GSTheme *_gsTheme;
     return _gsTheme;
 }
 
+
 -(CGFloat)lableWithFont:(CGFloat)font{
     
     double fo = [[NSUserDefaults standardUserDefaults] doubleForKey:@"ziti"];
     
-    return font + 0;
+    return font + fo;
+}
+-(NSString *)lableWithString{
+
+    NSString *fontName = [[NSUserDefaults standardUserDefaults] objectForKey:@"zitiType"];
+    if (fontName == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"FZQKBYSJW--GB1-0" forKey:@"zitiType"];
+        return @"FZQKBYSJW--GB1-0";
+    }else{
     
+        return fontName;
+    }
 }
 
 

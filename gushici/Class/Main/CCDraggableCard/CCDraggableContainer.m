@@ -122,7 +122,7 @@
                 // 总数indexs, 计算以及加载到了第几个index
                 self.loadedIndex += 1;
                 
-                NSLog(@"loaded %ld card", (long)self.loadedIndex);
+//                NSLog(@"loaded %ld card", (long)self.loadedIndex);
             }
         }
     } else {

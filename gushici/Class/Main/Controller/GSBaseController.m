@@ -34,7 +34,7 @@
             double change = [[NSUserDefaults standardUserDefaults] doubleForKey:@"ziti"];
             UILabel *vv = (UILabel *)v;
             
-            vv.font = [UIFont systemFontOfSize:vv.font.pointSize + change];
+            vv.font = [UIFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"zitiType"] size:vv.font.pointSize + change];
         }
         
         if (v.subviews.count > 0) {

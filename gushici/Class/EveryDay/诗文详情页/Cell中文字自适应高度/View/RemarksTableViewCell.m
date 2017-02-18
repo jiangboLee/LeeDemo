@@ -39,8 +39,8 @@
     _textsLabel.text = contentStr;
     _cellIndexPath = indexPath;
     
-     CGRect rect = [_textsLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_textsLabel.font.pointSize]} context:nil];
-    if (rect.size.height > 120) {
+     CGRect rect = [_textsLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:_FontName size:_Font(16)]} context:nil];
+    if (rect.size.height > 100) {
         // 文字大于三行，显示展开收起按钮
         self.moreBtn.hidden = NO;
         if (isShow) {
@@ -67,7 +67,7 @@
             make.left.mas_equalTo(self.contentView.mas_left).offset(15);
             make.top.mas_equalTo(_infolable.mas_bottom).offset(5);
             make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width-30);
-            make.height.mas_equalTo(rect.size.height+1);  // 由于系统计算的那个高度有时候会有1像素到2像素的误差，所以这里把高度+1
+            make.height.mas_equalTo(rect.size.height+2);  // 由于系统计算的那个高度有时候会有1像素到2像素的误差，所以这里把高度+1
         }];
     }
 }
@@ -99,19 +99,19 @@
     _infolable = [[UILabel alloc]init];
 //    _infolable.text = @"备注消息";
     _infolable.textColor = [UIColor blueColor];//CLColor(102, 102, 102);
-    _infolable.font = [UIFont systemFontOfSize:_Font(16)];
+    _infolable.font = [UIFont fontWithName:_FontName size:_Font(16)];
     [self.contentView addSubview:_infolable];
     [_infolable mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.mas_equalTo(self.contentView.mas_left).offset(15);
         make.top.mas_equalTo(self.contentView.mas_top).offset(15);
         make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width/2);
-        make.height.mas_equalTo(12);
+        make.height.mas_equalTo(_infolable.font.pointSize);
     }];
     
     _textsLabel = [[UILabel alloc]init];
 //    _textsLabel.lineBreakMode = NSLineBreakByCharWrapping;
     _textsLabel.numberOfLines = 3;
-    _textsLabel.font = [UIFont systemFontOfSize:_Font(16)];
+    _textsLabel.font = [UIFont fontWithName:_FontName size:_Font(16)];
     _textsLabel.textColor = [UIColor cz_colorWithRed:30 green:30 blue:30];//CLColor(153, 153, 153);
     [self.contentView addSubview:_textsLabel];
     

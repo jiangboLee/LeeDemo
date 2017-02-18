@@ -8,11 +8,13 @@
 
 #import "GSSearchController.h"
 #import "PYSearchSuggestionViewController.h"
-#import "GSSearchEditModel.h"
+#import "GSGushiContentModel.h"
 #import "GSSearchSuggestionView.h"
+#import "GSDetailController.h"
+#import "GSAuthorDetailController.h"
+#import "GSGushiwenController.h"
 
-
-@interface GSSearchController ()<PYSearchViewControllerDelegate,PYSearchViewControllerDataSource>
+@interface GSSearchController ()<PYSearchViewControllerDelegate,PYSearchViewControllerDataSource,GSSearchSuggestionViewDelegat>
 
 @property(nonatomic ,strong) PYSearchViewController *searchViewController;
 
@@ -23,6 +25,8 @@
 @property(nonatomic ,strong) NSMutableArray *arrays;
 
 @property(nonatomic ,copy) NSString *searchText;
+
+@property(nonatomic ,strong) GSDetailController *detailVC;
 
 @end
 
@@ -74,12 +78,12 @@
         urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:nil finshed:^(NSDictionary *responseObject, NSError *error) {
            
-            NSArray<GSSearchEditModel *> *gushiwenArray = [NSArray yy_modelArrayWithClass:[GSSearchEditModel class] json:responseObject[@"gushiwens"]];
+            NSArray<GSGushiContentModel *> *gushiwenArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"gushiwens"]];
             
-            NSArray<GSSearchEditModel *> *mingjuArray = [NSArray yy_modelArrayWithClass:[GSSearchEditModel class] json:responseObject[@"mingjus"]];
+            NSArray<GSGushiContentModel *> *mingjuArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"mingjus"]];
             
-            NSArray<GSSearchEditModel *> *authorArray = [NSArray yy_modelArrayWithClass:[GSSearchEditModel class] json:responseObject[@"authors"]];
-            NSArray<GSSearchEditModel *> *typekeysArray = [NSArray yy_modelArrayWithClass:[GSSearchEditModel class] json:responseObject[@"typekeys"]];
+            NSArray<GSGushiContentModel *> *authorArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"authors"]];
+            NSArray<GSGushiContentModel *> *typekeysArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"typekeys"]];
             
             if (gushiwenArray.count != 0) {
                 
@@ -151,6 +155,7 @@
     GSSearchSuggestionView *cell = [searchSuggestionView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate = self;
     if(self.arrays.count != 0){
         cell.dict = self.arrays[indexPath.row];
         cell.searchText = self.searchText;
@@ -161,6 +166,50 @@
         return cell;
     }
 }
+#pragma mark : - GSSearchSuggestionViewDelegat
+-(void)searchSuggestionViewDidSelecteType:(didSelecteType)type model:(GSGushiContentModel *)model iid:(NSInteger)iid {
+
+    switch (type) {
+        case didSelecteTypeShiwen:
+        {
+            _detailVC  = [[GSDetailController alloc]init];
+            _detailVC.gushiID = iid;
+            [self.searchViewController.navigationController pushViewController:_detailVC animated:YES];
+            break;
+        }
+            
+        case didSelecteTypeMingju:
+        {
+            _detailVC  = [[GSDetailController alloc]init];
+            _detailVC.isMingjuSearch = YES;
+            _detailVC.mingju = model.nameStr;
+            _detailVC.gushiID = iid;
+            [self.searchViewController.navigationController pushViewController:_detailVC animated:YES];
+            
+            break;
+        }
+        case didSelecteTypeAuthor:
+        {
+        
+            GSAuthorDetailController *authorVC = [[GSAuthorDetailController alloc]init];
+            authorVC.model = model;
+            [self.searchViewController.navigationController pushViewController:authorVC animated:YES];
+        }
+            break;
+        case didSelecteTypeLeixing:
+        {
+        
+            GSGushiwenController *gushiwenVC = [[GSGushiwenController alloc]init];
+            gushiwenVC.isLeixingSearch = YES;
+            gushiwenVC.leixing = model.nameStr;
+            [self.searchViewController.navigationController pushViewController:gushiwenVC animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 /** 返回用户自定义搜索建议cell高度 */
 - (CGFloat)searchSuggestionView:(UITableView *)searchSuggestionView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     

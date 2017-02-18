@@ -21,10 +21,10 @@
  */
 + (CGFloat)cellHeightWith:(NSString *)contentStr andIsShow:(BOOL)isShow andLableWidth:(CGFloat)width andFont:(CGFloat)font andDefaultHeight:(CGFloat)defaultHeight andFixedHeight:(CGFloat)fixedHeight andIsShowBtn:(CGFloat)btnHeight
 {
-    CGRect rect = [contentStr boundingRectWithSize:CGSizeMake(width, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil];
+    CGRect rect = [contentStr boundingRectWithSize:CGSizeMake(width, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:_FontName size:_Font(16)]} context:nil];
     if (rect.size.height > defaultHeight) {
         if (isShow) {
-            return fixedHeight + btnHeight + rect.size.height;
+            return fixedHeight + btnHeight + rect.size.height + 10;
         }else{
             return fixedHeight + btnHeight + defaultHeight;
         }

@@ -20,6 +20,14 @@
 
 @implementation GSDetailContent
 
+-(void)awakeFromNib{
+
+    [super awakeFromNib];
+    self.nameStr.font = [UIFont fontWithName:_FontName size:_Font(28)];
+    self.author.font = [UIFont fontWithName:_FontName size:_Font(16)];
+    self.chaodai.font = [UIFont fontWithName:_FontName size:_Font(16)];
+    self.cont.font = [UIFont fontWithName:_FontName size:_Font(22)];
+}
 
 -(void)setGushi:(GSGushiContentModel *)gushi{
 
@@ -40,6 +48,8 @@
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<span style=\"font-family:KaiTi_GB2312;\">" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<div class=\"xhe-paste\" style=\"top: 0px;\">" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</div>" withString:@""];
     if (self.mingju == nil || ![cont0 containsString:self.mingju]) {
         
         self.cont.text = cont0;

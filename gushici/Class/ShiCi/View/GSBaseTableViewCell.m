@@ -23,7 +23,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    self.nameStr.font = [UIFont fontWithName:_FontName size:_Font(16)];
+    self.author.font = [UIFont fontWithName:_FontName size:_Font(13)];
+    self.cont.font = [UIFont fontWithName:_FontName size:_Font(15)];
 }
 -(void)setModel:(GSGushiContentModel *)model{
 

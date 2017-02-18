@@ -11,4 +11,7 @@
 
 @interface GSGushiwenController : UITableViewController
 
+@property(nonatomic ,copy) NSString *leixing;
+@property(nonatomic ,assign) BOOL isLeixingSearch;
+
 @end

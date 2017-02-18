@@ -132,8 +132,16 @@
 }
 -(void)loadData:(NSInteger)iid {
     
+    
     NSDictionary *parmeters = @{@"id":@(iid),@"token":@"gswapi",@"random":@(2672180210)};
-    NSString *urlStr = @"http://app.gushiwen.org/api/shiwen/view.aspx";
+    NSString *urlStr;
+    if (self.isMingjuSearch) {
+        
+        urlStr = @"http://app.gushiwen.org/api/mingju/ju.aspx";
+    }else{
+    
+        urlStr = @"http://app.gushiwen.org/api/shiwen/view.aspx";
+    }
     //    __weak typeof(self) weakSelf = self;
     [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:parmeters finshed:
      ^(NSDictionary *responseObject, NSError *error) {

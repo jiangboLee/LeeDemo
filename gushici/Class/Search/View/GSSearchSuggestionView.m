@@ -7,7 +7,8 @@
 //
 
 #import "GSSearchSuggestionView.h"
-#import "GSSearchEditModel.h"
+#import "GSGushiContentModel.h"
+
 
 @interface GSSearchSuggestionView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -68,7 +69,7 @@ static NSString *cellId = @"gushiCell";
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    GSSearchEditModel *model = (GSSearchEditModel *)self.models[indexPath.row];
+    GSGushiContentModel *model = (GSGushiContentModel *)self.models[indexPath.row];
     if (![self.titleLable.text isEqualToString:@"结果"]) {
         
         
@@ -95,9 +96,43 @@ static NSString *cellId = @"gushiCell";
     return cell;
 }
 
+#pragma mark : - 搜索后跳转
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    NSLog(@"%zd",indexPath.row);
+    GSGushiContentModel *model = (GSGushiContentModel *)self.models[indexPath.row];
+    
+    if ([self.titleLable.text isEqualToString:@"诗文"]) {
+        
+        if ([self.delegate respondsToSelector:@selector(searchSuggestionViewDidSelecteType:model:iid:)]) {
+            
+            [self.delegate searchSuggestionViewDidSelecteType:didSelecteTypeShiwen model:model iid:model.gushiID];
+        }
+    }
+    if ([self.titleLable.text isEqualToString:@"名句"]) {
+        
+        if ([self.delegate respondsToSelector:@selector(searchSuggestionViewDidSelecteType:model:iid:)]) {
+            
+            [self.delegate searchSuggestionViewDidSelecteType:didSelecteTypeMingju model:model iid:model.gushiID];
+        }
+    }
+    if ([self.titleLable.text isEqualToString:@"作者"]) {
+        
+        if ([self.delegate respondsToSelector:@selector(searchSuggestionViewDidSelecteType:model:iid:)]) {
+            
+            [self.delegate searchSuggestionViewDidSelecteType:didSelecteTypeAuthor model:model iid:model.gushiID];
+        }
+    }
+    if ([self.titleLable.text isEqualToString:@"类型"]) {
+        
+        if ([self.delegate respondsToSelector:@selector(searchSuggestionViewDidSelecteType:model:iid:)]) {
+            
+            [self.delegate searchSuggestionViewDidSelecteType:didSelecteTypeLeixing model:model iid:model.gushiID];
+        }
+    }
+    
+    
+    
+    
 }
 
 @end

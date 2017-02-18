@@ -39,8 +39,6 @@
         _tableV.dataSource = self;
         _tableV.tableFooterView = [[UIView alloc]init];
         
-        _tableV.tableHeaderView = self.headerView;
-        
         [self.view addSubview:_tableV];
         
     }
@@ -119,7 +117,7 @@
              return ;
          }
          
-//         GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
+         GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
          
          NSArray *ziliao = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_ziliaos"][@"ziliaos"]];
          
@@ -134,7 +132,8 @@
              [self.totaldataArray addObject:gushiwen];
          }
          
-         
+         self.model = model;
+         _tableV.tableHeaderView = self.headerView;
          [self.tableV reloadData];
      }];
 

@@ -31,6 +31,9 @@ static NSString *table3CellID = @"table3CellID";
     self.lable1.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"lable1"];
     self.lable2.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"lable2"];
     self.lable3.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"lable3"];
+    self.lable1.font = [UIFont fontWithName:_FontName size:_Font(16)];
+    self.lable2.font = [UIFont fontWithName:_FontName size:_Font(16)];
+    self.lable3.font = [UIFont fontWithName:_FontName size:_Font(16)];
     
     [_table1 registerClass:[UITableViewCell class] forCellReuseIdentifier:table1CellID];
     [_table2 registerClass:[UITableViewCell class] forCellReuseIdentifier:table2CellID];
@@ -75,6 +78,7 @@ static NSString *table3CellID = @"table3CellID";
         
         cell.textLabel.text = self.table3Array[indexPath.row];
         
+        cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(16)];
         return cell;
     }
     

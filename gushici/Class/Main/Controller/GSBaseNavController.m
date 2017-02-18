@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:_FontName size:20]}];
 }
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{

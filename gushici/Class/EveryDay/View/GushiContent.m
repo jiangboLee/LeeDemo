@@ -30,9 +30,9 @@
     _cont1.layoutManager.allowsNonContiguousLayout = false;
     [_cont1 scrollRangeToVisible:NSMakeRange(0, 1)];
     
-    self.title.font = [UIFont systemFontOfSize:_Font(28)];
-    
-    self.cont1.font = [UIFont systemFontOfSize:_Font(22)];
+    self.title.font = [UIFont fontWithName:_FontName size:_Font(28)];
+    self.authorLable.font = [UIFont fontWithName:_FontName size:_Font(16)];
+    self.cont1.font = [UIFont fontWithName:_FontName size:_Font(22)];
 }
 
 
