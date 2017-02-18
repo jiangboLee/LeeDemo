@@ -38,13 +38,16 @@ static NSString *baseTableCellID = @"baseTableCellID";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = 100;
-    self.tableView.tableFooterView = [[UIView alloc]init];
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UISCREENW, 44)];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GSBaseTableViewCell" bundle:nil] forCellReuseIdentifier:baseTableCellID];
     
     self.leixing = @"不限";
     self.chaodai = @"不限";
     self.xingshi = @"不限";
+    [[NSUserDefaults standardUserDefaults] setObject:self.leixing forKey:@"lable1"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.chaodai forKey:@"lable2"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.xingshi forKey:@"lable3"];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         self.page = 1;
@@ -151,7 +154,7 @@ static NSString *baseTableCellID = @"baseTableCellID";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     GSBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:baseTableCellID forIndexPath:indexPath];
-    
+    cell.isAuthor = NO;
     cell.model = self.dataArray[indexPath.row];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -161,6 +164,7 @@ static NSString *baseTableCellID = @"baseTableCellID";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [self showRefresh:self.view];
     GSGushiContentModel *model = self.dataArray[indexPath.row];
     [self loadDetailData:model.gushiID];
     
@@ -190,15 +194,17 @@ static NSString *baseTableCellID = @"baseTableCellID";
          GSGushiContentModel *authorModel = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
          //可能参数返回没有数据
          if (model.nameStr == nil) {
+             [self hideHud];
              return;
          }
          NSMutableArray *array = [NSMutableArray arrayWithObject:model];
          if (((GSGushiContentModel *)(fanyiArray.firstObject)).nameStr != nil) {
              
+             ((GSGushiContentModel *)(fanyiArray.firstObject)).cankao = @"fanyi";
              [array addObject:fanyiArray.firstObject];
          }
          if (((GSGushiContentModel *)(shangxiArray.firstObject)).cont != nil) {
-             
+             ((GSGushiContentModel *)(shangxiArray.firstObject)).cankao = @"shangxi";
              [array addObject:shangxiArray.firstObject];
          }
          if (authorModel.nameStr != nil) {
@@ -208,6 +214,7 @@ static NSString *baseTableCellID = @"baseTableCellID";
          
          dispatch_async(dispatch_get_main_queue(), ^{
              
+             [self hideHud];
              _detailVC = [[GSDetailController alloc]init];
              weakSelf.detailVC.dataArray = array;
              [self.navigationController pushViewController:_detailVC animated:YES];

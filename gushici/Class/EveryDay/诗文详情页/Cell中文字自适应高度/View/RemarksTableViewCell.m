@@ -39,8 +39,8 @@
     _textsLabel.text = contentStr;
     _cellIndexPath = indexPath;
     
-     CGRect rect = [_textsLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_textsLabel.font.pointSize]} context:nil];
-    if (rect.size.height > 52) {
+     CGRect rect = [_textsLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_textsLabel.font.pointSize]} context:nil];
+    if (rect.size.height > 120) {
         // 文字大于三行，显示展开收起按钮
         self.moreBtn.hidden = NO;
         if (isShow) {
@@ -56,7 +56,7 @@
                 make.left.mas_equalTo(self.contentView.mas_left).offset(15);
                 make.top.mas_equalTo(_infolable.mas_bottom).offset(5);
                 make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width-30);
-                make.height.mas_equalTo(52);
+                make.height.mas_equalTo(70);
             }];
         }
     } else {

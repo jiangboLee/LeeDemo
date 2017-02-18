@@ -11,7 +11,7 @@
 
 @interface GSDetailContent ()
 
-@property (weak, nonatomic) IBOutlet UILabel *nameStr;
+
 @property (weak, nonatomic) IBOutlet UILabel *author;
 @property (weak, nonatomic) IBOutlet UILabel *chaodai;
 
@@ -28,17 +28,29 @@
     self.author.text = [NSString stringWithFormat:@"作者: %@",gushi.author];
     self.chaodai.text = [NSString stringWithFormat:@"朝代: %@",gushi.chaodai];
     
-    NSString *cont_0 = [gushi.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
-    NSString *cont0 = [cont_0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    NSString *cont1 = [cont0 stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
-    NSString *cont2 = [cont1 stringByReplacingOccurrencesOfString:@"。" withString:@"。\n"];
-    NSString *cont3 = [cont2 stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
-    NSString *cont4 = [cont3 stringByReplacingOccurrencesOfString:@"." withString:@"。\n"];
-    NSString *cont5 = [cont4 stringByReplacingOccurrencesOfString:@"<br/>" withString:@""];
-    NSString *cont6 = [cont5 stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
-    NSString *cont7 = [cont6 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
-    NSString *cont8 = [cont7 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
-    self.cont.text = cont8;
+    NSString *cont0 = [gushi.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"。" withString:@"。\n"];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"." withString:@"。\n"];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<br/>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<span style=\"font-family:KaiTi_GB2312;\">" withString:@""];
+    if (self.mingju == nil || ![cont0 containsString:self.mingju]) {
+        
+        self.cont.text = cont0;
+    }else{
+    
+        NSRange range = [cont0 rangeOfString:self.mingju];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:cont0];
+            
+        [str addAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} range:range];
+        self.cont.attributedText = str;
+    }
     
     [self layoutIfNeeded];
     

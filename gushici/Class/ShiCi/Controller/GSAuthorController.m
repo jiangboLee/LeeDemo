@@ -7,92 +7,143 @@
 //
 
 #import "GSAuthorController.h"
+#import "GSGushiContentModel.h"
+#import "GSBaseTableViewCell.h"
+#import "GSAuthorDetailController.h"
 
 @interface GSAuthorController ()
 
+@property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *dataArray;
+
+@property(nonatomic ,assign) NSInteger page;
+@property(nonatomic ,assign) BOOL isRefreshUP;
+@property(nonatomic ,copy) NSString *chaodai;
+
 @end
 
+static NSString *baseTableCellID = @"baseTableCellID";
 @implementation GSAuthorController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataArray = [NSMutableArray array];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.rowHeight = 100;
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UISCREENW, 44)];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerNib:[UINib nibWithNibName:@"GSBaseTableViewCell" bundle:nil] forCellReuseIdentifier:baseTableCellID];
+    
+    self.chaodai = @"不限";
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.page = 1;
+        
+        [self loadData];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        self.page ++ ;
+        self.isRefreshUP = YES;
+        [self loadData];
+        
+    }];
+    self.tableView.mj_footer.hidden = YES;
+    
+    [self setNotification];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setNotification{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tRUECLICKNotificationName:) name:AUTHORCLICKNotificationName object:nil];
 }
+-(void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)tRUECLICKNotificationName:(NSNotification *)notification{
+    
+    self.chaodai = notification.userInfo[AUTHORCLICKNotificationNameKey];
+    
+    [self.tableView.mj_header beginRefreshing];
+}
+
+
+-(void)loadData{
+    
+    //c:朝代 t:类型 x：形式
+    NSString *urlStr = [NSString stringWithFormat:@"http://app.gushiwen.org/api/author/Default.aspx?n=2394374691&page=%zd&pwd=&id=0&token=gswapi&c=%@&p=%zd",self.page, self.chaodai, self.page];//@"http://app.gushiwen.org/api/shiwen/type.aspx?n=1665121346&page=1&pwd=&id=0&token=gswapi&c=%@&p=1&x=&t=%E5%A4%8F%E5%A4%A9";
+    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    __weak typeof(self) weakSelf = self;
+    [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:nil finshed:^(NSDictionary *responseObject, NSError *error) {
+        
+        if (error != nil) {
+            
+            [self showHint:@"网络有问题"];
+            return ;
+        }
+        if ([responseObject[@"sumCount"] integerValue] == 0) {
+            
+            [self showHint:@"该筛选没结果哦"];
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
+            return;
+        }
+        
+        
+        NSArray *array = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"authors"]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (self.isRefreshUP) {
+                
+                [weakSelf.dataArray addObjectsFromArray:array];
+            }else{
+                
+                [weakSelf.dataArray removeAllObjects];
+                [weakSelf.dataArray addObjectsFromArray:array];
+            }
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
+            [weakSelf.tableView reloadData];
+            self.isRefreshUP = NO;
+            
+            self.tableView.mj_footer.hidden = [responseObject[@"sumCount"] integerValue] == self.dataArray.count;
+            
+        });
+        
+    }];
+    
+}
+
+
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return self.dataArray.count;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    GSBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:baseTableCellID forIndexPath:indexPath];
+    cell.isAuthor = YES;
+    cell.model = self.dataArray[indexPath.row];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    GSAuthorDetailController *vc = [[GSAuthorDetailController alloc]init];
+    vc.model = self.dataArray[indexPath.row];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

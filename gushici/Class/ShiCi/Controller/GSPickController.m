@@ -217,7 +217,48 @@ static NSString *table1CellID = @"table1CellID";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    switch (self.tag) {
+        case 2:
+            [self twoLevel:indexPath];
+            break;
+        case 3:
+        {
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:AUTHORCLICKNotificationName object:self userInfo:@{AUTHORCLICKNotificationNameKey: cell.textLabel.text}];
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+            break;
+        }
+        default:
+            break;
+    }
+    
+   
+    
+}
+//二级table选中
+-(void)twoLevel:(NSIndexPath *)indexPath{
     LEECellModel *fatherModel = [_tempArray objectAtIndex:indexPath.row];
+    
+    if (indexPath.row == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:MINGJUCLICKNotificationName object:self userInfo:@{MINGJUCLICKNotificationNameKey :@[@"不限",@"不限"]}];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
+    if (fatherModel.nodeID > 11) {
+        
+        for (LEECellModel *FModel in _tempArray) {
+            
+            if (FModel.nodeID == fatherModel.fatherID) {
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:MINGJUCLICKNotificationName object:self userInfo:@{MINGJUCLICKNotificationNameKey :@[FModel.name,fatherModel.name]}];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                return;
+            }
+        }
+    }
     
     NSInteger startPosition = indexPath.row + 1;
     NSInteger endPosition = startPosition;
@@ -240,7 +281,10 @@ static NSString *table1CellID = @"table1CellID";
                 endPosition = [self removeAllModelAtFatherModel:fatherModel];
                 break;
             }
+            
+            
         }
+        
     }
     
     //获得需要修正的indexPath

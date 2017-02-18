@@ -29,13 +29,31 @@
 
     _model = model;
     self.nameStr.text = model.nameStr;
-    self.author.text = [NSString stringWithFormat:@"作者: %@",model.author];
-    self.cont.text = model.cont;
+    if (self.isAuthor) {
+       self.author.text = [NSString stringWithFormat:@"朝代: %@",model.chaodai];
+        NSString *picName = model.nameStr.transformToPinyin;
+        picName = [NSString stringWithFormat:@"http://img.gushiwen.org/authorImg/%@.jpg",picName];
+        
+        [self.pic sd_setImageWithURL:[NSURL URLWithString:picName]];
+    }else{
     
-    NSString *picName = model.author.transformToPinyin;
-    picName = [NSString stringWithFormat:@"http://img.gushiwen.org/authorImg/%@.jpg",picName];
-    
-    [self.pic sd_setImageWithURL:[NSURL URLWithString:picName]];
+        self.author.text = [NSString stringWithFormat:@"作者: %@",model.author];
+        NSString *picName = model.author.transformToPinyin;
+        picName = [NSString stringWithFormat:@"http://img.gushiwen.org/authorImg/%@.jpg",picName];
+        
+        [self.pic sd_setImageWithURL:[NSURL URLWithString:picName]];
+    }
+    NSString *cont_0 = [model.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
+    NSString *cont0 = [cont_0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    NSString *cont1 = [cont0 stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
+    NSString *cont3 = [cont1 stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
+    NSString *cont4 = [cont3 stringByReplacingOccurrencesOfString:@"." withString:@"。"];
+    NSString *cont5 = [cont4 stringByReplacingOccurrencesOfString:@"<br/>" withString:@""];
+    NSString *cont6 = [cont5 stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+    NSString *cont7 = [cont6 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+    NSString *cont8 = [cont7 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
+    self.cont.text = cont8;
+   
 }
 
 

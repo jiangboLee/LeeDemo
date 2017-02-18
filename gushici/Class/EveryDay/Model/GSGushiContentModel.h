@@ -14,6 +14,7 @@
 @property(nonatomic ,copy) NSString *nameStr;
 @property(nonatomic ,copy) NSString *author;
 @property(nonatomic ,copy) NSString *chaodai;
+@property(nonatomic ,copy) NSString *cankao;
 
 /**
  诗内容
@@ -31,5 +32,7 @@
 @property(nonatomic ,assign) NSInteger shiID;
 
 @property(nonatomic ,assign) CGFloat rowHeight;
+
+@property(nonatomic ,assign) BOOL isAreadlyRefresh;
 
 @end

@@ -11,5 +11,8 @@
 @interface GSDetailController : GSBaseController
 
 @property(nonatomic ,strong) NSArray *dataArray;
+@property(nonatomic ,copy) NSString *mingju;
+
+@property(nonatomic ,assign) NSInteger gushiID;
 
 @end

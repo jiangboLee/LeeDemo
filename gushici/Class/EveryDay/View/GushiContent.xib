@@ -22,18 +22,26 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="正在加载。。。。" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHX-gv-WTT">
-                    <rect key="frame" x="10" y="43" width="269" height="304"/>
+                    <rect key="frame" x="10" y="73" width="269" height="274"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOB-he-42i">
+                    <rect key="frame" x="193" y="43" width="46" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="dE3-S3-JJG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4z9-ZY-lcF"/>
                 <constraint firstItem="QHX-gv-WTT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="5nJ-tO-0UU"/>
-                <constraint firstItem="QHX-gv-WTT" firstAttribute="top" secondItem="dE3-S3-JJG" secondAttribute="bottom" id="CYt-b2-J67"/>
+                <constraint firstItem="QHX-gv-WTT" firstAttribute="top" secondItem="dE3-S3-JJG" secondAttribute="bottom" constant="30" id="CYt-b2-J67"/>
                 <constraint firstItem="dE3-S3-JJG" firstAttribute="leading" secondItem="QHX-gv-WTT" secondAttribute="leading" id="Kyy-2Q-j6I"/>
+                <constraint firstAttribute="trailing" secondItem="aOB-he-42i" secondAttribute="trailing" constant="50" id="WZS-pH-v3B"/>
+                <constraint firstItem="aOB-he-42i" firstAttribute="top" secondItem="dE3-S3-JJG" secondAttribute="bottom" id="Yne-8w-AtN"/>
                 <constraint firstAttribute="bottom" secondItem="QHX-gv-WTT" secondAttribute="bottom" constant="30" id="ajZ-Iw-fRY"/>
                 <constraint firstItem="dE3-S3-JJG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="gX8-5j-u50"/>
                 <constraint firstItem="QHX-gv-WTT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hwl-LU-nnw"/>
@@ -42,6 +50,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="authorLable" destination="aOB-he-42i" id="yju-jg-BJR"/>
                 <outlet property="cont1" destination="QHX-gv-WTT" id="CeW-gI-iw3"/>
                 <outlet property="title" destination="dE3-S3-JJG" id="3jx-bZ-7UN"/>
             </connections>

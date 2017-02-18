@@ -25,6 +25,11 @@
 - (void)hideHud;
 
 /**
+ only -- refresh
+ */
+-(void)showRefresh:(UIView *)view;
+
+/**
  *  提示信息 mode:MBProgressHUDModeText
  *
  *  @param hint 提示

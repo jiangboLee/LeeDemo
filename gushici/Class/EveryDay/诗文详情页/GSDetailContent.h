@@ -13,7 +13,9 @@
 @property(nonatomic ,strong) GSGushiContentModel *gushi;
 
 @property (weak, nonatomic) IBOutlet UILabel *cont;
+@property (weak, nonatomic) IBOutlet UILabel *nameStr;
 
 @property(nonatomic ,copy) void(^heightBlock)(CGFloat height);
+@property(nonatomic ,copy) NSString *mingju;
 
 @end

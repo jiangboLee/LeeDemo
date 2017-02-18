@@ -28,6 +28,10 @@ static NSString *table3CellID = @"table3CellID";
 
     [super awakeFromNib];
     
+    self.lable1.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"lable1"];
+    self.lable2.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"lable2"];
+    self.lable3.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"lable3"];
+    
     [_table1 registerClass:[UITableViewCell class] forCellReuseIdentifier:table1CellID];
     [_table2 registerClass:[UITableViewCell class] forCellReuseIdentifier:table2CellID];
     [_table3 registerClass:[UITableViewCell class] forCellReuseIdentifier:table3CellID];
@@ -97,6 +101,10 @@ static NSString *table3CellID = @"table3CellID";
 - (IBAction)clickTrueAction:(id)sender {
 
     [[NSNotificationCenter defaultCenter] postNotificationName:TRUECLICKNotificationName object:self userInfo:@{TRUECLICKNotificationNameKey: @[self.lable1.text,self.lable2.text,self.lable3.text]}];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.lable1.text forKey:@"lable1"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.lable2.text forKey:@"lable2"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.lable3.text forKey:@"lable3"];
     
 }
 

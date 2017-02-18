@@ -12,6 +12,7 @@
 @interface GushiContent ()
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *authorLable;
 
 @property (weak, nonatomic) IBOutlet UITextView *cont1;
 @end
@@ -29,8 +30,9 @@
     _cont1.layoutManager.allowsNonContiguousLayout = false;
     [_cont1 scrollRangeToVisible:NSMakeRange(0, 1)];
     
-    self.title.font = [UIFont systemFontOfSize:_Font(18)];
+    self.title.font = [UIFont systemFontOfSize:_Font(28)];
     
+    self.cont1.font = [UIFont systemFontOfSize:_Font(22)];
 }
 
 
@@ -40,19 +42,23 @@
     //标题处理
    
     self.title.text = model.nameStr;
+    self.authorLable.text = [NSString stringWithFormat:@"作者: %@",model.author];
     //内容处理
 //    [self.cont1 setContentOffset:CGPointZero animated:NO];
-    NSString *cont_0 = [model.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
-    NSString *cont0 = [cont_0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    NSString *cont1 = [cont0 stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
-    NSString *cont2 = [cont1 stringByReplacingOccurrencesOfString:@"。" withString:@"。\n"];
-    NSString *cont3 = [cont2 stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
-    NSString *cont4 = [cont3 stringByReplacingOccurrencesOfString:@"." withString:@"。\n"];
-    NSString *cont5 = [cont4 stringByReplacingOccurrencesOfString:@"<br/>" withString:@""];
-    NSString *cont6 = [cont5 stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
-    NSString *cont7 = [cont6 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
-    NSString *cont8 = [cont7 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
-    self.cont1.text = cont8;
+    NSString *cont0 = [model.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"。" withString:@"。\n"];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<br />" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"." withString:@"。\n"];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<br/>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<span style=\"font-family:KaiTi_GB2312;\">" withString:@""];
+    
+    self.cont1.text = cont0;
 }
 
 

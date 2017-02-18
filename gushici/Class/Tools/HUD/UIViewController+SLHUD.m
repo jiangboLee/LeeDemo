@@ -23,6 +23,13 @@ static const void *HUDKey = &HUDKey;
 
 #pragma mark - 方法实现
 
+-(void)showRefresh:(UIView *)view{
+//    UIView *view = [[UIApplication sharedApplication].delegate window];
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    [self setHUD:HUD];
+}
+
 - (void)showHudInView:(UIView *)view hint:(NSString *)hint{
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:view];
     HUD.label.text = hint;

@@ -23,3 +23,12 @@
 //诗文类型选择通知名字
 #define TRUECLICKNotificationName @"TRUECLICKNotificationName"
 #define TRUECLICKNotificationNameKey @"TRUECLICKNotificationNameKey"
+
+//作者类型选择通知名字
+#define AUTHORCLICKNotificationName @"AUTHORCLICKNotificationName"
+#define AUTHORCLICKNotificationNameKey @"AUTHORCLICKNotificationNameKey"
+
+//名句类型选择通知名字
+#define MINGJUCLICKNotificationName @"MINGJUCLICKNotificationName"
+#define MINGJUCLICKNotificationNameKey @"MINGJUCLICKNotificationNameKey"
+

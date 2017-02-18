@@ -21,6 +21,7 @@
 @property(nonatomic ,strong) NSMutableArray *dataArrays;
 
 @property(nonatomic ,assign) BOOL isReload;
+@property(nonatomic ,assign) NSInteger count;
 
 @end
 
@@ -30,8 +31,9 @@
     [super viewDidLoad];
     self.contentModels = [NSMutableArray array];
     self.dataArrays = [NSMutableArray array];
+    self.count = 3;
     
-    for (int i = 0; i <5; i++) {
+    for (int i = 0; i <3; i++) {
 
         [self loadData];
     }
@@ -50,7 +52,7 @@
        ^(NSDictionary *responseObject, NSError *error) {
            
            if (error != nil) {
-               
+               [weakSelf hideHud];
                return ;
            }
            
@@ -63,15 +65,16 @@
            GSGushiContentModel *authorModel = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
            //可能参数返回没有数据
            if (model.nameStr == nil) {
+               self.count --;
                return;
            }
            NSMutableArray *array = [NSMutableArray arrayWithObject:model];
            if (((GSGushiContentModel *)(fanyiArray.firstObject)).nameStr != nil) {
-               
+               ((GSGushiContentModel *)(fanyiArray.firstObject)).cankao = @"fanyi";
                [array addObject:fanyiArray.firstObject];
            }
            if (((GSGushiContentModel *)(shangxiArray.firstObject)).cont != nil) {
-               
+               ((GSGushiContentModel *)(shangxiArray.firstObject)).cankao = @"shangxi";
                [array addObject:shangxiArray.firstObject];
            }
            if (authorModel.nameStr != nil) {
@@ -84,7 +87,7 @@
            [weakSelf.dataArrays addObject:array];
            
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (weakSelf.contentModels.count == 5) {
+            if (weakSelf.contentModels.count == self.count) {
                 [weakSelf hideHud];
                 [weakSelf loadUI:0];
             }
@@ -132,9 +135,8 @@
 #pragma mark : - action
 - (IBAction)reloadDataAction:(id)sender {
     [self.contentModels removeAllObjects];
+    [self.dataArrays removeAllObjects];
     [self viewDidLoad];
-    
-    [self showHudInView:self.view hint:@"~正在刷新~"];
     
 }
 - (IBAction)nextGushiAction:(id)sender {

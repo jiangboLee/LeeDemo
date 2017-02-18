@@ -27,6 +27,7 @@
 		B72653281E548C8600D6CA5F /* LEECellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653271E548C8600D6CA5F /* LEECellModel.m */; };
 		B726532A1E5497C600D6CA5F /* ThreeTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72653291E5497C600D6CA5F /* ThreeTableView.xib */; };
 		B726532D1E54999F00D6CA5F /* ThreeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B726532C1E54999F00D6CA5F /* ThreeTableView.m */; };
+		B72653371E55A6FF00D6CA5F /* GSAuthorDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653361E55A6FF00D6CA5F /* GSAuthorDetailController.m */; };
 		B75A47621E4F3A9300FCC0C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47611E4F3A9300FCC0C5 /* main.m */; };
 		B75A47651E4F3A9300FCC0C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47641E4F3A9300FCC0C5 /* AppDelegate.m */; };
 		B75A476D1E4F3A9300FCC0C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75A476C1E4F3A9300FCC0C5 /* Assets.xcassets */; };
@@ -116,6 +117,8 @@
 		B72653291E5497C600D6CA5F /* ThreeTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ThreeTableView.xib; path = ../Controller/ThreeTableView.xib; sourceTree = "<group>"; };
 		B726532B1E54999F00D6CA5F /* ThreeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeTableView.h; sourceTree = "<group>"; };
 		B726532C1E54999F00D6CA5F /* ThreeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeTableView.m; sourceTree = "<group>"; };
+		B72653351E55A6FF00D6CA5F /* GSAuthorDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAuthorDetailController.h; sourceTree = "<group>"; };
+		B72653361E55A6FF00D6CA5F /* GSAuthorDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAuthorDetailController.m; sourceTree = "<group>"; };
 		B75A475D1E4F3A9300FCC0C5 /* gushici.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gushici.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75A47611E4F3A9300FCC0C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B75A47631E4F3A9300FCC0C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -286,6 +289,39 @@
 			path = HUD;
 			sourceTree = "<group>";
 		};
+		B72653311E55A6CB00D6CA5F /* 作者详情页 */ = {
+			isa = PBXGroup;
+			children = (
+				B72653321E55A6CB00D6CA5F /* controller */,
+				B72653331E55A6CB00D6CA5F /* model */,
+				B72653341E55A6CB00D6CA5F /* view */,
+			);
+			path = "作者详情页";
+			sourceTree = "<group>";
+		};
+		B72653321E55A6CB00D6CA5F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				B72653351E55A6FF00D6CA5F /* GSAuthorDetailController.h */,
+				B72653361E55A6FF00D6CA5F /* GSAuthorDetailController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		B72653331E55A6CB00D6CA5F /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		B72653341E55A6CB00D6CA5F /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		B75A47541E4F3A9200FCC0C5 = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +379,7 @@
 		B75A47781E4F42E600FCC0C5 /* EveryDay */ = {
 			isa = PBXGroup;
 			children = (
+				B72653311E55A6CB00D6CA5F /* 作者详情页 */,
 				B721FF2A1E51F3EB006546E5 /* 诗文详情页 */,
 				B75A47791E4F42E600FCC0C5 /* Controller */,
 				B75A477A1E4F42E600FCC0C5 /* Model */,
@@ -792,6 +829,7 @@
 				B721FF3E1E520B63006546E5 /* GSDetailContent.m in Sources */,
 				B75A47FB1E508AB700FCC0C5 /* PYSearchConst.m in Sources */,
 				B75A47B71E4F45BD00FCC0C5 /* NSAttributedString+CZAdditon.m in Sources */,
+				B72653371E55A6FF00D6CA5F /* GSAuthorDetailController.m in Sources */,
 				B72653031E52CF8600D6CA5F /* RemarksCellHeightModel.m in Sources */,
 				B721FF301E51FA31006546E5 /* GSBaseNavController.m in Sources */,
 				B72653171E52FF2400D6CA5F /* GSAuthorController.m in Sources */,

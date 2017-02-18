@@ -12,5 +12,6 @@
 @interface GSBaseTableViewCell : UITableViewCell
 
 @property(nonatomic ,strong) GSGushiContentModel *model;
+@property(nonatomic ,assign) BOOL isAuthor;
 
 @end

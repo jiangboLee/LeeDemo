@@ -27,7 +27,7 @@ static GSTheme *_gsTheme;
     
     double fo = [[NSUserDefaults standardUserDefaults] doubleForKey:@"ziti"];
     
-    return font + fo;
+    return font + 0;
     
 }
 
