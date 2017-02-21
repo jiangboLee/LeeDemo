@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="方正清刻本悦宋简体.TTF">
+            <string>FZQKBYSJW--GB1-0</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="A1F-jE-BQI">
@@ -29,82 +34,51 @@
             </objects>
             <point key="canvasLocation" x="-1100" y="378"/>
         </scene>
-        <!--我的-->
+        <!--Base Nav Controller-->
         <scene sceneID="ylo-br-wIR">
             <objects>
                 <navigationController id="tJC-Bg-xY1" customClass="GSBaseNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" id="Gzi-yZ-a3g"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_profile" selectedImage="tab_profile_selected" id="Gzi-yZ-a3g">
+                        <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="f32-Wl-dBZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ldI-Vc-0GI" kind="relationship" relationship="rootViewController" id="9h4-px-Tnr"/>
+                        <segue destination="KJB-7i-ZR9" kind="relationship" relationship="rootViewController" id="jFE-8O-BWs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QED-E3-A1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-20" y="1593"/>
         </scene>
-        <!--设置-->
-        <scene sceneID="F5n-we-2pg">
+        <!--个人信息-->
+        <scene sceneID="j0q-Bx-BMh">
             <objects>
-                <viewController id="ldI-Vc-0GI" customClass="GSMineController" sceneMemberID="viewController">
+                <viewController id="KJB-7i-ZR9" customClass="GSMineController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="t6Z-xN-NGG"/>
-                        <viewControllerLayoutGuide type="bottom" id="N87-gZ-STN"/>
+                        <viewControllerLayoutGuide type="top" id="iz4-bH-M4Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="h9U-K1-6OU"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EEE-FJ-LSD">
+                    <view key="view" contentMode="scaleToFill" id="7LQ-Ht-qFY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUJ-Z4-5qe">
-                                <rect key="frame" x="69" y="328" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="小"/>
-                                <connections>
-                                    <action selector="smallAction:" destination="ldI-Vc-0GI" eventType="touchUpInside" id="M4m-iV-8qR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuf-az-MHg">
-                                <rect key="frame" x="164" y="328" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="中"/>
-                                <connections>
-                                    <action selector="middleAction:" destination="ldI-Vc-0GI" eventType="touchUpInside" id="RWg-Yr-Y6y"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bki-UR-MSp">
-                                <rect key="frame" x="267" y="328" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="大"/>
-                                <connections>
-                                    <action selector="bigAction:" destination="ldI-Vc-0GI" eventType="touchUpInside" id="92y-tM-fTt"/>
-                                </connections>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="p9C-K8-qIg">
-                                <rect key="frame" x="111" y="526" width="202" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                    <segment title=""/>
-                                </segments>
-                            </segmentedControl>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="设置" id="4BB-Cc-5U4"/>
+                    <navigationItem key="navigationItem" title="个人信息" id="RZZ-L0-nMe"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pfy-Hm-Few" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AE3-F8-E1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="696.79999999999995" y="1592.6536731634185"/>
+            <point key="canvasLocation" x="757" y="1590"/>
         </scene>
-        <!--搜索-->
+        <!--Search Controller-->
         <scene sceneID="HFj-eh-7hu">
             <objects>
                 <navigationController id="Q5J-Ea-ZK2" customClass="GSSearchController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="搜索" id="eg1-v3-zY7"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_search" selectedImage="tab_search_selected" id="eg1-v3-zY7">
+                        <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dM0-ZP-ovu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -114,11 +88,13 @@
             </objects>
             <point key="canvasLocation" x="39" y="890"/>
         </scene>
-        <!--诗词-->
+        <!--Base Nav Controller-->
         <scene sceneID="bSZ-0f-9yb">
             <objects>
                 <navigationController id="uBs-iu-jFa" customClass="GSBaseNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="诗词" id="j5I-Of-uHh"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_classify" selectedImage="tab_classify_selected" id="j5I-Of-uHh">
+                        <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="OsT-E6-a4P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -150,11 +126,13 @@
             </objects>
             <point key="canvasLocation" x="981" y="257"/>
         </scene>
-        <!--推荐-->
+        <!--Base Nav Controller-->
         <scene sceneID="yD1-Qn-Awf">
             <objects>
                 <navigationController id="eUA-5A-h2y" customClass="GSBaseNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="推荐" id="8wv-Hj-TMM"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_home" selectedImage="tab_home_selected" id="8wv-Hj-TMM">
+                        <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FzJ-cV-jS8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -180,7 +158,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHM-1K-2y6" customClass="CCDraggableContainer">
-                                <rect key="frame" x="0.0" y="64" width="375" height="454"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="504"/>
                                 <color key="backgroundColor" red="0.92616515832927071" green="1" blue="0.89394722430328943" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="lsU-3z-TxO" id="QdX-H7-LlZ"/>
@@ -188,46 +166,30 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVH-ES-8a7">
-                                <rect key="frame" x="167" y="563" width="40" height="30"/>
-                                <color key="backgroundColor" red="0.70896554278528678" green="1" blue="0.27710992101539866" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="换5首"/>
+                                <rect key="frame" x="145" y="572" width="85" height="31"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="FZQKBYSJW--GB1-0" family="FZQingKeBenYueSongS-R-GB" pointSize="17"/>
+                                <state key="normal" title="换一波试试">
+                                    <color key="titleColor" red="0.99955195188522339" green="0.0099258562549948692" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="reloadDataAction:" destination="lsU-3z-TxO" eventType="touchUpInside" id="cKZ-At-TDy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16a-J6-qHU">
-                                <rect key="frame" x="66" y="563" width="31" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.47994316537546877" blue="0.21191933682153752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="喜欢"/>
-                                <connections>
-                                    <action selector="likeGushiAction:" destination="lsU-3z-TxO" eventType="touchUpInside" id="pjD-OF-CsW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgm-RV-ypM">
-                                <rect key="frame" x="277" y="563" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.86937291936748207" green="1" blue="0.98872091373207538" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="下一首"/>
-                                <connections>
-                                    <action selector="nextGushiAction:" destination="lsU-3z-TxO" eventType="touchUpInside" id="vfg-1A-Djv"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qgm-RV-ypM" firstAttribute="centerY" secondItem="MVH-ES-8a7" secondAttribute="centerY" id="2iL-og-fve"/>
-                            <constraint firstItem="j6R-pn-bNZ" firstAttribute="top" secondItem="MVH-ES-8a7" secondAttribute="bottom" constant="25" id="LKK-aU-V8P"/>
+                            <constraint firstItem="j6R-pn-bNZ" firstAttribute="top" secondItem="MVH-ES-8a7" secondAttribute="bottom" constant="15" id="LKK-aU-V8P"/>
                             <constraint firstItem="YHM-1K-2y6" firstAttribute="leading" secondItem="Dhc-j4-ZGx" secondAttribute="leading" id="LqX-6K-X0v"/>
                             <constraint firstAttribute="trailing" secondItem="YHM-1K-2y6" secondAttribute="trailing" id="P95-kj-zuz"/>
                             <constraint firstItem="YHM-1K-2y6" firstAttribute="top" secondItem="hMB-1m-PrK" secondAttribute="bottom" id="PDX-gp-5aM"/>
-                            <constraint firstItem="qgm-RV-ypM" firstAttribute="leading" secondItem="MVH-ES-8a7" secondAttribute="trailing" constant="70" id="aFU-Lc-Qg8"/>
-                            <constraint firstItem="16a-J6-qHU" firstAttribute="centerY" secondItem="MVH-ES-8a7" secondAttribute="centerY" id="dZM-Sy-IIb"/>
-                            <constraint firstItem="j6R-pn-bNZ" firstAttribute="top" secondItem="YHM-1K-2y6" secondAttribute="bottom" constant="100" id="n4G-Fx-N6a"/>
+                            <constraint firstItem="j6R-pn-bNZ" firstAttribute="top" secondItem="YHM-1K-2y6" secondAttribute="bottom" constant="50" id="n4G-Fx-N6a"/>
                             <constraint firstItem="MVH-ES-8a7" firstAttribute="centerX" secondItem="Dhc-j4-ZGx" secondAttribute="centerX" id="pOS-dS-IGK"/>
-                            <constraint firstItem="MVH-ES-8a7" firstAttribute="leading" secondItem="16a-J6-qHU" secondAttribute="trailing" constant="70" id="xu3-2S-3eO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="每日推荐" id="leq-y2-i1R"/>
                     <connections>
+                        <outlet property="clickChangeBotton" destination="MVH-ES-8a7" id="CER-kb-8fv"/>
                         <outlet property="container" destination="YHM-1K-2y6" id="kiz-bR-hxm"/>
                     </connections>
                 </viewController>
@@ -236,4 +198,14 @@
             <point key="canvasLocation" x="865" y="-507"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_classify" width="40" height="40"/>
+        <image name="tab_classify_selected" width="40" height="40"/>
+        <image name="tab_home" width="40" height="40"/>
+        <image name="tab_home_selected" width="40" height="40"/>
+        <image name="tab_profile" width="40" height="40"/>
+        <image name="tab_profile_selected" width="40" height="40"/>
+        <image name="tab_search" width="40" height="40"/>
+        <image name="tab_search_selected" width="40" height="40"/>
+    </resources>
 </document>

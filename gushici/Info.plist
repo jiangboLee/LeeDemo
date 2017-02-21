@@ -25,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wxdc1e388c3822c80b</string>
+				<string>wx3972b7c0887ba811</string>
 			</array>
 		</dict>
 		<dict>
@@ -49,7 +49,15 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wb3921700954</string>
+				<string>wb2719477129</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>cn.lijiangbo.gushici</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>IOSgushi</string>
 			</array>
 		</dict>
 	</array>
@@ -141,8 +149,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>方正清刻本悦宋简体.TTF</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -159,10 +169,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>方正清刻本悦宋简体.TTF</string>
 	</array>
 </dict>
 </plist>

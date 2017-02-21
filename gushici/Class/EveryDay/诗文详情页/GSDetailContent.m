@@ -9,13 +9,17 @@
 #import "GSDetailContent.h"
 #import "GSGushiContentModel.h"
 
+
 @interface GSDetailContent ()
 
 
 @property (weak, nonatomic) IBOutlet UILabel *author;
 @property (weak, nonatomic) IBOutlet UILabel *chaodai;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleRightConstraint;
 
+//播放器
+@property(nonatomic ,assign) BOOL isStop;
 @end
 
 @implementation GSDetailContent
@@ -23,6 +27,7 @@
 -(void)awakeFromNib{
 
     [super awakeFromNib];
+    [UILabel changeLineSpaceForLabel:self.cont WithSpace:8];
     self.nameStr.font = [UIFont fontWithName:_FontName size:_Font(28)];
     self.author.font = [UIFont fontWithName:_FontName size:_Font(16)];
     self.chaodai.font = [UIFont fontWithName:_FontName size:_Font(16)];
@@ -32,6 +37,17 @@
 -(void)setGushi:(GSGushiContentModel *)gushi{
 
     _gushi = gushi;
+    //设置录音
+    if(gushi.langsongAuthorPY.length > 0){
+    
+        self.videoBotton.hidden = NO;
+        self.titleRightConstraint.constant = 40;
+    }else{
+    
+        self.videoBotton.hidden = YES;
+        self.titleRightConstraint.constant = 20;
+    }
+    
     self.nameStr.text = gushi.nameStr;
     self.author.text = [NSString stringWithFormat:@"作者: %@",gushi.author];
     self.chaodai.text = [NSString stringWithFormat:@"朝代: %@",gushi.chaodai];
@@ -75,5 +91,35 @@
         self.heightBlock(CGRectGetMaxY(self.cont.frame));
     }
 }
+
+//******************************************************************//
+//播放声音
+
+- (IBAction)playVideoAction:(UIButton *)sender {
+    
+    if (!sender.selected && !self.isStop) {
+        
+        if (self.videoPlayBlock != nil) {
+            self.videoPlayBlock(videoPlayTypeFirst);
+        }
+        sender.selected = YES;
+    }else if (sender.selected){
+
+        if (self.videoPlayBlock != nil) {
+            self.videoPlayBlock(videoPlayTypePause);
+        }
+        sender.selected = NO;
+        self.isStop = YES;
+    }else{
+
+        if (self.videoPlayBlock != nil) {
+            self.videoPlayBlock(videoPlayTypeGoOn);
+        }
+        sender.selected = YES;
+    }
+
+}
+
+
 
 @end

@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94B-aN-kyr">
-                    <rect key="frame" x="20" y="10" width="335" height="36"/>
+                    <rect key="frame" x="20" y="10" width="315" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -34,24 +34,33 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发表看法 了部分你哈撒即可发" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbc-tO-NC7">
-                    <rect key="frame" x="15" y="77" width="345" height="180"/>
+                    <rect key="frame" x="5" y="76" width="365" height="179.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5N5-WR-EdC">
+                    <rect key="frame" x="341" y="17" width="19" height="22"/>
+                    <state key="normal" image="content_icon_voice"/>
+                    <state key="selected" image="content_icon_voice_selected"/>
+                    <connections>
+                        <action selector="playVideoAction:" destination="48P-Dx-c6X" eventType="touchUpInside" id="SSn-RM-H1w"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.99615975478011598" blue="0.98143137643883116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="mcQ-kY-3Ci" firstAttribute="top" secondItem="94B-aN-kyr" secondAttribute="bottom" id="2PJ-mv-lMl"/>
-                <constraint firstAttribute="trailing" secondItem="Cbc-tO-NC7" secondAttribute="trailing" constant="15" id="Dqy-gm-NwN"/>
-                <constraint firstItem="94B-aN-kyr" firstAttribute="centerX" secondItem="48P-Dx-c6X" secondAttribute="centerX" id="Dug-TC-jLb"/>
+                <constraint firstAttribute="trailing" secondItem="Cbc-tO-NC7" secondAttribute="trailing" constant="5" id="Dqy-gm-NwN"/>
+                <constraint firstItem="5N5-WR-EdC" firstAttribute="centerY" secondItem="94B-aN-kyr" secondAttribute="centerY" id="I4U-nQ-PPm"/>
                 <constraint firstItem="94B-aN-kyr" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="20" id="JT4-AE-xy0"/>
                 <constraint firstItem="94B-aN-kyr" firstAttribute="top" secondItem="48P-Dx-c6X" secondAttribute="top" constant="10" id="MUf-gL-9Pp"/>
-                <constraint firstItem="Cbc-tO-NC7" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="15" id="V9C-ue-cA5"/>
+                <constraint firstItem="Cbc-tO-NC7" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="5" id="V9C-ue-cA5"/>
+                <constraint firstAttribute="trailing" secondItem="5N5-WR-EdC" secondAttribute="trailing" constant="15" id="XbU-EN-z3r"/>
                 <constraint firstItem="0Lv-cd-Vbs" firstAttribute="top" secondItem="94B-aN-kyr" secondAttribute="bottom" id="bB9-gq-SKm"/>
                 <constraint firstAttribute="trailing" secondItem="0Lv-cd-Vbs" secondAttribute="trailing" constant="50" id="f99-nG-wwS"/>
                 <constraint firstItem="mcQ-kY-3Ci" firstAttribute="leading" secondItem="48P-Dx-c6X" secondAttribute="leading" constant="50" id="vHQ-fR-7UH"/>
-                <constraint firstAttribute="trailing" secondItem="94B-aN-kyr" secondAttribute="trailing" constant="20" id="whT-Dv-cmO"/>
+                <constraint firstAttribute="trailing" secondItem="94B-aN-kyr" secondAttribute="trailing" constant="40" id="whT-Dv-cmO"/>
                 <constraint firstItem="Cbc-tO-NC7" firstAttribute="top" secondItem="0Lv-cd-Vbs" secondAttribute="bottom" constant="8" id="x8u-yj-amc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -60,8 +69,14 @@
                 <outlet property="chaodai" destination="mcQ-kY-3Ci" id="aFc-MG-EWa"/>
                 <outlet property="cont" destination="Cbc-tO-NC7" id="Tjn-j9-ru6"/>
                 <outlet property="nameStr" destination="94B-aN-kyr" id="T0L-my-yb0"/>
+                <outlet property="titleRightConstraint" destination="whT-Dv-cmO" id="epF-Yd-1BH"/>
+                <outlet property="videoBotton" destination="5N5-WR-EdC" id="lXm-Z0-q1w"/>
             </connections>
             <point key="canvasLocation" x="387.5" y="210.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="content_icon_voice" width="19" height="17"/>
+        <image name="content_icon_voice_selected" width="19" height="17"/>
+    </resources>
 </document>

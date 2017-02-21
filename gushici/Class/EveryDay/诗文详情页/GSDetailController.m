@@ -14,6 +14,8 @@
 #import "RemarksCellHeightModel.h"
 
 #import <UShareUI/UShareUI.h>
+#import <AVFoundation/AVFoundation.h>
+#import "GSSQLiteTools.h"
 
 @interface GSDetailController ()<UITableViewDelegate,UITableViewDataSource,RemarksCellDelegate>
 
@@ -24,6 +26,11 @@
 @property (nonatomic, strong) NSMutableDictionary *cellIsShowAll;
 
 @property(nonatomic ,copy) NSString *cont;
+
+//播放器
+@property(nonatomic,strong) AVPlayer *player;
+//分享按钮
+@property(nonatomic ,strong) UIBarButtonItem *share;
 
 @end
 
@@ -60,8 +67,28 @@
 
     self.cellIsShowAll = [NSMutableDictionary dictionary];
     
-    UIBarButtonItem *share = [[UIBarButtonItem alloc]initWithTitle:@"share" style:UIBarButtonItemStylePlain target:self action:@selector(shareGushi)];
-    self.navigationItem.rightBarButtonItem = share;
+    _share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
+    
+//    [self clickLike];
+    GSGushiContentModel *model = self.dataArray[0];
+
+    //查找数据库
+        //@"SELECT * FROM t_likegushi WHERE gushiID = ?;", @(model.gushiID)
+        [[GSSQLiteTools shared].queue inDatabase:^(FMDatabase *db) {
+           
+            FMResultSet *reult = [db executeQuery:@"SELECT * FROM t_likegushi WHERE gushiID = ?;", @(model == nil ? self.gushiID : model.gushiID)];
+            if (reult.next) {
+                
+                UIBarButtonItem *unlike = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share_highlighted"] style:UIBarButtonItemStyleDone target:self action:@selector(clickunLike)];
+                self.navigationItem.rightBarButtonItems = @[_share,unlike];
+            }else{
+            
+                UIBarButtonItem *like = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_like"] style:UIBarButtonItemStyleDone target:self action:@selector(clickLike)];
+                self.navigationItem.rightBarButtonItems = @[_share,like];
+            }
+        }];
+     
+    
 }
 //分享
 -(void)shareGushi{
@@ -77,22 +104,7 @@
     //去掉毛玻璃效果
     [UMSocialShareUIConfig shareInstance].shareContainerConfig.isShareContainerHaveGradient = NO;
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType,NSDictionary *userInfo) {
-       /*
-        //创建分享消息对象
-        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-        
-        //设置文本
-        messageObject.text = [NSString stringWithFormat:@"%@\n%@",self.headerView.nameStr.text,self.headerView.cont.text];//self.headerView.cont.text;
-        messageObject.title = self.headerView.nameStr.text;
-        //调用分享接口
-        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
-            if (error) {
-                NSLog(@"************Share fail with error %@*********",error);
-            }else{
-                NSLog(@"response data is %@",data);
-            }
-        }];
-        */
+    
         //创建分享消息对象
         UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
         
@@ -119,6 +131,47 @@
             }
         }];
     }];//打开分享面板
+}
+
+-(void)clickLike{
+    UIBarButtonItem *unlike = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share_highlighted"] style:UIBarButtonItemStyleDone target:self action:@selector(clickunLike)];
+    self.navigationItem.rightBarButtonItems = @[_share,unlike];
+    
+    GSGushiContentModel *model = self.dataArray[0];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
+    double time = [[NSDate date] timeIntervalSince1970];
+    [[GSSQLiteTools shared].queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        
+        BOOL isSuccess = [db executeUpdate:@"INSERT OR REPLACE INTO t_likegushi (gushiID, name, time) VALUES (?, ?, ?);", @(model.gushiID), data, @(time)];
+        
+        if (isSuccess) {
+//            NSLog(@"插入成功");
+        }else{
+            
+            *rollback = YES;
+        }
+    }];
+    
+}
+-(void)clickunLike{
+    
+    UIBarButtonItem *like = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_like"] style:UIBarButtonItemStyleDone target:self action:@selector(clickLike)];
+    self.navigationItem.rightBarButtonItems = @[_share,like];
+    
+    //删除这个古诗
+    GSGushiContentModel *model = self.dataArray[0];
+    
+    [[GSSQLiteTools shared].queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        
+        BOOL isSuccess = [db executeUpdate:@"DELETE FROM t_likegushi WHERE gushiID = ?;", @(model.gushiID)];
+        
+        if (isSuccess) {
+//            NSLog(@"删除成功");
+        }else{
+            
+            *rollback = YES;
+        }
+    }];
 }
 
 //*****************************************************************//
@@ -199,6 +252,26 @@
         weakSelf.tableV.tableHeaderView = weakSelf.headerView;
     }];
     self.headerView.gushi = dataArray[0];
+    [self.headerView setVideoPlayBlock:^(videoPlayType type) {
+       
+        switch (type) {
+            case videoPlayTypeFirst:
+            {
+                [weakSelf playWithUrl];
+            }
+                break;
+            case videoPlayTypePause:
+                [weakSelf.player pause];
+                break;
+            case videoPlayTypeGoOn:
+                [weakSelf.player play];
+                break;
+                
+            default:
+                break;
+        }
+        
+    }];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -254,7 +327,7 @@
        
     }
     
-    return [RemarksCellHeightModel cellHeightWith:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]] boolValue] andLableWidth:[UIScreen mainScreen].bounds.size.width-30 andFont:_Font(16) andDefaultHeight:75 andFixedHeight:42 andIsShowBtn:8];
+    return [RemarksCellHeightModel cellHeightWith:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]] boolValue] andLableWidth:[UIScreen mainScreen].bounds.size.width-30 andFont:_Font(18) andDefaultHeight:72 andFixedHeight:45 andIsShowBtn:8];
 }
 
 #pragma mark -- Dalegate
@@ -286,7 +359,77 @@
 
 }
 
+#pragma mark- 音乐播放相关
+//播放音乐
+-(void)playWithUrl
+{
+    GSGushiContentModel *model = self.dataArray[0];
+    AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://song.gushiwen.org/mp3/%@/%zd.mp3",model.langsongAuthorPY,model.gushiID]]];
+    
+    [self.player replaceCurrentItemWithPlayerItem:item];
+    //监听音乐播放完成通知
+    [self addNSNotificationForPlayMusicFinish];
+    
+    //开始播放
+    [self.player play];
+    
+}
+#pragma mark - NSNotification
+-(void)addNSNotificationForPlayMusicFinish
+{
+    //给AVPlayerItem添加播放完成通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:_player.currentItem];
+}
+-(void)playFinished:(NSNotification*)notification
+{
+    self.headerView.videoBotton.selected = NO;
+}
 
+#pragma mark - 监听音乐各种状态
+
+-(AVPlayer *)player
+{
+    if (_player == nil) {
+        //初始化_player
+        AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:@""]];
+        _player = [[AVPlayer alloc] initWithPlayerItem:item];
+    }
+    
+    return _player;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+
+    [super viewWillDisappear:animated];
+    
+    [self.player pause];
+    self.player = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+
+    [super viewDidAppear:animated];
+    [self instertSql];
+}
+-(void)instertSql{
+
+    GSGushiContentModel *model = self.dataArray[0];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
+    double time = [[NSDate date] timeIntervalSince1970];
+    [[GSSQLiteTools shared].queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        
+        BOOL isSuccess = [db executeUpdate:@"INSERT OR REPLACE INTO t_gushi (gushiID, name,time) VALUES (?, ?, ?);", @(model.gushiID), data,@(time)];
+        
+        if (isSuccess) {
+//            NSLog(@"插入成功");
+        }else{
+        
+            *rollback = YES;
+        }
+    }];
+}
 
 
 

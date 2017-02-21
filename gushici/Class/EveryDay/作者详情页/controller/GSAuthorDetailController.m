@@ -54,7 +54,7 @@
         
         NSString *picName = self.model.pic.transformToPinyin;
         picName = [NSString stringWithFormat:@"http://img.gushiwen.org/authorImg/%@.jpg",picName];
-        [imageV sd_setImageWithURL:[NSURL URLWithString:picName]];
+        [imageV sd_setImageWithURL:[NSURL URLWithString:picName] placeholderImage:[UIImage imageNamed:@"logo"]];
         
         [_headerView addSubview:imageV];
         [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -70,7 +70,8 @@
         NSString *cont2 = [cont1 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
         lab.text = cont2;
         lab.numberOfLines = 0;
-        lab.font = [UIFont systemFontOfSize:_Font(18)];
+        lab.font = [UIFont fontWithName:_FontName size:_Font(18)];//[UIFont systemFontOfSize:_Font(18)];
+        [UILabel changeSpaceForLabel:lab withLineSpace:5 WordSpace:2];
         
         CGRect rect = [cont2 boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:lab.font.pointSize]} context:nil];
         
@@ -193,7 +194,7 @@
         
     }
     
-    return [RemarksCellHeightModel cellHeightWith:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]] boolValue] andLableWidth:[UIScreen mainScreen].bounds.size.width-30 andFont:_Font(16) andDefaultHeight:75 andFixedHeight:42 andIsShowBtn:8];
+    return [RemarksCellHeightModel cellHeightWith:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]] boolValue] andLableWidth:[UIScreen mainScreen].bounds.size.width-30 andFont:_Font(18) andDefaultHeight:75 andFixedHeight:42 andIsShowBtn:8];
 }
 
 -(void)loadcont:(NSInteger)shiID completed:(void(^)(NSString *cont))completed{

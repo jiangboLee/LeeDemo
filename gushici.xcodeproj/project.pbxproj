@@ -78,6 +78,9 @@
 		B75A48161E51C97200FCC0C5 /* GSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48151E51C97200FCC0C5 /* GSTheme.m */; };
 		B75A48191E51CCAD00FCC0C5 /* GSMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48181E51CCAD00FCC0C5 /* GSMineController.m */; };
 		B75A481C1E51D07B00FCC0C5 /* GSBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A481B1E51D07B00FCC0C5 /* GSBaseController.m */; };
+		B782A8AD1E5AEC94000B8CA2 /* UITextView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B782A8AC1E5AEC94000B8CA2 /* UITextView+Addition.m */; };
+		B782A8B11E5C6EF4000B8CA2 /* GSSQLiteTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B782A8B01E5C6EF4000B8CA2 /* GSSQLiteTools.m */; };
+		B782A8B41E5C904E000B8CA2 /* GSHistoryTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B782A8B31E5C904E000B8CA2 /* GSHistoryTableVC.m */; };
 		B78FF78B1E588923007EDD2A /* GSClickSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FF7891E588923007EDD2A /* GSClickSearchViewController.m */; };
 		B78FF78F1E588D10007EDD2A /* GSSearchGushiController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FF78E1E588D10007EDD2A /* GSSearchGushiController.m */; };
 /* End PBXBuildFile section */
@@ -215,6 +218,12 @@
 		B75A48181E51CCAD00FCC0C5 /* GSMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSMineController.m; sourceTree = "<group>"; };
 		B75A481A1E51D07B00FCC0C5 /* GSBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSBaseController.h; sourceTree = "<group>"; };
 		B75A481B1E51D07B00FCC0C5 /* GSBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSBaseController.m; sourceTree = "<group>"; };
+		B782A8AB1E5AEC94000B8CA2 /* UITextView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Addition.h"; sourceTree = "<group>"; };
+		B782A8AC1E5AEC94000B8CA2 /* UITextView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Addition.m"; sourceTree = "<group>"; };
+		B782A8AF1E5C6EF4000B8CA2 /* GSSQLiteTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSQLiteTools.h; sourceTree = "<group>"; };
+		B782A8B01E5C6EF4000B8CA2 /* GSSQLiteTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSSQLiteTools.m; sourceTree = "<group>"; };
+		B782A8B21E5C904E000B8CA2 /* GSHistoryTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSHistoryTableVC.h; sourceTree = "<group>"; };
+		B782A8B31E5C904E000B8CA2 /* GSHistoryTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSHistoryTableVC.m; sourceTree = "<group>"; };
 		B78FF7881E588923007EDD2A /* GSClickSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSClickSearchViewController.h; sourceTree = "<group>"; };
 		B78FF7891E588923007EDD2A /* GSClickSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSClickSearchViewController.m; sourceTree = "<group>"; };
 		B78FF78D1E588D10007EDD2A /* GSSearchGushiController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSearchGushiController.h; sourceTree = "<group>"; };
@@ -439,6 +448,8 @@
 			children = (
 				B75A48171E51CCAD00FCC0C5 /* GSMineController.h */,
 				B75A48181E51CCAD00FCC0C5 /* GSMineController.m */,
+				B782A8B21E5C904E000B8CA2 /* GSHistoryTableVC.h */,
+				B782A8B31E5C904E000B8CA2 /* GSHistoryTableVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -551,6 +562,7 @@
 		B75A47881E4F42E600FCC0C5 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				B782A8AE1E5C6EF4000B8CA2 /* SQLiteTools */,
 				B72653051E52DAD700D6CA5F /* HUD */,
 				B75A47E31E4F700200FCC0C5 /* Theme */,
 				B75A47C91E4F46AE00FCC0C5 /* Network */,
@@ -610,6 +622,8 @@
 				B75A47A51E4F45BD00FCC0C5 /* UIImage+Image.m */,
 				B75A47A81E4F45BD00FCC0C5 /* UILabel+CZAddition.h */,
 				B75A47A91E4F45BD00FCC0C5 /* UILabel+CZAddition.m */,
+				B782A8AB1E5AEC94000B8CA2 /* UITextView+Addition.h */,
+				B782A8AC1E5AEC94000B8CA2 /* UITextView+Addition.m */,
 				B75A47AA1E4F45BD00FCC0C5 /* UIScreen+CZAddition.h */,
 				B75A47AB1E4F45BD00FCC0C5 /* UIScreen+CZAddition.m */,
 				B75A47AC1E4F45BD00FCC0C5 /* UITextField+Placeholder.h */,
@@ -689,6 +703,15 @@
 			);
 			name = other;
 			path = View/other;
+			sourceTree = "<group>";
+		};
+		B782A8AE1E5C6EF4000B8CA2 /* SQLiteTools */ = {
+			isa = PBXGroup;
+			children = (
+				B782A8AF1E5C6EF4000B8CA2 /* GSSQLiteTools.h */,
+				B782A8B01E5C6EF4000B8CA2 /* GSSQLiteTools.m */,
+			);
+			path = SQLiteTools;
 			sourceTree = "<group>";
 		};
 		FF574AE64003B92DCE3F4ED8 /* Pods */ = {
@@ -849,6 +872,7 @@
 				B75A47F91E508AB700FCC0C5 /* NSBundle+PYSearchExtension.m in Sources */,
 				B726530B1E52DAD700D6CA5F /* UIViewController+SLHUD.m in Sources */,
 				B75A47BD1E4F45BD00FCC0C5 /* UIButton+CZAddition.m in Sources */,
+				B782A8B11E5C6EF4000B8CA2 /* GSSQLiteTools.m in Sources */,
 				B75A47D91E4F671C00FCC0C5 /* CCDraggableCardView.m in Sources */,
 				B75A47C41E4F45BD00FCC0C5 /* UITextField+Placeholder.m in Sources */,
 				B72653141E52FF1800D6CA5F /* GSMingjuController.m in Sources */,
@@ -881,6 +905,7 @@
 				B75A47C21E4F45BD00FCC0C5 /* UILabel+CZAddition.m in Sources */,
 				B75A47C51E4F45BD00FCC0C5 /* UIView+CZAddition.m in Sources */,
 				B75A47C81E4F45BD00FCC0C5 /* UIViewController+CZAddition.m in Sources */,
+				B782A8B41E5C904E000B8CA2 /* GSHistoryTableVC.m in Sources */,
 				B75A47CE1E4F46AE00FCC0C5 /* LEEHTTPManager.m in Sources */,
 				B721FF2D1E51F416006546E5 /* GSDetailController.m in Sources */,
 				B75A47B81E4F45BD00FCC0C5 /* NSObject+CZRuntime.m in Sources */,
@@ -893,6 +918,7 @@
 				B726532D1E54999F00D6CA5F /* ThreeTableView.m in Sources */,
 				B78FF78F1E588D10007EDD2A /* GSSearchGushiController.m in Sources */,
 				B72653111E52FF0B00D6CA5F /* GSGushiwenController.m in Sources */,
+				B782A8AD1E5AEC94000B8CA2 /* UITextView+Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1007,6 +1033,7 @@
 			baseConfigurationReference = C92E1C5FDAE68782CCA88BC4 /* Pods-gushici.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = UUERZTHV57;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = gushici/Info.plist;
@@ -1015,6 +1042,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6a141b15-ca8a-4f2e-a2f8-ffe64464ebb5";
 				PROVISIONING_PROFILE_SPECIFIER = lijiangboceshi;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1023,6 +1051,7 @@
 			baseConfigurationReference = 2B8CD5E0670E1C9FFE2336FC /* Pods-gushici.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = UUERZTHV57;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = gushici/Info.plist;
@@ -1031,6 +1060,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6a141b15-ca8a-4f2e-a2f8-ffe64464ebb5";
 				PROVISIONING_PROFILE_SPECIFIER = lijiangboceshi;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

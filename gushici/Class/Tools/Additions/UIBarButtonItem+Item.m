@@ -42,12 +42,12 @@
     [backButton setImage:image forState:UIControlStateNormal];
     [backButton setImage:highImage forState:UIControlStateHighlighted];
     [backButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor blueColor] forState:UIControlStateHighlighted];
+    [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     
     backButton.titleLabel.font = [UIFont systemFontOfSize:15];
     
     [backButton sizeToFit];
-    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
+    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [backButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     
     return  [[UIBarButtonItem alloc] initWithCustomView:backButton];

@@ -16,6 +16,21 @@
 /// @param color    颜色
 ///
 /// @return UILabel
-+ (instancetype)cz_labelWithText:(NSString *)text fontSize:(CGFloat)fontSize color:(UIColor *)color;
++ (instancetype)ljb_labelWithText:(NSString *)text fontSize:(CGFloat)fontSize color:(UIColor *)color;
+
+/**
+ *  改变行间距
+ */
++ (void)changeLineSpaceForLabel:(UILabel *)label WithSpace:(float)space;
+
+/**
+ *  改变字间距
+ */
++ (void)changeWordSpaceForLabel:(UILabel *)label WithSpace:(float)space;
+
+/**
+ *  改变行间距和字间距
+ */
++ (void)changeSpaceForLabel:(UILabel *)label withLineSpace:(float)lineSpace WordSpace:(float)wordSpace;
 
 @end

@@ -21,18 +21,22 @@
  */
 + (CGFloat)cellHeightWith:(NSString *)contentStr andIsShow:(BOOL)isShow andLableWidth:(CGFloat)width andFont:(CGFloat)font andDefaultHeight:(CGFloat)defaultHeight andFixedHeight:(CGFloat)fixedHeight andIsShowBtn:(CGFloat)btnHeight
 {
-    CGRect rect = [contentStr boundingRectWithSize:CGSizeMake(width, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:_FontName size:_Font(16)]} context:nil];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+    CGRect rect = [contentStr boundingRectWithSize:CGSizeMake(width, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:_FontName size:_Font(18)]} context:nil];
+    NSInteger N = (rect.size.height - _Font(18)) / _Font(18);
+    rect.size.height = N * (_Font(18) + 4) + _Font(18);
     if (rect.size.height > defaultHeight) {
         if (isShow) {
-            return fixedHeight + btnHeight + rect.size.height + 5;
+            return fixedHeight + btnHeight + rect.size.height + 22;
         }else{
-            return fixedHeight + btnHeight + defaultHeight + 5;
+            return fixedHeight + btnHeight + defaultHeight ;
         }
     } else {
         return fixedHeight + rect.size.height;
     }
     
-    return 100;
+//    return 100;
 }
 
 @end

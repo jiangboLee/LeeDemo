@@ -30,20 +30,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"诗文";
-    
     [self setupUI];
     [self setNavBarbutton];
 
 }
 
-
-
-
 -(void)setNavBarbutton{
 
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"筛选" style:UIBarButtonItemStyleDone target:self action:@selector(clickPick:)];
-    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_icon_classify"] style:UIBarButtonItemStylePlain target:self action:@selector(clickPick:)];
     self.navigationItem.rightBarButtonItem = item;
     
 }
@@ -85,7 +79,7 @@
     btn1.titleLabel.font = [UIFont fontWithName:_FontName size:18];
     [btn1 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     //8bdcfc
-    [btn1 setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    [btn1 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     btn1.selected = YES;
     [btnView addSubview:btn1];
     
@@ -93,14 +87,14 @@
     [btn2 setTitle:@"名句" forState:UIControlStateNormal];
     btn2.titleLabel.font = [UIFont fontWithName:_FontName size:18];
     [btn2 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [btn2 setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    [btn2 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     [btnView addSubview:btn2];
     
     UIButton *btn3 = [UIButton buttonWithType:0];
     [btn3 setTitle:@"作者" forState:UIControlStateNormal];
     btn3.titleLabel.font = [UIFont fontWithName:_FontName size:18];
     [btn3 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [btn3 setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    [btn3 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     [btnView addSubview:btn3];
     
     [btnView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -137,7 +131,7 @@
     [btn3 addTarget:self action:@selector(ClickBotton:) forControlEvents:UIControlEventTouchUpInside];
     
     UIView *lineView = [[UIView alloc]init];
-    lineView.backgroundColor = [UIColor blueColor];
+    lineView.backgroundColor = [UIColor redColor];
     [btnView addSubview:lineView];
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
        

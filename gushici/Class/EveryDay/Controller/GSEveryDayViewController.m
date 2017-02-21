@@ -22,6 +22,7 @@
 
 @property(nonatomic ,assign) BOOL isReload;
 @property(nonatomic ,assign) NSInteger count;
+@property (weak, nonatomic) IBOutlet UIButton *clickChangeBotton;
 
 @end
 
@@ -31,6 +32,11 @@
     [super viewDidLoad];
     self.contentModels = [NSMutableArray array];
     self.dataArrays = [NSMutableArray array];
+    
+    //设置按钮下划线
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:@"换一波看看" attributes:@{NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle),NSForegroundColorAttributeName : [UIColor redColor]}];
+    [self.clickChangeBotton setAttributedTitle:attributedStr forState:UIControlStateNormal];
+    
     self.count = 3;
     
     for (int i = 0; i <3; i++) {

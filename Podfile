@@ -10,6 +10,7 @@ target 'gushici' do
   pod 'AFNetworking'
   pod 'SDWebImage'
   pod 'Masonry'
+  pod 'FMDB'
   pod 'MBProgressHUD'
   pod 'MJRefresh'
   pod 'UMengAnalytics-NO-IDFA'

@@ -6,6 +6,7 @@
 //
 
 #import "UILabel+CZAddition.h"
+#import "UITextView+Addition.h"
 #import "UIButton+CZAddition.h"
 #import "UIColor+CZAddition.h"
 #import "UIView+CZAddition.h"

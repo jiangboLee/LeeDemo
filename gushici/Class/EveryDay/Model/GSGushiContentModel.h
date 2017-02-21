@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GSGushiContentModel : NSObject<YYModel>
+@interface GSGushiContentModel : NSObject<YYModel,NSCoding>
 
 @property(nonatomic ,assign) NSInteger gushiID;
 @property(nonatomic ,copy) NSString *nameStr;

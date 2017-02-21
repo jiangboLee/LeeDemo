@@ -54,7 +54,7 @@
         NSString *picName = model.nameStr.transformToPinyin;
         picName = [NSString stringWithFormat:@"http://img.gushiwen.org/authorImg/%@.jpg",picName];
         
-        [self.pic sd_setImageWithURL:[NSURL URLWithString:picName]];
+        [self.pic sd_setImageWithURL:[NSURL URLWithString:picName] placeholderImage:[UIImage imageNamed:@"logo"]];
     }else{
         self.author.hidden = NO;
         self.searchHideConstrain.constant = 5;
@@ -72,7 +72,7 @@
         NSString *picName = model.author.transformToPinyin;
         picName = [NSString stringWithFormat:@"http://img.gushiwen.org/authorImg/%@.jpg",picName];
         
-        [self.pic sd_setImageWithURL:[NSURL URLWithString:picName]];
+        [self.pic sd_setImageWithURL:[NSURL URLWithString:picName] placeholderImage:[UIImage imageNamed:@"logo"]];
     }
     NSString *cont0 = [model.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];

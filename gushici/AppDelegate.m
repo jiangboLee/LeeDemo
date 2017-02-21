@@ -30,7 +30,7 @@
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     
     /* 打开调试日志 */
-    [[UMSocialManager defaultManager] openLog:YES];
+//    [[UMSocialManager defaultManager] openLog:YES];
     
     /* 设置友盟appkey */
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"58a70c0d65b6d647cb001209"];
@@ -42,7 +42,7 @@
 - (void)configUSharePlatforms
 {
     /* 设置微信的appKey和appSecret */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx3972b7c0887ba811" appSecret:@"67a3e332cb85421702a1fb52d8566629" redirectURL:@"http://www.gushiwen.org"];
     /*
      * 移除相应平台的分享，如微信收藏
      */
@@ -54,7 +54,7 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105821097"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
     
     /* 设置新浪的appKey和appSecret */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"2719477129"  appSecret:@"45b226984dfece64dbb73ef10dfda206" redirectURL:@"https://www.baidu.com"];
     
 }
 // 支持所有iOS系统

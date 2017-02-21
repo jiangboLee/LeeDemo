@@ -7,6 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+
+typedef NS_ENUM(NSUInteger, videoPlayType) {
+    videoPlayTypeFirst,
+    videoPlayTypePause,
+    videoPlayTypeGoOn
+};
+
 @class GSGushiContentModel;
 @interface GSDetailContent : UIView
 
@@ -18,4 +25,6 @@
 @property(nonatomic ,copy) void(^heightBlock)(CGFloat height);
 @property(nonatomic ,copy) NSString *mingju;
 
+@property(nonatomic ,copy) void(^videoPlayBlock)(videoPlayType type);
+@property (weak, nonatomic) IBOutlet UIButton *videoBotton;
 @end

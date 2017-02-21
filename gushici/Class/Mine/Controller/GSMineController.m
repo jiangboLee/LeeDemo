@@ -7,27 +7,120 @@
 //
 
 #import "GSMineController.h"
+#import "GSHistoryTableVC.h"
 
-@interface GSMineController ()
+@interface GSMineController ()<UITableViewDelegate ,UITableViewDataSource>
 
 @end
 
+static NSString *cellID = @"cellID";
 @implementation GSMineController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, 300, 100)];
-    lab.text = @"你么安安那你还发电费就不能";
-    lab.font = [UIFont systemFontOfSize:_Font(15)];
-    [self.view addSubview:lab];
+    UITableView *tableV = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [self.view addSubview:tableV];
+    
+    tableV.delegate = self;
+    tableV.dataSource = self;
+    
+    [tableV registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+    return 3;
 }
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
+    switch (section) {
+        case 0:
+            return 2;
+            break;
+        case 1:
+            return 2;
+            break;
+        case 2:
+            return 2;
+            break;
+        default:
+            return 0;
+            break;
+    }
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(17)];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    switch (indexPath.section) {
+        case 0:
+        {
+            if (indexPath.row == 0) {
+                
+                cell.textLabel.text = @"我的收藏";
+            }else{
+            
+                cell.textLabel.text = @"浏览记录";
+            }
+            break;
+        }
+        case 1:
+        {
+            if (indexPath.row == 0) {
+                
+                cell.textLabel.text = @"设置";
+            }else{
+                
+                cell.textLabel.text = @"浏览记录";
+            }
+            break;
+        }
+        case 2:
+        {
+            if (indexPath.row == 0) {
+                
+                cell.textLabel.text = @"关于我们";
+            }else{
+                
+                cell.textLabel.text = @"反馈与意见";
+            }
+            break;
+        }
+            
+        default:
+            break;
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    switch (indexPath.section) {
+        case 0:
+        {  if (indexPath.row == 0) {
+            
+            GSHistoryTableVC *likeVC = [[GSHistoryTableVC alloc]init];
+            likeVC.isLikeHistory = YES;
+            [self.navigationController pushViewController:likeVC animated:YES];
+            
+            } else {
+                GSHistoryTableVC *likeVC = [[GSHistoryTableVC alloc]init];
+                likeVC.isLikeHistory = NO;
+                [self.navigationController pushViewController:likeVC animated:YES];
+            }
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 - (IBAction)smallAction:(id)sender {
     
     [[NSUserDefaults standardUserDefaults] setDouble:-5 forKey:@"ziti"];
@@ -45,14 +138,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"zitigushi" object:nil];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

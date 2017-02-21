@@ -38,9 +38,11 @@
     
     _textsLabel.text = contentStr;
     _cellIndexPath = indexPath;
-    
-     CGRect rect = [_textsLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:_FontName size:_Font(16)]} context:nil];
-    if (rect.size.height > 75) {
+    [UILabel changeSpaceForLabel:_textsLabel withLineSpace:4 WordSpace:0];
+     CGRect rect = [_textsLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:_FontName size:_Font(18)]} context:nil];
+    NSInteger N = (rect.size.height - _Font(18)) / _Font(18);
+    rect.size.height = N * (_Font(18) + 4) + _Font(18);
+    if (rect.size.height > 72) {
         // 文字大于三行，显示展开收起按钮
         self.moreBtn.hidden = NO;
         if (isShow) {
@@ -49,14 +51,14 @@
                 make.left.mas_equalTo(self.contentView.mas_left).offset(15);
                 make.top.mas_equalTo(_infolable.mas_bottom).offset(5);
                 make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width-30);
-                make.height.mas_equalTo(rect.size.height + 2);
+                make.height.mas_equalTo(rect.size.height + _Font(18) + 4);
             }];
         } else {
             [_textsLabel mas_remakeConstraints:^(MASConstraintMaker *make){
                 make.left.mas_equalTo(self.contentView.mas_left).offset(15);
                 make.top.mas_equalTo(_infolable.mas_bottom).offset(5);
                 make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width-30);
-                make.height.mas_equalTo(70);
+                make.height.mas_equalTo(72);
             }];
         }
     } else {
@@ -98,12 +100,12 @@
 {
     _infolable = [[UILabel alloc]init];
 //    _infolable.text = @"备注消息";
-    _infolable.textColor = [UIColor blueColor];//CLColor(102, 102, 102);
-    _infolable.font = [UIFont fontWithName:_FontName size:_Font(16)];
+    _infolable.textColor = [UIColor redColor];//CLColor(102, 102, 102);
+    _infolable.font = [UIFont fontWithName:_FontName size:_Font(20)];
     [self.contentView addSubview:_infolable];
     [_infolable mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.mas_equalTo(self.contentView.mas_left).offset(15);
-        make.top.mas_equalTo(self.contentView.mas_top).offset(15);
+        make.top.mas_equalTo(self.contentView.mas_top).offset(10);
         make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width/2);
         make.height.mas_equalTo(_infolable.font.pointSize);
     }];
@@ -111,7 +113,7 @@
     _textsLabel = [[UILabel alloc]init];
 //    _textsLabel.lineBreakMode = NSLineBreakByCharWrapping;
     _textsLabel.numberOfLines = 3;
-    _textsLabel.font = [UIFont fontWithName:_FontName size:_Font(16)];
+    _textsLabel.font = [UIFont fontWithName:_FontName size:_Font(18)];
     _textsLabel.textColor = [UIColor cz_colorWithRed:30 green:30 blue:30];//CLColor(153, 153, 153);
     [self.contentView addSubview:_textsLabel];
     
