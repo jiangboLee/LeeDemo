@@ -14,7 +14,7 @@
 
 @interface GSHistoryTableVC ()<UITableViewDelegate ,UITableViewDataSource>
 
-@property(nonatomic ,strong) NSArray<GSGushiContentModel *> *dataArray;
+@property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *dataArray;
 @property(nonatomic ,strong) UITableView *tableV;
 
 @end
@@ -34,6 +34,13 @@ static NSString *baseTableCellID = @"baseTableCellID";
     
     [tableV registerNib:[UINib nibWithNibName:@"GSBaseTableViewCell" bundle:nil] forCellReuseIdentifier:baseTableCellID];
     self.tableV = tableV;
+    
+    if (!self.isLikeHistory) {
+       
+        UIBarButtonItem *deleteAll = [[UIBarButtonItem alloc]initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAll)];
+        self.navigationItem.rightBarButtonItem = deleteAll;
+        [deleteAll setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:_FontName size:17],NSForegroundColorAttributeName :[UIColor redColor]} forState:UIControlStateNormal];
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -76,6 +83,7 @@ static NSString *baseTableCellID = @"baseTableCellID";
             
         }];
     }else{
+        
         [[GSSQLiteTools shared].queue inDatabase:^(FMDatabase *db) {
             
             FMResultSet *result = [db executeQuery:@"SELECT * FROM t_gushi ORDER BY time DESC"];
@@ -89,11 +97,55 @@ static NSString *baseTableCellID = @"baseTableCellID";
             
         }];
     }
-    self.dataArray = arrayM.copy;
+    self.dataArray = arrayM;
     [self.tableV reloadData];
     
 }
 
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return UITableViewCellEditingStyleDelete;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    if (self.isLikeHistory) {
+        
+        GSGushiContentModel *model = self.dataArray[indexPath.row];
+        NSString *sql = @"DELETE FROM t_likegushi WHERE gushiID = ?";
+        [[GSSQLiteTools shared].queue inDatabase:^(FMDatabase *db) {
+            
+            [db executeUpdate:sql withArgumentsInArray:@[@(model.gushiID)]];
+        }];
+        
+        [self.dataArray removeObjectAtIndex:indexPath.row];
+        [self.tableV reloadData];
+    }else{
+        
+        GSGushiContentModel *model = self.dataArray[indexPath.row];
+        NSString *sql = @"DELETE FROM t_gushi WHERE gushiID = ?";
+        [[GSSQLiteTools shared].queue inDatabase:^(FMDatabase *db) {
+            
+            [db executeUpdate:sql withArgumentsInArray:@[@(model.gushiID)]];
+        }];
+        
+        [self.dataArray removeObjectAtIndex:indexPath.row];
+        [self.tableV reloadData];
+        
+    }
+    
+}
+//删除全部
+-(void)deleteAll{
+
+    NSString *sql = @"DELETE FROM t_gushi";
+    [[GSSQLiteTools shared].queue inDatabase:^(FMDatabase *db) {
+        
+        [db executeUpdate:sql];
+    }];
+    
+    [self.dataArray removeAllObjects];
+    [self.tableV reloadData];
+}
 
 
 @end

@@ -30,7 +30,7 @@
     for (UIView *v in vvv.subviews) {
         
 //        NSLog(@"%@",[v class]);
-        if ([v isKindOfClass:[UILabel class]]) {
+        if ([v isKindOfClass:[UILabel class]] || [v isKindOfClass:[UITextView class]]) {
             double change = [[NSUserDefaults standardUserDefaults] doubleForKey:@"ziti"];
             UILabel *vv = (UILabel *)v;
             

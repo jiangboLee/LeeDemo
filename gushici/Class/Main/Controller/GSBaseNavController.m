@@ -18,12 +18,14 @@
     [super viewDidLoad];
     
     [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:_FontName size:20]}];
-    
+
 }
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
 
     if (self.childViewControllers.count > 0) {
+        __weak typeof(viewController)Weakself = viewController;
+        self.interactivePopGestureRecognizer.delegate = (id)Weakself;
         
         viewController.hidesBottomBarWhenPushed = YES;
         UIBarButtonItem *backItem = [UIBarButtonItem backItemWithimage:[UIImage imageNamed:@"nav_back"] highImage:[UIImage imageNamed:@"nav_back_highlighted"] target:self action:@selector(pop) title:@"返回"];

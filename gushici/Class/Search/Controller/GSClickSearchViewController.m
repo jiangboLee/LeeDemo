@@ -41,7 +41,7 @@
     btn1.titleLabel.font = [UIFont fontWithName:_FontName size:18];
     [btn1 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     //8bdcfc
-    [btn1 setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    [btn1 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     btn1.selected = YES;
     [btnView addSubview:btn1];
     
@@ -49,7 +49,7 @@
     [btn2 setTitle:@"诗文" forState:UIControlStateNormal];
     btn2.titleLabel.font = [UIFont fontWithName:_FontName size:18];
     [btn2 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [btn2 setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    [btn2 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     [btnView addSubview:btn2];
     
     [btnView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,7 +79,7 @@
     [btn2 addTarget:self action:@selector(ClickBotton:) forControlEvents:UIControlEventTouchUpInside];
     
     UIView *lineView = [[UIView alloc]init];
-    lineView.backgroundColor = [UIColor blueColor];
+    lineView.backgroundColor = [UIColor redColor];
     [btnView addSubview:lineView];
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         

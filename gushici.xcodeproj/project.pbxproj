@@ -83,6 +83,8 @@
 		B782A8B41E5C904E000B8CA2 /* GSHistoryTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B782A8B31E5C904E000B8CA2 /* GSHistoryTableVC.m */; };
 		B78FF78B1E588923007EDD2A /* GSClickSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FF7891E588923007EDD2A /* GSClickSearchViewController.m */; };
 		B78FF78F1E588D10007EDD2A /* GSSearchGushiController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FF78E1E588D10007EDD2A /* GSSearchGushiController.m */; };
+		B7F005BE1E5F22FF0057DEBC /* GSAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F005BC1E5F22FF0057DEBC /* GSAboutMeController.m */; };
+		B7F005BF1E5F22FF0057DEBC /* GSAboutMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -228,6 +230,9 @@
 		B78FF7891E588923007EDD2A /* GSClickSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSClickSearchViewController.m; sourceTree = "<group>"; };
 		B78FF78D1E588D10007EDD2A /* GSSearchGushiController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSearchGushiController.h; sourceTree = "<group>"; };
 		B78FF78E1E588D10007EDD2A /* GSSearchGushiController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSSearchGushiController.m; sourceTree = "<group>"; };
+		B7F005BB1E5F22FF0057DEBC /* GSAboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAboutMeController.h; sourceTree = "<group>"; };
+		B7F005BC1E5F22FF0057DEBC /* GSAboutMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAboutMeController.m; sourceTree = "<group>"; };
+		B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSAboutMeController.xib; sourceTree = "<group>"; };
 		C92E1C5FDAE68782CCA88BC4 /* Pods-gushici.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gushici.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gushici/Pods-gushici.debug.xcconfig"; sourceTree = "<group>"; };
 		ED8D547B01B79F5D740D2BCD /* libPods-gushici.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gushici.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -450,6 +455,9 @@
 				B75A48181E51CCAD00FCC0C5 /* GSMineController.m */,
 				B782A8B21E5C904E000B8CA2 /* GSHistoryTableVC.h */,
 				B782A8B31E5C904E000B8CA2 /* GSHistoryTableVC.m */,
+				B7F005BB1E5F22FF0057DEBC /* GSAboutMeController.h */,
+				B7F005BC1E5F22FF0057DEBC /* GSAboutMeController.m */,
+				B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -791,6 +799,7 @@
 				B726532A1E5497C600D6CA5F /* ThreeTableView.xib in Resources */,
 				B72653601E58443D00D6CA5F /* 方正清刻本悦宋简体.TTF in Resources */,
 				B75A47FA1E508AB700FCC0C5 /* PYSearch.bundle in Resources */,
+				B7F005BF1E5F22FF0057DEBC /* GSAboutMeController.xib in Resources */,
 				B721FF3B1E51FE56006546E5 /* GSDetailContent.xib in Resources */,
 				B726531F1E53246F00D6CA5F /* GSBaseTableViewCell.xib in Resources */,
 				B75A48071E50A52000FCC0C5 /* GSSearchSuggestionView.xib in Resources */,
@@ -859,6 +868,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B721FF3E1E520B63006546E5 /* GSDetailContent.m in Sources */,
+				B7F005BE1E5F22FF0057DEBC /* GSAboutMeController.m in Sources */,
 				B75A47FB1E508AB700FCC0C5 /* PYSearchConst.m in Sources */,
 				B75A47B71E4F45BD00FCC0C5 /* NSAttributedString+CZAdditon.m in Sources */,
 				B72653371E55A6FF00D6CA5F /* GSAuthorDetailController.m in Sources */,
@@ -1034,6 +1044,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = UUERZTHV57;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = gushici/Info.plist;
@@ -1052,6 +1064,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = UUERZTHV57;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = gushici/Info.plist;

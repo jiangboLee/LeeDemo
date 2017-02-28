@@ -111,7 +111,7 @@
         //创建图片内容对象
         UMShareImageObject *shareObject = [[UMShareImageObject alloc]init];
         //如果有缩略图，则设置缩略图
-        shareObject.thumbImage = [UIImage imageNamed:@"xiala"];
+        shareObject.thumbImage = [UIImage imageNamed:@"AppIcon"];
         
         UIGraphicsBeginImageContextWithOptions(self.headerView.bounds.size, NO, 0);
         [self.headerView.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -125,9 +125,9 @@
         //调用分享接口
         [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
             if (error) {
-                NSLog(@"************Share fail with error %@*********",error);
+//                NSLog(@"************Share fail with error %@*********",error);
             }else{
-                NSLog(@"response data is %@",data);
+//                NSLog(@"response data is %@",data);
             }
         }];
     }];//打开分享面板
@@ -298,7 +298,7 @@
         cell.infolable.text = @"作者";
     }
     
-    [cell setCellContent:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]] boolValue]  andCellIndexPath:indexPath];
+    [cell setCellContent:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]] boolValue]  andCellIndexPath:indexPath];
     
     return cell;
 }
@@ -327,7 +327,7 @@
        
     }
     
-    return [RemarksCellHeightModel cellHeightWith:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]] boolValue] andLableWidth:[UIScreen mainScreen].bounds.size.width-30 andFont:_Font(18) andDefaultHeight:72 andFixedHeight:45 andIsShowBtn:8];
+    return [RemarksCellHeightModel cellHeightWith:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]] boolValue] andLableWidth:[UIScreen mainScreen].bounds.size.width-30 andFont:_Font(18) andDefaultHeight:72 andFixedHeight:45 andIsShowBtn:8];
 }
 
 #pragma mark -- Dalegate

@@ -44,7 +44,7 @@
     [backButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     
-    backButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    backButton.titleLabel.font = [UIFont fontWithName:_FontName size:_Font(15)];
     
     [backButton sizeToFit];
     backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
