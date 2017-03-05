@@ -95,7 +95,7 @@
 
     //配置上面需求的参数
     [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = YES;
-    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.shareTitleViewTitleString = @"分享至";
+    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.shareTitleViewTitleString = _Str(@"分享至");
     [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType =
     UMSocialSharePageGroupViewPositionType_Bottom;
     [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 2;

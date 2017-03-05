@@ -32,3 +32,7 @@
 #define MINGJUCLICKNotificationName @"MINGJUCLICKNotificationName"
 #define MINGJUCLICKNotificationNameKey @"MINGJUCLICKNotificationNameKey"
 
+//每日推荐刷新通知
+#define RELOADGUSHINotificationName @"RELOADGUSHINotificationName"
+#define RELOADGUSHINotificationNameKey @"RELOADGUSHINotificationNameKey"
+

@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  gushici
+
+  Created by 李江波 on 2017/3/5.
+  Copyright © 2017年 lijiangbo. All rights reserved.
+*/
+"每日推荐" = "Every Day Commend";
+"换一波看看" = "Click Change";
+"诗文" = "Poetry";
+"个人信息" = "Personal Information";
+"我的收藏" = "My Collection";
+"浏览记录"="Browse Record";
+"清除缓存"="Clear Cache";
+"字体大小"="Fontsize";
+"去好评"="Go To Appraise";
+"反馈与意见"="Feedback";
+"小"="small";
+"中"="middle";
+"大"="big";
+"提示"="Notify";
+"清理成功"="Clear successed";
+"确定"="YSE";
+"返回"="back";
+"名句"="Famous";
+"作者"="Author";
+"分享至"="Share To";

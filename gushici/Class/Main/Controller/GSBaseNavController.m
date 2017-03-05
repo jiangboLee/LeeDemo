@@ -28,7 +28,7 @@
         self.interactivePopGestureRecognizer.delegate = (id)Weakself;
         
         viewController.hidesBottomBarWhenPushed = YES;
-        UIBarButtonItem *backItem = [UIBarButtonItem backItemWithimage:[UIImage imageNamed:@"nav_back"] highImage:[UIImage imageNamed:@"nav_back_highlighted"] target:self action:@selector(pop) title:@"返回"];
+        UIBarButtonItem *backItem = [UIBarButtonItem backItemWithimage:[UIImage imageNamed:@"nav_back"] highImage:[UIImage imageNamed:@"nav_back_highlighted"] target:self action:@selector(pop) title:_Str(@"返回")];
         viewController.navigationItem.leftBarButtonItem = backItem;
     }
     [super pushViewController:viewController animated:animated];

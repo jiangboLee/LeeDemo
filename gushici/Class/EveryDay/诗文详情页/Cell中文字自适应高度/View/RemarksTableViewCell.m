@@ -81,7 +81,7 @@
     if (self.moreBtn.selected) {
         [self.moreBtn setImage:[UIImage imageNamed:@"shq"] forState:UIControlStateNormal];
     }else{
-        [self.moreBtn setImage:[UIImage imageNamed:@"xiala"] forState:UIControlStateNormal];
+        [self.moreBtn setImage:[UIImage imageNamed:@"detail_icon_spread"] forState:UIControlStateNormal];
     }
     
     // 记录当前按钮的选中状态，并传递给Controller
@@ -118,7 +118,7 @@
     [self.contentView addSubview:_textsLabel];
     
     _moreBtn = [[UIButton alloc]init];
-    [_moreBtn setImage:[UIImage imageNamed:@"xiala"] forState:UIControlStateNormal];
+    [_moreBtn setImage:[UIImage imageNamed:@"detail_icon_spread"] forState:UIControlStateNormal];
     [_moreBtn setImage:[UIImage imageNamed:@"shq"] forState:UIControlStateHighlighted];
     [_moreBtn addTarget:self action:@selector(moreButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [_moreBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];

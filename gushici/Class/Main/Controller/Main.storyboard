@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7Sp-vr-INo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7Sp-vr-INo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="方正清刻本悦宋简体.TTF">
-            <string>FZQKBYSJW--GB1-0</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="A1F-jE-BQI">
@@ -53,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="-20" y="1593"/>
         </scene>
-        <!--个人信息-->
+        <!--Mine Controller-->
         <scene sceneID="j0q-Bx-BMh">
             <objects>
                 <viewController id="KJB-7i-ZR9" customClass="GSMineController" sceneMemberID="viewController">
@@ -66,7 +61,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="个人信息" id="RZZ-L0-nMe"/>
+                    <navigationItem key="navigationItem" id="RZZ-L0-nMe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AE3-F8-E1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="55" y="231"/>
         </scene>
-        <!--诗文-->
+        <!--Shiwen Controller-->
         <scene sceneID="tdX-nm-c6W">
             <objects>
                 <viewController id="rmY-wr-Tqs" customClass="GSShiwenController" sceneMemberID="viewController">
@@ -120,7 +115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="诗文" id="My0-aY-aua"/>
+                    <navigationItem key="navigationItem" id="My0-aY-aua"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbe-7N-VeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,39 +152,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="osD-uq-wQ9">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHM-1K-2y6" customClass="CCDraggableContainer">
-                                <rect key="frame" x="0.0" y="64" width="375" height="504"/>
-                                <color key="backgroundColor" red="0.92616515832927071" green="1" blue="0.89394722430328943" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="74" width="375" height="514"/>
                                 <connections>
                                     <outlet property="dataSource" destination="lsU-3z-TxO" id="QdX-H7-LlZ"/>
                                     <outlet property="delegate" destination="lsU-3z-TxO" id="bbz-1n-Vqd"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVH-ES-8a7">
-                                <rect key="frame" x="145" y="572" width="85" height="31"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="FZQKBYSJW--GB1-0" family="FZQingKeBenYueSongS-R-GB" pointSize="17"/>
-                                <state key="normal" title="换一波试试">
-                                    <color key="titleColor" red="0.99955195188522339" green="0.0099258562549948692" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="reloadDataAction:" destination="lsU-3z-TxO" eventType="touchUpInside" id="cKZ-At-TDy"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="j6R-pn-bNZ" firstAttribute="top" secondItem="MVH-ES-8a7" secondAttribute="bottom" constant="15" id="LKK-aU-V8P"/>
                             <constraint firstItem="YHM-1K-2y6" firstAttribute="leading" secondItem="Dhc-j4-ZGx" secondAttribute="leading" id="LqX-6K-X0v"/>
+                            <constraint firstItem="osD-uq-wQ9" firstAttribute="leading" secondItem="Dhc-j4-ZGx" secondAttribute="leading" id="N8m-11-pod"/>
                             <constraint firstAttribute="trailing" secondItem="YHM-1K-2y6" secondAttribute="trailing" id="P95-kj-zuz"/>
-                            <constraint firstItem="YHM-1K-2y6" firstAttribute="top" secondItem="hMB-1m-PrK" secondAttribute="bottom" id="PDX-gp-5aM"/>
-                            <constraint firstItem="j6R-pn-bNZ" firstAttribute="top" secondItem="YHM-1K-2y6" secondAttribute="bottom" constant="50" id="n4G-Fx-N6a"/>
-                            <constraint firstItem="MVH-ES-8a7" firstAttribute="centerX" secondItem="Dhc-j4-ZGx" secondAttribute="centerX" id="pOS-dS-IGK"/>
+                            <constraint firstItem="YHM-1K-2y6" firstAttribute="top" secondItem="hMB-1m-PrK" secondAttribute="bottom" constant="10" id="PDX-gp-5aM"/>
+                            <constraint firstItem="j6R-pn-bNZ" firstAttribute="top" secondItem="osD-uq-wQ9" secondAttribute="bottom" id="T9e-aP-vdA"/>
+                            <constraint firstAttribute="trailing" secondItem="osD-uq-wQ9" secondAttribute="trailing" id="YaX-XK-YwQ"/>
+                            <constraint firstItem="j6R-pn-bNZ" firstAttribute="top" secondItem="YHM-1K-2y6" secondAttribute="bottom" constant="30" id="n4G-Fx-N6a"/>
+                            <constraint firstItem="osD-uq-wQ9" firstAttribute="top" secondItem="hMB-1m-PrK" secondAttribute="bottom" id="zc1-Yi-CE6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="每日推荐" id="leq-y2-i1R"/>
+                    <navigationItem key="navigationItem" id="leq-y2-i1R"/>
                     <connections>
-                        <outlet property="clickChangeBotton" destination="MVH-ES-8a7" id="CER-kb-8fv"/>
                         <outlet property="container" destination="YHM-1K-2y6" id="kiz-bR-hxm"/>
                     </connections>
                 </viewController>
@@ -199,6 +186,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="home_bg" width="750" height="1108"/>
         <image name="tab_classify" width="40" height="40"/>
         <image name="tab_classify_selected" width="40" height="40"/>
         <image name="tab_home" width="40" height="40"/>

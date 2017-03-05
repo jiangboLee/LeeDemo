@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.title = _Str(@"诗文");
     [self setupUI];
     [self setNavBarbutton];
 
@@ -75,7 +75,7 @@
     [self.view addSubview:btnView];
     
     UIButton *btn1 = [UIButton buttonWithType:0];
-    [btn1 setTitle:@"诗文" forState:UIControlStateNormal];
+    [btn1 setTitle:_Str(@"诗文") forState:UIControlStateNormal];
     btn1.titleLabel.font = [UIFont fontWithName:_FontName size:18];
     [btn1 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     //8bdcfc
@@ -84,14 +84,14 @@
     [btnView addSubview:btn1];
     
     UIButton *btn2 = [UIButton buttonWithType:0];
-    [btn2 setTitle:@"名句" forState:UIControlStateNormal];
+    [btn2 setTitle:_Str(@"名句") forState:UIControlStateNormal];
     btn2.titleLabel.font = [UIFont fontWithName:_FontName size:18];
     [btn2 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [btn2 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     [btnView addSubview:btn2];
     
     UIButton *btn3 = [UIButton buttonWithType:0];
-    [btn3 setTitle:@"作者" forState:UIControlStateNormal];
+    [btn3 setTitle:_Str(@"作者") forState:UIControlStateNormal];
     btn3.titleLabel.font = [UIFont fontWithName:_FontName size:18];
     [btn3 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [btn3 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];

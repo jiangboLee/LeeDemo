@@ -30,17 +30,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = _Str(@"每日推荐");
+    
     self.contentModels = [NSMutableArray array];
     self.dataArrays = [NSMutableArray array];
     
-    //设置按钮下划线
-    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:@"换一波看看" attributes:@{NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle),NSForegroundColorAttributeName : [UIColor redColor]}];
-    [self.clickChangeBotton setAttributedTitle:attributedStr forState:UIControlStateNormal];
-    
-    self.count = 3;
-    
-    for (int i = 0; i <3; i++) {
+    [self reload];
+    //注册重新刷新通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAction) name:RELOADGUSHINotificationName object:nil];
+}
+-(void)dealloc{
 
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)reload{
+
+    self.count = 3;
+    for (int i = 0; i <3; i++) {
+        
         [self loadData];
     }
     [self showHudInView:self.view hint:@"~正在刷新~"];
@@ -123,7 +132,6 @@
 -(void)draggableContainer:(CCDraggableContainer *)draggableContainer draggableDirection:(CCDraggableDirection)draggableDirection widthRatio:(CGFloat)widthRatio heightRatio:(CGFloat)heightRatio{
 
     
-   
 }
 
 -(void)draggableContainer:(CCDraggableContainer *)draggableContainer cardView:(CCDraggableCardView *)cardView didSelectIndex:(NSInteger)didSelectIndex{
@@ -139,10 +147,11 @@
 }
 
 #pragma mark : - action
-- (IBAction)reloadDataAction:(id)sender {
+- (void)reloadDataAction{
+    
     [self.contentModels removeAllObjects];
     [self.dataArrays removeAllObjects];
-    [self viewDidLoad];
+    [self reload];
     
 }
 - (IBAction)nextGushiAction:(id)sender {

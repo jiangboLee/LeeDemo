@@ -24,6 +24,7 @@ static NSString *cellID = @"cellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = _Str(@"个人信息");
     UITableView *tableV = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.view addSubview:tableV];
     
@@ -67,10 +68,10 @@ static NSString *cellID = @"cellID";
         {
             if (indexPath.row == 0) {
                 
-                cell.textLabel.text = @"我的收藏";
+                cell.textLabel.text = _Str(@"我的收藏");
             }else{
             
-                cell.textLabel.text = @"浏览记录";
+                cell.textLabel.text = _Str(@"浏览记录");
             }
             break;
         }
@@ -78,7 +79,7 @@ static NSString *cellID = @"cellID";
         {
             if (indexPath.row == 0) {
         
-                cell.textLabel.text = @"清除缓存";
+                cell.textLabel.text = _Str(@"清除缓存");
                 
                 self.lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 44)];
                 self.lab.text = [NSString stringWithFormat:@"%.1f M",[self filePathCache]];
@@ -88,8 +89,8 @@ static NSString *cellID = @"cellID";
             
             }else{
                 
-                cell.textLabel.text = @"字体大小";
-                UISegmentedControl *segment = [[UISegmentedControl alloc]initWithItems:@[@"小",@"中",@"大"]];
+                cell.textLabel.text = _Str(@"字体大小");
+                UISegmentedControl *segment = [[UISegmentedControl alloc]initWithItems:@[_Str(@"小"),_Str(@"中"),_Str(@"大")]];
                 [segment setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:_FontName size:_Font(15)]} forState:UIControlStateNormal];
                 [segment addTarget:self action:@selector(changeDayOrNightModel:) forControlEvents:UIControlEventValueChanged];
                 if ([[NSUserDefaults standardUserDefaults] doubleForKey:@"ziti"] == 3){
@@ -108,10 +109,10 @@ static NSString *cellID = @"cellID";
         {
             if (indexPath.row == 0) {
                 
-                cell.textLabel.text = @"去好评";
+                cell.textLabel.text = _Str(@"去好评");
             }else{
                 
-                cell.textLabel.text = @"反馈与意见";
+                cell.textLabel.text = _Str(@"反馈与意见");
             }
             break;
         }
@@ -296,8 +297,8 @@ static NSString *cellID = @"cellID";
 
 - (void)clearCachSuccess {
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"清理成功" preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:_Str(@"提示") message:_Str(@"清理成功") preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:_Str(@"确定") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
     

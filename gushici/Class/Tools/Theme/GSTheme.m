@@ -42,5 +42,9 @@ static GSTheme *_gsTheme;
     }
 }
 
+-(NSString *)localizedStringForKey:(NSString *)key{
+
+    return NSLocalizedString(key, @"");
+}
 
 @end

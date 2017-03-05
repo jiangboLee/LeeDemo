@@ -13,8 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *authorLable;
-
 @property (weak, nonatomic) IBOutlet UITextView *cont1;
+@property (weak, nonatomic) IBOutlet UIButton *clickChangeBotton;
+
 @end
 
 @implementation GushiContent
@@ -34,6 +35,10 @@
     self.title.font = [UIFont fontWithName:_FontName size:_Font(28)];
     self.authorLable.font = [UIFont fontWithName:_FontName size:_Font(16)];
     self.cont1.font = [UIFont fontWithName:_FontName size:_Font(20)];
+    
+    //设置按钮下划线
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:_Str(@"换一波看看") attributes:@{NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle),NSForegroundColorAttributeName : [UIColor redColor]}];
+    [self.clickChangeBotton setAttributedTitle:attributedStr forState:UIControlStateNormal];
 }
 
 
@@ -62,6 +67,10 @@
     self.cont1.text = cont0;
 }
 
+- (IBAction)reloadGushiAction:(id)sender {
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:RELOADGUSHINotificationName object:nil];
+}
 
 
 

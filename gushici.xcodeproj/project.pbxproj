@@ -83,6 +83,8 @@
 		B782A8B41E5C904E000B8CA2 /* GSHistoryTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B782A8B31E5C904E000B8CA2 /* GSHistoryTableVC.m */; };
 		B78FF78B1E588923007EDD2A /* GSClickSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FF7891E588923007EDD2A /* GSClickSearchViewController.m */; };
 		B78FF78F1E588D10007EDD2A /* GSSearchGushiController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FF78E1E588D10007EDD2A /* GSSearchGushiController.m */; };
+		B7A579DE1E6BF26E00326000 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7A579E01E6BF26E00326000 /* Localizable.strings */; };
+		B7A579E51E6BF50600326000 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7A579E71E6BF50600326000 /* InfoPlist.strings */; };
 		B7F005BE1E5F22FF0057DEBC /* GSAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F005BC1E5F22FF0057DEBC /* GSAboutMeController.m */; };
 		B7F005BF1E5F22FF0057DEBC /* GSAboutMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */; };
 /* End PBXBuildFile section */
@@ -230,6 +232,12 @@
 		B78FF7891E588923007EDD2A /* GSClickSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSClickSearchViewController.m; sourceTree = "<group>"; };
 		B78FF78D1E588D10007EDD2A /* GSSearchGushiController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSearchGushiController.h; sourceTree = "<group>"; };
 		B78FF78E1E588D10007EDD2A /* GSSearchGushiController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSSearchGushiController.m; sourceTree = "<group>"; };
+		B7A579DF1E6BF26E00326000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B7A579E11E6BF27100326000 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B7A579E21E6BF2A400326000 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B7A579E61E6BF50600326000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B7A579E81E6BF50900326000 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B7A579E91E6BF50A00326000 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B7F005BB1E5F22FF0057DEBC /* GSAboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAboutMeController.h; sourceTree = "<group>"; };
 		B7F005BC1E5F22FF0057DEBC /* GSAboutMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAboutMeController.m; sourceTree = "<group>"; };
 		B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSAboutMeController.xib; sourceTree = "<group>"; };
@@ -392,6 +400,7 @@
 				B75A47801E4F42E600FCC0C5 /* Search */,
 				B75A477C1E4F42E600FCC0C5 /* Mine */,
 				B75A47881E4F42E600FCC0C5 /* Tools */,
+				B7A579DB1E6BF24E00326000 /* Source */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -431,9 +440,9 @@
 			children = (
 				B75A47DB1E4F6D8100FCC0C5 /* GSCustomCardView.h */,
 				B75A47DC1E4F6D8100FCC0C5 /* GSCustomCardView.m */,
-				B75A47DE1E4F6F8000FCC0C5 /* GushiContent.xib */,
 				B75A47E01E4F6F9E00FCC0C5 /* GushiContent.h */,
 				B75A47E11E4F6F9E00FCC0C5 /* GushiContent.m */,
+				B75A47DE1E4F6F8000FCC0C5 /* GushiContent.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -722,6 +731,15 @@
 			path = SQLiteTools;
 			sourceTree = "<group>";
 		};
+		B7A579DB1E6BF24E00326000 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B7A579E01E6BF26E00326000 /* Localizable.strings */,
+				B7A579E71E6BF50600326000 /* InfoPlist.strings */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		FF574AE64003B92DCE3F4ED8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,7 +784,7 @@
 				TargetAttributes = {
 					B75A475C1E4F3A9200FCC0C5 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = UUERZTHV57;
+						DevelopmentTeam = 47W28PSMV7;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -778,6 +796,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = B75A47541E4F3A9200FCC0C5;
 			productRefGroup = B75A475E1E4F3A9300FCC0C5 /* Products */;
@@ -799,6 +818,7 @@
 				B726532A1E5497C600D6CA5F /* ThreeTableView.xib in Resources */,
 				B72653601E58443D00D6CA5F /* 方正清刻本悦宋简体.TTF in Resources */,
 				B75A47FA1E508AB700FCC0C5 /* PYSearch.bundle in Resources */,
+				B7A579E51E6BF50600326000 /* InfoPlist.strings in Resources */,
 				B7F005BF1E5F22FF0057DEBC /* GSAboutMeController.xib in Resources */,
 				B721FF3B1E51FE56006546E5 /* GSDetailContent.xib in Resources */,
 				B726531F1E53246F00D6CA5F /* GSBaseTableViewCell.xib in Resources */,
@@ -807,6 +827,7 @@
 				B75A478D1E4F445900FCC0C5 /* Main.storyboard in Resources */,
 				B75A48111E5198CB00FCC0C5 /* form.plist in Resources */,
 				B75A47701E4F3A9300FCC0C5 /* LaunchScreen.storyboard in Resources */,
+				B7A579DE1E6BF26E00326000 /* Localizable.strings in Resources */,
 				B75A48131E519B7800FCC0C5 /* mingjuTheme.plist in Resources */,
 				B75A476D1E4F3A9300FCC0C5 /* Assets.xcassets in Resources */,
 			);
@@ -943,6 +964,26 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		B7A579E01E6BF26E00326000 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7A579DF1E6BF26E00326000 /* Base */,
+				B7A579E11E6BF27100326000 /* en */,
+				B7A579E21E6BF2A400326000 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		B7A579E71E6BF50600326000 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7A579E61E6BF50600326000 /* Base */,
+				B7A579E81E6BF50900326000 /* en */,
+				B7A579E91E6BF50A00326000 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -950,6 +991,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -999,6 +1041,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1045,15 +1088,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UUERZTHV57;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 47W28PSMV7;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = gushici/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.lijiangbo.gushici;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a141b15-ca8a-4f2e-a2f8-ffe64464ebb5";
-				PROVISIONING_PROFILE_SPECIFIER = lijiangboceshi;
+				PROVISIONING_PROFILE = "29502243-d3f7-402e-b0e3-ff6e0cf50289";
+				PROVISIONING_PROFILE_SPECIFIER = gushici;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1064,15 +1107,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UUERZTHV57;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 47W28PSMV7;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = gushici/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.lijiangbo.gushici;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a141b15-ca8a-4f2e-a2f8-ffe64464ebb5";
-				PROVISIONING_PROFILE_SPECIFIER = lijiangboceshi;
+				PROVISIONING_PROFILE = "29502243-d3f7-402e-b0e3-ff6e0cf50289";
+				PROVISIONING_PROFILE_SPECIFIER = gushici;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
