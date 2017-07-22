@@ -98,7 +98,7 @@
     [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.shareTitleViewTitleString = _Str(@"分享至");
     [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType =
     UMSocialSharePageGroupViewPositionType_Bottom;
-    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 2;
+//    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 2;i
     [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 3;
     [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
     //去掉毛玻璃效果
@@ -112,7 +112,7 @@
         UMShareImageObject *shareObject = [[UMShareImageObject alloc]init];
         //如果有缩略图，则设置缩略图
         shareObject.thumbImage = [UIImage imageNamed:@"AppIcon"];
-        
+
         UIGraphicsBeginImageContextWithOptions(self.headerView.bounds.size, NO, 0);
         [self.headerView.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

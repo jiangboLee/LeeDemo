@@ -9,6 +9,7 @@
 #import "GSMineController.h"
 #import "GSHistoryTableVC.h"
 #import "GSAboutMeController.h"
+#import <StoreKit/StoreKit.h>
 
 
 @interface GSMineController ()<UITableViewDelegate ,UITableViewDataSource>
@@ -130,7 +131,7 @@ static NSString *cellID = @"cellID";
     switch (indexPath.section) {
         case 0:
         {  if (indexPath.row == 0) {
-            
+            [SKStoreReviewController requestReview];
             GSHistoryTableVC *likeVC = [[GSHistoryTableVC alloc]init];
             likeVC.isLikeHistory = YES;
             [self.navigationController pushViewController:likeVC animated:YES];
@@ -155,6 +156,9 @@ static NSString *cellID = @"cellID";
         case 2:
         {
             if (indexPath.row == 0) {
+                
+                
+                
                 NSString *url = @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1209480381&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8";
                 
                 // 实现跳转
