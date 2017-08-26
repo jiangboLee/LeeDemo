@@ -16,6 +16,7 @@
 #import <UShareUI/UShareUI.h>
 #import <AVFoundation/AVFoundation.h>
 #import "GSSQLiteTools.h"
+#import <StoreKit/StoreKit.h>
 
 @interface GSDetailController ()<UITableViewDelegate,UITableViewDataSource,RemarksCellDelegate>
 
@@ -146,6 +147,11 @@
         
         if (isSuccess) {
 //            NSLog(@"插入成功");
+            //好评
+            if ([UIDevice currentDevice].systemVersion.doubleValue >= 10.3) {
+                [SKStoreReviewController requestReview];
+            }
+            
         }else{
             
             *rollback = YES;
@@ -319,6 +325,8 @@
             cont = [cont stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
             cont = [cont stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
             cont = [cont stringByReplacingOccurrencesOfString:@"<span style=\"font-family:FangSong_GB2312;\">" withString:@""];
+            
+            cont = [cont stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
             
             model.cont = cont;
             

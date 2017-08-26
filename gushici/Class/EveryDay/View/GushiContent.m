@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *authorLable;
 @property (weak, nonatomic) IBOutlet UITextView *cont1;
-@property (weak, nonatomic) IBOutlet UIButton *clickChangeBotton;
+
 
 @end
 
@@ -62,7 +62,7 @@
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
-    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<span style=\"font-family:KaiTi_GB2312;\">" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
     
     self.cont1.text = cont0;
 }

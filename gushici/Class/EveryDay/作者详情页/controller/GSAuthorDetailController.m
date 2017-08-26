@@ -186,6 +186,8 @@
                 cont = [cont stringByReplacingOccurrencesOfString:@"</strong>" withString:@""];
                 cont = [cont stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
                 
+                cont = [cont stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
+                
                 model.cont = cont;
                 
                 [self.tableV reloadData];

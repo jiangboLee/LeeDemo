@@ -64,6 +64,9 @@
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<span style=\"font-family:KaiTi_GB2312;\">" withString:@""];
+    
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
+    
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<div class=\"xhe-paste\" style=\"top: 0px;\">" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</div>" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</strong>" withString:@" "];

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -45,9 +46,13 @@
                         <constraint firstAttribute="width" constant="100" id="9V6-Zj-3lz"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ar9-Vy-e42">
-                    <rect key="frame" x="206" y="340" width="75" height="29"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ar9-Vy-e42">
+                    <rect key="frame" x="208" y="345" width="75" height="29"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="COI-ah-sDe"/>
+                        <constraint firstAttribute="height" constant="29" id="ssj-Hv-FeX"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="FZQKBYSJW--GB1-0" family="FZQingKeBenYueSongS-R-GB" pointSize="15"/>
                     <state key="normal" title="换一波看看">
                         <color key="titleColor" red="0.99955195190000001" green="0.0099258562550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,6 +64,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Ar9-Vy-e42" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.7" id="3VT-Ie-Wfr"/>
                 <constraint firstItem="aOB-he-42i" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3nE-XM-gCa"/>
                 <constraint firstItem="dE3-S3-JJG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4z9-ZY-lcF"/>
                 <constraint firstItem="AIM-UK-QXa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="5Zt-Dw-Euz"/>
@@ -69,9 +75,8 @@
                 <constraint firstItem="aOB-he-42i" firstAttribute="top" secondItem="dE3-S3-JJG" secondAttribute="bottom" constant="10" id="Yne-8w-AtN"/>
                 <constraint firstAttribute="bottom" secondItem="QHX-gv-WTT" secondAttribute="bottom" constant="40" id="ajZ-Iw-fRY"/>
                 <constraint firstItem="QHX-gv-WTT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hwl-LU-nnw"/>
+                <constraint firstItem="Ar9-Vy-e42" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.9" id="ilf-61-FJD"/>
                 <constraint firstItem="QHX-gv-WTT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kXs-jX-VZ5"/>
-                <constraint firstAttribute="bottom" secondItem="Ar9-Vy-e42" secondAttribute="bottom" constant="8" id="s1b-D7-4Jz"/>
-                <constraint firstAttribute="trailing" secondItem="Ar9-Vy-e42" secondAttribute="trailing" constant="8" id="sE6-vx-0F9"/>
                 <constraint firstAttribute="trailing" secondItem="QHX-gv-WTT" secondAttribute="trailing" id="wKp-h5-cOR"/>
                 <constraint firstItem="dE3-S3-JJG" firstAttribute="top" secondItem="AIM-UK-QXa" secondAttribute="bottom" constant="10" id="znG-5x-83s"/>
             </constraints>

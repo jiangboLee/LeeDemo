@@ -83,6 +83,12 @@
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"¤" withString:@"。"];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
+    
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"</strong>" withString:@" "];
+    cont0 = [cont0 stringByReplacingOccurrencesOfString:@"<strong>" withString:@" "];
+    
     if (self.searchStr != nil && [cont0 containsString:self.searchStr]) {
         NSRange range = [cont0 rangeOfString:self.searchStr];
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:cont0];

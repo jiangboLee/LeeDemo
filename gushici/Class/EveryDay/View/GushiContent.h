@@ -12,6 +12,7 @@
 @interface GushiContent : UIView
 
 @property(nonatomic ,strong) GSGushiContentModel *model;
+@property (weak, nonatomic) IBOutlet UIButton *clickChangeBotton;
 
 +(instancetype)gushiContent;
 

@@ -157,8 +157,6 @@ static NSString *cellID = @"cellID";
         {
             if (indexPath.row == 0) {
                 
-                
-                
                 NSString *url = @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1209480381&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8";
                 
                 // 实现跳转
