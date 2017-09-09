@@ -85,6 +85,7 @@
 		B78FF78F1E588D10007EDD2A /* GSSearchGushiController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78FF78E1E588D10007EDD2A /* GSSearchGushiController.m */; };
 		B7A579DE1E6BF26E00326000 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7A579E01E6BF26E00326000 /* Localizable.strings */; };
 		B7A579E51E6BF50600326000 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7A579E71E6BF50600326000 /* InfoPlist.strings */; };
+		B7C036451F63AC200032311C /* GSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C036441F63AC200032311C /* GSTabBarController.m */; };
 		B7F005BE1E5F22FF0057DEBC /* GSAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F005BC1E5F22FF0057DEBC /* GSAboutMeController.m */; };
 		B7F005BF1E5F22FF0057DEBC /* GSAboutMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */; };
 /* End PBXBuildFile section */
@@ -238,6 +239,8 @@
 		B7A579E61E6BF50600326000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B7A579E81E6BF50900326000 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B7A579E91E6BF50A00326000 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		B7C036431F63AC200032311C /* GSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTabBarController.h; sourceTree = "<group>"; };
+		B7C036441F63AC200032311C /* GSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTabBarController.m; sourceTree = "<group>"; };
 		B7F005BB1E5F22FF0057DEBC /* GSAboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAboutMeController.h; sourceTree = "<group>"; };
 		B7F005BC1E5F22FF0057DEBC /* GSAboutMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAboutMeController.m; sourceTree = "<group>"; };
 		B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSAboutMeController.xib; sourceTree = "<group>"; };
@@ -605,6 +608,8 @@
 				B75A481B1E51D07B00FCC0C5 /* GSBaseController.m */,
 				B721FF2E1E51FA31006546E5 /* GSBaseNavController.h */,
 				B721FF2F1E51FA31006546E5 /* GSBaseNavController.m */,
+				B7C036431F63AC200032311C /* GSTabBarController.h */,
+				B7C036441F63AC200032311C /* GSTabBarController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -785,7 +790,7 @@
 					B75A475C1E4F3A9200FCC0C5 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 47W28PSMV7;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -933,6 +938,7 @@
 				B72653251E54499800D6CA5F /* GSPickController.m in Sources */,
 				B75A48051E50A51700FCC0C5 /* GSSearchSuggestionView.m in Sources */,
 				B75A47DA1E4F671C00FCC0C5 /* CCDraggableContainer.m in Sources */,
+				B7C036451F63AC200032311C /* GSTabBarController.m in Sources */,
 				B75A47C21E4F45BD00FCC0C5 /* UILabel+CZAddition.m in Sources */,
 				B75A47C51E4F45BD00FCC0C5 /* UIView+CZAddition.m in Sources */,
 				B75A47C81E4F45BD00FCC0C5 /* UIViewController+CZAddition.m in Sources */,
@@ -1088,7 +1094,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: lijiangbo lijiangbo (47W28PSMV7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 47W28PSMV7;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = gushici/Info.plist;
@@ -1096,8 +1102,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.lijiangbo.gushici;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "53240d96-d5bb-4fe5-b6dd-82bdf0589afb";
-				PROVISIONING_PROFILE_SPECIFIER = gushiaaa;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1109,7 +1115,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: lijiangbo lijiangbo (47W28PSMV7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 47W28PSMV7;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = gushici/Info.plist;
@@ -1117,8 +1123,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.lijiangbo.gushici;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "53240d96-d5bb-4fe5-b6dd-82bdf0589afb";
-				PROVISIONING_PROFILE_SPECIFIER = gushiaaa;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

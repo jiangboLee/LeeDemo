@@ -36,3 +36,15 @@
 #define RELOADGUSHINotificationName @"RELOADGUSHINotificationName"
 #define RELOADGUSHINotificationNameKey @"RELOADGUSHINotificationNameKey"
 
+//系统版本等于
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]==NSOrderedSame)
+//系统版本大于
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]==NSOrderedDescending)
+//系统版本大于或等于
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]!=NSOrderedAscending)
+//系统版本小于
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]==NSOrderedAscending)
+//系统版本小于或等于
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]!=NSOrderedDescending)
+//系统版本
+#define SYSTEM_VERSION                              ([[[UIDevice currentDevice] systemVersion] floatValue])

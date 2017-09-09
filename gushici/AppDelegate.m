@@ -10,7 +10,12 @@
 
 #import "UMMobClick/MobClick.h"
 #import <UMSocialCore/UMSocialCore.h>
-@interface AppDelegate ()
+
+#import <CoreSpotlight/CoreSpotlight.h>
+#import "GSDetailController.h"
+#import "GSTabBarController.h"
+
+@interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
 
@@ -36,9 +41,72 @@
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"58a70c0d65b6d647cb001209"];
     
     [self configUSharePlatforms];
+    
+    
+    UITabBarController *tabBarVc = (UITabBarController *)self.window.rootViewController;
+    tabBarVc.delegate = self;
+    
+    //3d touch
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
+        
+        //        [self creatShortcutItem];
+        
+        UIApplicationShortcutItem *shortcutItem = [launchOptions valueForKey:UIApplicationLaunchOptionsShortcutItemKey];
+        if (shortcutItem) {
+            
+            if ([shortcutItem.type isEqualToString:@"cn.lijiangbo.gushici.search"]) {
+                
+                tabBarVc.selectedIndex = 2;
+            } else if ([shortcutItem.type isEqualToString:@"cn.lijiangbo.gushici.one"]) {
+                
+                UINavigationController *nav = tabBarVc.childViewControllers[0];
+                GSDetailController *detailVC = [[GSDetailController alloc]init];
+                detailVC.gushiID = arc4random_uniform(2000);
+                [nav pushViewController:detailVC animated:YES];
+            }
+            
+            return NO;
+        }
+    }
+
  
     return YES;
 }
+
+#pragma mark: - 3dTouch
+- (void)creatShortcutItem {
+    
+    UIApplicationShortcutIcon *icon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeShare];
+    UIApplicationShortcutItem *item = [[UIApplicationShortcutItem alloc] initWithType:@"cn.lijiangbo.gushici.share" localizedTitle:@"分享"localizedSubtitle:nil icon:icon userInfo:nil];
+    
+    [UIApplication sharedApplication].shortcutItems = @[item];
+}
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    
+    if (shortcutItem) {
+        UIViewController *viewController = [self topViewController];
+        [viewController.navigationController popToRootViewControllerAnimated:NO];
+        UITabBarController *tabBarVc = (UITabBarController *)self.window.rootViewController;
+        if ([shortcutItem.type isEqualToString:@"cn.lijiangbo.gushici.one"]) {
+            
+            tabBarVc.selectedIndex = 0;
+            UINavigationController *nav = tabBarVc.childViewControllers[0];
+            GSDetailController *detailVC = [[GSDetailController alloc]init];
+            detailVC.gushiID = arc4random() % 2000;
+            [nav pushViewController:detailVC animated:YES];
+        } else if ([shortcutItem.type isEqualToString:@"cn.lijiangbo.gushici.search"]) {
+            
+            tabBarVc.selectedIndex = 2;
+        }
+    }
+    if (completionHandler) {
+        completionHandler(YES);
+    }
+}
+#endif
+
 - (void)configUSharePlatforms
 {
     /* 设置微信的appKey和appSecret */
@@ -83,30 +151,54 @@
     return result;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void(^)(NSArray * __nullable restorableObjects))restorationHandler {
+    
+    if ([userActivity.activityType isEqualToString: CSSearchableItemActionType]) {
+        NSString *identifier = userActivity.userInfo[CSSearchableItemActivityIdentifier];
+        if (identifier) {
+            
+            
+            UIViewController *topVc = [self topViewController];
+            
+            GSDetailController *detailVC = [[GSDetailController alloc]init];
+            detailVC.gushiID = identifier.integerValue;
+            [topVc.navigationController pushViewController:detailVC animated:YES];
+            
+            //            [topVc.navigationController pushViewController:[[UIViewController alloc] init] animated:NO];
+            //            NSLog(@"%@",identifier);
+            return true;
+        }
+    }
+    return false;
 }
 
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+#pragma mark: - 寻找最上乘控制器
+- (UIViewController *)topViewController {
+    
+    UIViewController *resultVC;
+    resultVC = [self topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    while (resultVC.presentedViewController) {
+        resultVC = [self topViewController:resultVC.presentedViewController];
+    }
+    return resultVC;
+}
+- (UIViewController *)topViewController:(UIViewController *)vc {
+    
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [(UINavigationController *)vc topViewController];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self topViewController:[(UITabBarController*)vc selectedViewController]];
+    } else {
+        return vc;
+    }
+    return nil;
 }
 
+#pragma mark : - 双击刷新
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(nonnull UIViewController *)viewController {
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-}
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"doubleClickDidSelectedNotification" object:nil];
 }
 
 

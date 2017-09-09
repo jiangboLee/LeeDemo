@@ -24,6 +24,8 @@
 @property(nonatomic ,assign) NSInteger count;
 @property (weak, nonatomic) IBOutlet UIButton *clickChangeBotton;
 
+@property(nonatomic, weak) UIViewController *lastVC;
+@property(nonatomic, strong) NSDate *lastDate;
 @end
 
 @implementation GSEveryDayViewController
@@ -39,6 +41,7 @@
     [self reload];
     //注册重新刷新通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAction) name:RELOADGUSHINotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAction2) name:@"doubleClickDidSelectedNotification" object:nil];
 }
 -(void)dealloc{
 
@@ -49,7 +52,7 @@
 
     self.count = 3;
     for (int i = 0; i <3; i++) {
-        
+        [self hideHud];
         [self loadData];
     }
     [self showHudInView:self.view hint:@"~正在刷新~"];
@@ -147,12 +150,29 @@
 }
 
 #pragma mark : - action
-- (void)reloadDataAction{
+- (void)reloadDataAction {
     
     [self.contentModels removeAllObjects];
     [self.dataArrays removeAllObjects];
     [self reload];
     
+}
+
+- (void)reloadDataAction2 {
+    
+    _lastVC = self.tabBarController.selectedViewController;
+    
+    if ([self.lastVC isKindOfClass:[self.navigationController class]] && self.view.window) {
+        
+        NSDate *date = [[NSDate alloc]init];
+        if (date.timeIntervalSince1970 - _lastDate.timeIntervalSince1970 < 0.5) {
+            
+            [self.contentModels removeAllObjects];
+            [self.dataArrays removeAllObjects];
+            [self reload];
+        }
+        _lastDate = date;
+    }
 }
 - (IBAction)nextGushiAction:(id)sender {
     

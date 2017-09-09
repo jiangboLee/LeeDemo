@@ -10,6 +10,8 @@
 #import "GSGushiContentModel.h"
 #import "GSDetailController.h"
 
+#import <CoreSpotlight/CoreSpotlight.h>
+
 @interface GSMingjuController ()
 
 @property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *dataArray;
@@ -143,8 +145,31 @@ static NSString *mingjuCellID = @"mingjuCellID";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:mingjuCellID forIndexPath:indexPath];
     
-    cell.textLabel.text = self.dataArray[indexPath.row].nameStr;
+    GSGushiContentModel *model = self.dataArray[indexPath.row];
+    cell.textLabel.text = model.nameStr;
     cell.textLabel.font = [UIFont fontWithName:_FontName size:_Font(20)];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
+        
+        CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType: (NSString *)kUTTypeText];
+        attributeSet.title = model.author;
+        NSArray *arr = [model.nameStr componentsSeparatedByString:@"，"];
+        NSArray *keyWord;
+        if (arr.count > 1) {
+            
+            attributeSet.contentDescription = [NSString stringWithFormat:@"%@%@%@",arr[0],@"\n",arr[1]];
+            keyWord = [NSArray arrayWithObjects:arr[0], arr[1], model.author, nil];
+        } else {
+            attributeSet.contentDescription = self.dataArray[indexPath.row].nameStr;
+            keyWord = @[self.dataArray[indexPath.row].nameStr, model.author];
+        }
+        attributeSet.keywords = keyWord;
+        CSSearchableItem *item = [[CSSearchableItem alloc]initWithUniqueIdentifier:@(model.gushiID).description domainIdentifier:@"mingju" attributeSet:attributeSet];
+        [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:@[item] completionHandler:^(NSError * _Nullable error) {
+            
+        }];
+    }
+
     return cell;
 }
 
