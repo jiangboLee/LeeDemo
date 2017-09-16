@@ -30,6 +30,16 @@ static NSString *mingjuCellID = @"mingjuCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"CSSearchableBool"]) {
+        
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
+            [[CSSearchableIndex defaultSearchableIndex] deleteAllSearchableItemsWithCompletionHandler:^(NSError * _Nullable error) {
+                
+            }];
+        }
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"CSSearchableBool"];
+    }
+    
     self.dataArray = [NSMutableArray array];
     
     self.tableView.dataSource = self;
@@ -164,7 +174,7 @@ static NSString *mingjuCellID = @"mingjuCellID";
             keyWord = @[self.dataArray[indexPath.row].nameStr, model.author];
         }
         attributeSet.keywords = keyWord;
-        CSSearchableItem *item = [[CSSearchableItem alloc]initWithUniqueIdentifier:@(model.gushiID).description domainIdentifier:@"mingju" attributeSet:attributeSet];
+        CSSearchableItem *item = [[CSSearchableItem alloc]initWithUniqueIdentifier:@(model.shiID).description domainIdentifier:@"mingju" attributeSet:attributeSet];
         [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:@[item] completionHandler:^(NSError * _Nullable error) {
             
         }];

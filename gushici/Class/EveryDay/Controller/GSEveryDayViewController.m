@@ -38,10 +38,21 @@
     self.contentModels = [NSMutableArray array];
     self.dataArrays = [NSMutableArray array];
     
-    [self reload];
+    //监听网络
+    AFNetworkReachabilityManager *netManager = [AFNetworkReachabilityManager sharedManager];
+    [netManager startMonitoring];
+    [netManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi) {
+            
+            [self reload];
+        }
+    }];
+    
+//    [self reload];
     //注册重新刷新通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAction) name:RELOADGUSHINotificationName object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAction2) name:@"doubleClickDidSelectedNotification" object:nil];
+    
 }
 -(void)dealloc{
 

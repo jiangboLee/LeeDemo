@@ -155,8 +155,8 @@
     
     if ([userActivity.activityType isEqualToString: CSSearchableItemActionType]) {
         NSString *identifier = userActivity.userInfo[CSSearchableItemActivityIdentifier];
+        
         if (identifier) {
-            
             
             UIViewController *topVc = [self topViewController];
             
