@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GSMingjuController : UITableViewController
+@interface GSMingjuController : GSBaseTableViewController
 
 @end

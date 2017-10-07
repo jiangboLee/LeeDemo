@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface GSGushiwenController : UITableViewController
+@interface GSGushiwenController : GSBaseTableViewController
 
 @property(nonatomic ,copy) NSString *leixing;
 @property(nonatomic ,assign) BOOL isLeixingSearch;

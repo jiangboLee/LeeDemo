@@ -29,9 +29,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = YES;
     self.navigationItem.title = _Str(@"诗文");
     [self setupUI];
     [self setNavBarbutton];
+
 
 }
 
@@ -158,6 +160,7 @@
     }];
 
     scrollV.contentSize = CGSizeMake(UISCREENW * 3, 0);
+    
     
     _gushiwenVC = [[GSGushiwenController alloc]init];
     _mingjuVC = [[GSMingjuController alloc]init];

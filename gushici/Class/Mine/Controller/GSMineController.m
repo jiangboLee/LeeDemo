@@ -130,8 +130,9 @@ static NSString *cellID = @"cellID";
 
     switch (indexPath.section) {
         case 0:
-        {  if (indexPath.row == 0) {
-            [SKStoreReviewController requestReview];
+        {
+            if (indexPath.row == 0) {
+            
             GSHistoryTableVC *likeVC = [[GSHistoryTableVC alloc]init];
             likeVC.isLikeHistory = YES;
             [self.navigationController pushViewController:likeVC animated:YES];
