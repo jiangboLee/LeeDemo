@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GSSearchGushiController : UITableViewController
+@interface GSSearchGushiController : GSBaseTableViewController
 
 @property(nonatomic ,copy) NSString *searchStr;
 @property(nonatomic ,copy) NSString *type;
