@@ -81,10 +81,10 @@
             make.top.equalTo(imageV.mas_bottom).offset(5);
             make.left.equalTo(_headerView).offset(15);
             make.right.equalTo(_headerView).offset(-15);
-            make.height.offset(rect.size.height + 2);
+            make.height.offset(rect.size.height + 80);
             
         }];
-        _headerView.ljb_height = rect.size.height + 170;
+        _headerView.ljb_height = rect.size.height + 170 + 70;
         
     }
     return _headerView;
@@ -95,10 +95,14 @@
     
     self.totaldataArray = [NSMutableArray array];
     self.cellIsShowAll = [NSMutableDictionary dictionary];
-    
-    [self loadData];
-    
+
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self loadData];
+}
+
 -(void)setModel:(GSGushiContentModel *)model{
 
     _model = model;

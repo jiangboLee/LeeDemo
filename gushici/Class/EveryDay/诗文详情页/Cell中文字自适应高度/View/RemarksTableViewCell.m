@@ -35,10 +35,13 @@
     
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</strong>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<strong>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<br />" withString:@":"];
     
     _textsLabel.text = contentStr;
     _cellIndexPath = indexPath;
-    [UILabel changeSpaceForLabel:_textsLabel withLineSpace:4 WordSpace:0];
+    [UILabel changeSpaceForLabel:_textsLabel withLineSpace:4 WordSpace:0.5];
      CGRect rect = [_textsLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:_FontName size:_Font(18)]} context:nil];
     NSInteger N = (rect.size.height - _Font(18)) / _Font(18);
     rect.size.height = N * (_Font(18) + 4) + _Font(18);
