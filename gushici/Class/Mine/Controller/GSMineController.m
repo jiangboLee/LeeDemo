@@ -29,6 +29,10 @@ static NSString *cellID = @"cellID";
     UITableView *tableV = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.view addSubview:tableV];
     
+    
+    tableV.estimatedSectionHeaderHeight = 0;
+    tableV.estimatedSectionFooterHeight = 0;
+    
     tableV.delegate = self;
     tableV.dataSource = self;
     
@@ -173,6 +177,8 @@ static NSString *cellID = @"cellID";
 }
 
 }
+
+
 
 #pragma mark : - 日夜模式
 -(void)changeDayOrNightModel:(UISegmentedControl *)sender{
