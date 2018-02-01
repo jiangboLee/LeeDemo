@@ -73,18 +73,17 @@
         lab.font = [UIFont fontWithName:_FontName size:_Font(18)];//[UIFont systemFontOfSize:_Font(18)];
         [UILabel changeSpaceForLabel:lab withLineSpace:5 WordSpace:2];
         
-        CGRect rect = [cont2 boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:lab.font.pointSize]} context:nil];
+        CGRect rect = [UILabel getLableRect:cont2 Size:CGSizeMake(UISCREENW-30, 4000) Font:[UIFont systemFontOfSize:lab.font.pointSize] LineSpace:5 WordSpace:2];
         
         [_headerView addSubview:lab];
         [lab mas_makeConstraints:^(MASConstraintMaker *make) {
            
-            make.top.equalTo(imageV.mas_bottom).offset(5);
+            make.top.equalTo(imageV.mas_bottom).offset(10);
             make.left.equalTo(_headerView).offset(15);
             make.right.equalTo(_headerView).offset(-15);
-            make.height.offset(rect.size.height + 80);
-            
+            make.bottom.offset(-10);
         }];
-        _headerView.ljb_height = rect.size.height + 170 + 70;
+        _headerView.ljb_height = rect.size.height + 170;
         
     }
     return _headerView;
@@ -92,7 +91,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = self.model.nameStr;
     self.totaldataArray = [NSMutableArray array];
     self.cellIsShowAll = [NSMutableDictionary dictionary];
 
