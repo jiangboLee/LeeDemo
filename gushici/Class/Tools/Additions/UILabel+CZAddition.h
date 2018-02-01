@@ -33,4 +33,10 @@
  */
 + (void)changeSpaceForLabel:(UILabel *)label withLineSpace:(float)lineSpace WordSpace:(float)wordSpace;
 
+/**
+*  改变行间距和字间距
+*/
++ (CGRect)getLableRect:(NSString *)text Size:(CGSize)size Font:(UIFont *)font LineSpace:(float)lineSpace WordSpace:(float)wordSpace;
+    
+    
 @end
