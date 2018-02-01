@@ -92,7 +92,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = self.model.nameStr;
     self.totaldataArray = [NSMutableArray array];
     self.cellIsShowAll = [NSMutableDictionary dictionary];
 
