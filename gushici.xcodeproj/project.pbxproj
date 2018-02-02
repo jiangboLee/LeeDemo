@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FBE4C7F202406CE007BB78B /* GSAuthorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE4C7D202406CE007BB78B /* GSAuthorTableViewCell.m */; };
+		3FBE4C80202406CE007BB78B /* GSAuthorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBE4C7E202406CE007BB78B /* GSAuthorTableViewCell.xib */; };
 		6E6A9ABBA176B834C3AD3331 /* libPods-gushici.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8D547B01B79F5D740D2BCD /* libPods-gushici.a */; };
 		B715FEAC1F8916140041ED5D /* GSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B715FEAB1F8916140041ED5D /* GSBaseTableViewController.m */; };
 		B715FEDA1F891C5B0041ED5D /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B715FECD1F891BB40041ED5D /* NSBundle+PYSearchExtension.m */; };
@@ -93,6 +95,9 @@
 
 /* Begin PBXFileReference section */
 		2B8CD5E0670E1C9FFE2336FC /* Pods-gushici.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gushici.release.xcconfig"; path = "Pods/Target Support Files/Pods-gushici/Pods-gushici.release.xcconfig"; sourceTree = "<group>"; };
+		3FBE4C7C202406CE007BB78B /* GSAuthorTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSAuthorTableViewCell.h; sourceTree = "<group>"; };
+		3FBE4C7D202406CE007BB78B /* GSAuthorTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSAuthorTableViewCell.m; sourceTree = "<group>"; };
+		3FBE4C7E202406CE007BB78B /* GSAuthorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSAuthorTableViewCell.xib; sourceTree = "<group>"; };
 		B715FEAA1F8916140041ED5D /* GSBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSBaseTableViewController.h; sourceTree = "<group>"; };
 		B715FEAB1F8916140041ED5D /* GSBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSBaseTableViewController.m; sourceTree = "<group>"; };
 		B715FECC1F891BB40041ED5D /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
@@ -263,6 +268,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FBE4C7B2024069B007BB78B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3FBE4C7C202406CE007BB78B /* GSAuthorTableViewCell.h */,
+				3FBE4C7D202406CE007BB78B /* GSAuthorTableViewCell.m */,
+				3FBE4C7E202406CE007BB78B /* GSAuthorTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AFA44FD9C17C632D0292D528 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,9 +361,8 @@
 		B72653311E55A6CB00D6CA5F /* 作者详情页 */ = {
 			isa = PBXGroup;
 			children = (
+				3FBE4C7B2024069B007BB78B /* View */,
 				B72653321E55A6CB00D6CA5F /* controller */,
-				B72653331E55A6CB00D6CA5F /* model */,
-				B72653341E55A6CB00D6CA5F /* view */,
 			);
 			path = "作者详情页";
 			sourceTree = "<group>";
@@ -360,20 +374,6 @@
 				B72653361E55A6FF00D6CA5F /* GSAuthorDetailController.m */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		B72653331E55A6CB00D6CA5F /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		B72653341E55A6CB00D6CA5F /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		B75A47541E4F3A9200FCC0C5 = {
@@ -815,6 +815,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FBE4C80202406CE007BB78B /* GSAuthorTableViewCell.xib in Resources */,
 				B715FEE01F891CD60041ED5D /* PYSearch.bundle in Resources */,
 				B75A480F1E51985A00FCC0C5 /* chaodai.plist in Resources */,
 				B75A47DF1E4F6F8000FCC0C5 /* GushiContent.xib in Resources */,
@@ -859,13 +860,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gushici-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCD772636183597E1013064E /* [CP] Copy Pods Resources */ = {
@@ -874,9 +878,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-gushici/Pods-gushici-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Sina/SinaSDK/WeiboSDK.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -906,6 +917,7 @@
 				B75A47DD1E4F6D8100FCC0C5 /* GSCustomCardView.m in Sources */,
 				B75A47BC1E4F45BD00FCC0C5 /* UIBarButtonItem+Item.m in Sources */,
 				B75A47C31E4F45BD00FCC0C5 /* UIScreen+CZAddition.m in Sources */,
+				3FBE4C7F202406CE007BB78B /* GSAuthorTableViewCell.m in Sources */,
 				B72653281E548C8600D6CA5F /* LEECellModel.m in Sources */,
 				B726530B1E52DAD700D6CA5F /* UIViewController+SLHUD.m in Sources */,
 				B75A47BD1E4F45BD00FCC0C5 /* UIButton+CZAddition.m in Sources */,
