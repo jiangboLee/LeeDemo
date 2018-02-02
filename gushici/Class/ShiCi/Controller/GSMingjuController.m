@@ -12,7 +12,7 @@
 
 #import <CoreSpotlight/CoreSpotlight.h>
 
-@interface GSMingjuController ()
+@interface GSMingjuController ()<UIViewControllerPreviewingDelegate>
 
 @property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *dataArray;
 
@@ -179,7 +179,9 @@ static NSString *mingjuCellID = @"mingjuCellID";
             
         }];
     }
-
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        [self registerForPreviewingWithDelegate:self sourceView:cell];
+    }
     return cell;
 }
 
@@ -189,7 +191,20 @@ static NSString *mingjuCellID = @"mingjuCellID";
     vc.mingju = self.dataArray[indexPath.row].nameStr;
     vc.gushiID = self.dataArray[indexPath.row].shiID;
     [self.navigationController pushViewController:vc animated:YES];
-
+}
+#pragma mark: - 3dTouch
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+    
+    [self showViewController:viewControllerToCommit sender:self];
+}
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)previewingContext.sourceView];
+    GSDetailController *vc = [[GSDetailController alloc]init];
+    vc.preferredContentSize = CGSizeMake(0, 500);
+    vc.mingju = self.dataArray[indexPath.row].nameStr;
+    vc.gushiID = self.dataArray[indexPath.row].shiID;
+    return vc;
 }
 
 

@@ -11,7 +11,7 @@
 #import "GSBaseTableViewCell.h"
 #import "GSAuthorDetailController.h"
 
-@interface GSAuthorController ()
+@interface GSAuthorController ()<UIViewControllerPreviewingDelegate>
 
 @property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *dataArray;
 
@@ -133,7 +133,9 @@ static NSString *baseTableCellID = @"baseTableCellID";
     GSBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:baseTableCellID forIndexPath:indexPath];
     cell.isAuthor = YES;
     cell.model = self.dataArray[indexPath.row];
-    
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        [self registerForPreviewingWithDelegate:self sourceView:cell];
+    }
     return cell;
 }
 
@@ -141,8 +143,20 @@ static NSString *baseTableCellID = @"baseTableCellID";
     
     GSAuthorDetailController *vc = [[GSAuthorDetailController alloc]init];
     vc.model = self.dataArray[indexPath.row];
-    
     [self.navigationController pushViewController:vc animated:YES];
+}
+#pragma mark: - 3dTouch
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+    
+    [self showViewController:viewControllerToCommit sender:self];
+}
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)previewingContext.sourceView];
+    GSAuthorDetailController *vc = [[GSAuthorDetailController alloc]init];
+    vc.model = self.dataArray[indexPath.row];
+    vc.preferredContentSize = CGSizeMake(0, 500);
+    return vc;
 }
 
 

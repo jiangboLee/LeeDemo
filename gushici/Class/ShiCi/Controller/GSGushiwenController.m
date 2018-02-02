@@ -11,7 +11,7 @@
 #import "GSBaseTableViewCell.h"
 #import "GSDetailController.h"
 
-@interface GSGushiwenController ()
+@interface GSGushiwenController ()<UIViewControllerPreviewingDelegate>
 
 @property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *dataArray;
 
@@ -156,8 +156,12 @@ static NSString *baseTableCellID = @"baseTableCellID";
     GSBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:baseTableCellID forIndexPath:indexPath];
     cell.isAuthor = NO;
     cell.model = self.dataArray[indexPath.row];
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        [self registerForPreviewingWithDelegate:self sourceView:cell];
+    }
+    
     return cell;
     
 }
@@ -168,7 +172,20 @@ static NSString *baseTableCellID = @"baseTableCellID";
     _detailVC = [[GSDetailController alloc]init];
     _detailVC.gushiID = model.gushiID;
     [self.navigationController pushViewController:_detailVC animated:YES];
+}
+#pragma mark: - 3dTouch
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
     
+    [self showViewController:viewControllerToCommit sender:self];
+}
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)previewingContext.sourceView];
+    GSGushiContentModel *model = self.dataArray[indexPath.row];
+    _detailVC = [[GSDetailController alloc]init];
+    _detailVC.preferredContentSize = CGSizeMake(0, 500);
+    _detailVC.gushiID = model.gushiID;
+    return _detailVC;
 }
 
 

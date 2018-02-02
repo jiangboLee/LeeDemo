@@ -136,8 +136,8 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
         }];
     }];//打开分享面板
 }
-
--(void)clickLike{
+#pragma mark: - 收藏
+- (void)clickLike{
     UIBarButtonItem *unlike = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share_highlighted"] style:UIBarButtonItemStyleDone target:self action:@selector(clickunLike)];
     self.navigationItem.rightBarButtonItems = @[_share,unlike];
     
@@ -488,7 +488,19 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
         }
     }];
 }
-
+#pragma mark: - 3dTouch
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"收藏" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        [self clickLike];
+    }];
+//    UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"action2" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"Action2");
+//    }];
+//    UIPreviewAction *action3 = [UIPreviewAction actionWithTitle:@"action3" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"Action3");
+//    }];
+    return @[action1];
+}
 
 
 @end
