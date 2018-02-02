@@ -118,9 +118,9 @@
                             }
                             // 返回
                             searchViewController.searchSuggestions = searchSuggestionsM;
+                [searchViewController.searchSuggestionView reloadData];
             });
             
-            [searchViewController.searchSuggestionView reloadData];
         }];
 //        // 根据条件发送查询（这里模拟搜索）
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // 搜索完毕

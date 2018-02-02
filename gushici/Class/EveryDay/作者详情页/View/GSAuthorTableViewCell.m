@@ -38,6 +38,8 @@
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<br />" withString:@":"];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<span style=\"font-family:FangSong_GB2312;\">" withString:@""];
     self.contentLable.text = contentStr;
     
     [UILabel changeSpaceForLabel:self.title withLineSpace:5 WordSpace:2];
