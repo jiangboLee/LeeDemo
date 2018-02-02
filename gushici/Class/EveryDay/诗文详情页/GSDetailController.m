@@ -96,16 +96,16 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 //分享
 - (void)shareGushi{
 
-    //配置上面需求的参数
-    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = YES;
-    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.shareTitleViewTitleString = _Str(@"分享至");
-    [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType =
-    UMSocialSharePageGroupViewPositionType_Bottom;
-//    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 2;i
-    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 3;
-    [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
-    //去掉毛玻璃效果
-    [UMSocialShareUIConfig shareInstance].shareContainerConfig.isShareContainerHaveGradient = NO;
+//    //配置上面需求的参数
+//    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = YES;
+//    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.shareTitleViewTitleString = _Str(@"分享至");
+//    [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType =
+//    UMSocialSharePageGroupViewPositionType_Bottom;
+////    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 2;i
+//    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 3;
+//    [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
+//    //去掉毛玻璃效果
+//    [UMSocialShareUIConfig shareInstance].shareContainerConfig.isShareContainerHaveGradient = NO;
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType,NSDictionary *userInfo) {
     
         //创建分享消息对象
@@ -128,9 +128,9 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
         //调用分享接口
         [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
             if (error) {
-//                NSLog(@"************Share fail with error %@*********",error);
+                [SVProgressHUD showErrorWithStatus:@"分享失败"];
             }else{
-//                NSLog(@"response data is %@",data);
+                [SVProgressHUD showSuccessWithStatus:@"分享成功"];
             }
         }];
     }];//打开分享面板
@@ -311,31 +311,6 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-/** 2018-02-02 16:46:07
-    static NSString *cellName = @"meTableViewCell";
-    RemarksTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
-    if (!cell) {
-        cell = [[RemarksTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellName];
-        cell.delegate = self;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
-    GSGushiContentModel *model = [self.dataArray objectAtIndex:indexPath.row + 1];
-    
-    if (model.shiID) {
-        cell.infolable.text = model.nameStr;
-    }else{
-    
-        cell.infolable.text = @"作者";
-    }
-    
-    NSLog(@"%@",model.nameStr);
-    NSLog(@"%@",model.cont);
-    
-    [cell setCellContent:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]] boolValue]  andCellIndexPath:indexPath];
-    
-    return cell;
-*/
     GSAuthorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GSAuthorTableViewCellId forIndexPath:indexPath];
     cell.model = self.dataArray[indexPath.row + 1];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -359,32 +334,6 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 {
     // 返回Cell高度
     return [self.shiwenLessHeights[indexPath.row] floatValue];
-/** 2018-02-02 17:08:46
-    GSGushiContentModel *model = [self.dataArray objectAtIndex:indexPath.row + 1];
-    
-    if (!model.isAreadlyRefresh && model.cankao != nil) {
-        
-        model.isAreadlyRefresh = YES;
-        [self loadcont:model.gushiID type:model.cankao completed:^(NSString *cont) {
-            
-           cont = [cont stringByReplacingOccurrencesOfString:@"</strong><br />" withString:@": "];
-            cont = [cont stringByReplacingOccurrencesOfString:@"<strong>" withString:@""];
-            cont = [cont stringByReplacingOccurrencesOfString:@"</strong>" withString:@""];
-            cont = [cont stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
-            cont = [cont stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
-            cont = [cont stringByReplacingOccurrencesOfString:@"<span style=\"font-family:FangSong_GB2312;\">" withString:@""];
-            
-            cont = [cont stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
-            
-            model.cont = cont;
-            
-            [self.tableV reloadData];
-         }];
-       
-    }
-    
-    return [RemarksCellHeightModel cellHeightWith:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]] boolValue] andLableWidth:[UIScreen mainScreen].bounds.size.width-30 andFont:_Font(18) andDefaultHeight:72 andFixedHeight:45 andIsShowBtn:8];
-*/
 }
 
 #pragma mark -- Dalegate
