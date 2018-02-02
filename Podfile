@@ -11,7 +11,7 @@ target 'gushici' do
   pod 'SDWebImage'
   pod 'Masonry'
   pod 'FMDB'
-  pod 'MBProgressHUD'
+  pod 'SVProgressHUD'
   pod 'MJRefresh'
   pod 'UMengAnalytics-NO-IDFA'
   # U-Share SDK UI模块（分享面板，建议添加）

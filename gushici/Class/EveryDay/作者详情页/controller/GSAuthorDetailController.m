@@ -8,12 +8,11 @@
 
 #import "GSAuthorDetailController.h"
 #import "GSGushiContentModel.h"
-#import "RemarksTableViewCell.h"
-#import "RemarksCellHeightModel.h"
 #import <UIImageView+WebCache.h>
 #import "GSDetailController.h"
+#import "GSAuthorTableViewCell.h"
 
-@interface GSAuthorDetailController ()<UITableViewDelegate,UITableViewDataSource,RemarksCellDelegate>
+@interface GSAuthorDetailController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic ,strong) UITableView *tableV;
 @property(nonatomic ,strong) NSMutableArray *totaldataArray;
@@ -21,24 +20,32 @@
 // 存放cell视图展开状态的字典
 @property (nonatomic, strong) NSMutableDictionary *cellIsShowAll;
 
-@property(nonatomic ,assign) BOOL isZiliao;
-@property(nonatomic ,assign) BOOL isGushiwen;
+@property(nonatomic, assign) BOOL isZiliao;
+@property(nonatomic, assign) BOOL isGushiwen;
+@property(nonatomic, strong) NSMutableArray *ziliaoHeights;
+@property(nonatomic, strong) NSMutableArray *ziliaoLessHeights;
+@property(nonatomic, strong) NSMutableArray *gushiwenHeights;
+@property(nonatomic, strong) NSMutableArray *gushiwenLessHeights;
+@property(nonatomic, strong) NSMutableArray *allHeights;
+@property(nonatomic, strong) NSMutableArray *allLessHeights;
+
+@property(nonatomic, assign) CGFloat lessHeight;
 
 @property(nonatomic ,strong) UIView *headerView;
 
 @end
 
+static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 @implementation GSAuthorDetailController
 
 -(UITableView *)tableV{
     
     if (_tableV == nil) {
         _tableV = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        
+        [_tableV registerNib:[UINib nibWithNibName:@"GSAuthorTableViewCell" bundle:nil] forCellReuseIdentifier:GSAuthorTableViewCellId];
         _tableV.delegate = self;
         _tableV.dataSource = self;
         _tableV.tableFooterView = [[UIView alloc]init];
-        
         [self.view addSubview:_tableV];
         
     }
@@ -55,7 +62,6 @@
         NSString *picName = self.model.pic.transformToPinyin;
         picName = [NSString stringWithFormat:@"http://img.gushiwen.org/authorImg/%@.jpg",picName];
         [imageV sd_setImageWithURL:[NSURL URLWithString:picName] placeholderImage:[UIImage imageNamed:@"logo"]];
-        
         [_headerView addSubview:imageV];
         [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
            
@@ -83,7 +89,7 @@
             make.right.equalTo(_headerView).offset(-15);
             make.bottom.offset(-10);
         }];
-        _headerView.ljb_height = rect.size.height + 170;
+        _headerView.ljb_height = rect.size.height + 175;
         
     }
     return _headerView;
@@ -93,31 +99,39 @@
     [super viewDidLoad];
     self.title = self.model.nameStr;
     self.totaldataArray = [NSMutableArray array];
+    self.ziliaoHeights = [NSMutableArray array];
+    self.gushiwenHeights = [NSMutableArray array];
+    self.ziliaoLessHeights = [NSMutableArray array];
+    self.gushiwenLessHeights = [NSMutableArray array];
+    self.allHeights = [NSMutableArray array];
+    self.allLessHeights = [NSMutableArray array];
     self.cellIsShowAll = [NSMutableDictionary dictionary];
-
+    self.lessHeight = [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + [UIFont fontWithName:_FontName size:_Font(18)].lineHeight * 5 + 16 + 15;
+    [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self loadData];
+    
 }
 
--(void)setModel:(GSGushiContentModel *)model{
+- (void)setModel:(GSGushiContentModel *)model{
 
     _model = model;
     self.tableV.hidden = NO;
 }
 
--(void)loadData{
-
+- (void)loadData{
+    
+    [SVProgressHUD show];
     NSDictionary *parmeters = @{@"id":@(self.model.gushiID),@"token":@"gswapi",@"random":@(2672190210)};
     NSString *urlStr = @"http://app.gushiwen.org/api/author/author.aspx";
 //    __weak typeof(self) weakSelf = self;
     [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:parmeters finshed:
      ^(NSDictionary *responseObject, NSError *error) {
-         
+         [SVProgressHUD dismiss];
          if (error != nil) {
-             
+             [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
              return ;
          }
          
@@ -130,141 +144,140 @@
          if (ziliao.count != 0) {
              self.isZiliao = YES;
              [self.totaldataArray addObject:ziliao];
+             //计算高度
+             for (int i = 0; i < ziliao.count; i ++) {
+                 GSGushiContentModel *model = ziliao[i];
+                 CGFloat height = [self getLableHeight:model.cont];
+                 [self.ziliaoHeights addObject:@(height)];
+                 height > self.lessHeight ? [self.ziliaoLessHeights addObject:@(self.lessHeight)] : [self.ziliaoLessHeights addObject:@(height + 10)];
+                 
+             }
+             [self.allHeights addObject:self.ziliaoHeights];
+             [self.allLessHeights addObject:self.ziliaoLessHeights];
          }
          if (gushiwen.count != 0) {
              self.isGushiwen = YES;
              [self.totaldataArray addObject:gushiwen];
+             //计算高度
+             for (int i = 0; i < gushiwen.count; i ++) {
+                 GSGushiContentModel *model = gushiwen[i];
+                 CGFloat height = [self getLableHeight:model.cont];
+                 [self.gushiwenHeights addObject:@(height)];
+                 height > self.lessHeight ? [self.gushiwenLessHeights addObject:@(self.lessHeight)] : [self.gushiwenLessHeights addObject:@(height + 10)];
+             }
+             [self.allHeights addObject:self.gushiwenHeights];
+             [self.allLessHeights addObject:self.gushiwenLessHeights];
          }
-         
          self.model = model;
          _tableV.tableHeaderView = self.headerView;
          [self.tableV reloadData];
      }];
-
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (CGFloat)getLableHeight:(NSString *)contentStr {
+    
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</strong><br />" withString:@": "];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<strong>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</strong>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<br />" withString:@":"];
+    NSLog(@"%@",contentStr);
+    CGRect rect = [UILabel getLableRect:contentStr Size:CGSizeMake(UISCREENW-30, 999999) Font:[UIFont fontWithName:_FontName size:_Font(18)] LineSpace:5 WordSpace:2];
+    
+    CGFloat wucha = rect.size.height / 200.0 * 3;
+    return rect.size.height + [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + 16 + wucha;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
     return self.totaldataArray.count;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
     NSArray *array = self.totaldataArray[section];
     return array.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    static NSString *cellName = @"meTableViewCell";
-    RemarksTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
-    if (!cell) {
-        cell = [[RemarksTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellName];
-        cell.delegate = self;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    GSGushiContentModel *model = self.totaldataArray[indexPath.section][indexPath.row];
+    GSAuthorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GSAuthorTableViewCellId forIndexPath:indexPath];
+    cell.model = self.totaldataArray[indexPath.section][indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.infolable.text = model.nameStr;
+    cell.needMoreButton.hidden = [self.allLessHeights[indexPath.section][indexPath.row] floatValue] < self.lessHeight;
+    cell.needMoreButton.selected = [self.allLessHeights[indexPath.section][indexPath.row] floatValue] != self.lessHeight;
+    __weak typeof(self) weakSelf = self;
+    cell.lookMoreClickBlock = ^(BOOL more) {
+        
+        if (more) {
+            weakSelf.allLessHeights[indexPath.section][indexPath.row] = @([weakSelf.allHeights[indexPath.section][indexPath.row] floatValue] + 20);
+        } else {
+            weakSelf.allLessHeights[indexPath.section][indexPath.row] = @(weakSelf.lessHeight);
+        }
+        [weakSelf.tableV beginUpdates];
+        [weakSelf.tableV endUpdates];
+    };
     
-    [cell setCellContent:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]] boolValue]  andCellIndexPath:indexPath];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 返回Cell高度
-    
-    GSGushiContentModel *model = self.totaldataArray[indexPath.section][indexPath.row];
-    
-    if (!model.isAreadlyRefresh) {
-    
-        if (self.isZiliao && model.author != nil) {
-            
-            model.isAreadlyRefresh = YES;
-            [self loadcont:model.gushiID  completed:^(NSString *cont) {
-                
-                cont = [cont stringByReplacingOccurrencesOfString:@"</strong><br />" withString:@": "];
-                cont = [cont stringByReplacingOccurrencesOfString:@"<strong>" withString:@""];
-                cont = [cont stringByReplacingOccurrencesOfString:@"</strong>" withString:@""];
-                cont = [cont stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
-                
-                cont = [cont stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
-                
-                model.cont = cont;
-                
-                [self.tableV reloadData];
-            }];
-        }
-        
-    }
-    
-    return [RemarksCellHeightModel cellHeightWith:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]] boolValue] andLableWidth:[UIScreen mainScreen].bounds.size.width-30 andFont:_Font(18) andDefaultHeight:75 andFixedHeight:42 andIsShowBtn:8];
-}
-
--(void)loadcont:(NSInteger)shiID completed:(void(^)(NSString *cont))completed{
-    
-    NSString *urlStr = [NSString stringWithFormat:@"http://app.gushiwen.org/api/author/ziliao.aspx?id=%zd&token=gswapi&random=2557059046",shiID];
-    //    __weak typeof(self) weakSelf = self;
-    [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:nil finshed:
-     ^(NSDictionary *responseObject, NSError *error) {
-         
-         if (error != nil) {
-             
-             return ;
-         }
-         
-         GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject];
-         
-         completed(model.cont);
-         
-     }];
-    
-}
-
-
-#pragma mark -- Dalegate
-- (void)remarksCellShowContrntWithDic:(NSDictionary *)dic andCellIndexPath:(NSIndexPath *)indexPath
-{
-    [self.cellIsShowAll setObject:[dic objectForKey:@"isShow"] forKey:[NSString stringWithFormat:@"%@",[dic objectForKey:@"row"]]];
-    
-    [_tableV reloadData];
+    return  [self.allLessHeights[indexPath.section][indexPath.row] floatValue];
+  
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 
-    if (self.isZiliao && self.isGushiwen) {
-        
-        switch (section) {
-            case 0:
+    switch (section) {
+        case 0:
+        {
+            if (self.isZiliao) {
                 return @"作者资料";
-                break;
-            case 1:
+            } else {
                 return @"相关作品";
-                break;
-            default:
-                break;
+            }
         }
-    }else if (self.isZiliao){
-    
-        return @"作者资料";
+            break;
+        case 1:
+            return @"相关作品";
+            break;
+        default:
+            return @"";
+            break;
     }
-    
-    return @"相关作品";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    if (indexPath.section == 1) {
-        
-        GSDetailController *vc = [[GSDetailController alloc]init];
-        GSGushiContentModel *model = self.totaldataArray[indexPath.section][indexPath.row];
-        vc.gushiID = model.gushiID;
-        
-        [self.navigationController pushViewController:vc animated:YES];
+    switch (indexPath.section) {
+        case 0:
+        {
+            if (!self.isZiliao) {
+                [self gotoDetailVC:indexPath];
+            }
+        }
+            break;
+        case 1:
+        {
+            [self gotoDetailVC:indexPath];
+        }
+            break;
+        default:
+            break;
     }
 }
 
+- (void)gotoDetailVC:(NSIndexPath *)indexPath {
+    GSDetailController *vc = [[GSDetailController alloc]init];
+    GSGushiContentModel *model = self.totaldataArray[indexPath.section][indexPath.row];
+    vc.gushiID = model.gushiID;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 @end

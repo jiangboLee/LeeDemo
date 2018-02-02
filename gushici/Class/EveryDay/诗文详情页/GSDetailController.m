@@ -9,16 +9,13 @@
 #import "GSDetailController.h"
 #import "GSGushiContentModel.h"
 #import "GSDetailContent.h"
-
-#import "RemarksTableViewCell.h"
-#import "RemarksCellHeightModel.h"
-
 #import <UShareUI/UShareUI.h>
 #import <AVFoundation/AVFoundation.h>
 #import "GSSQLiteTools.h"
 #import <StoreKit/StoreKit.h>
+#import "GSAuthorTableViewCell.h"
 
-@interface GSDetailController ()<UITableViewDelegate,UITableViewDataSource,RemarksCellDelegate>
+@interface GSDetailController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic ,strong) UITableView *tableV;
 @property(nonatomic ,strong) GSDetailContent *headerView;
@@ -33,8 +30,13 @@
 //分享按钮
 @property(nonatomic ,strong) UIBarButtonItem *share;
 
+@property(nonatomic, strong) NSMutableArray *shiwenHeights;
+@property(nonatomic, strong) NSMutableArray *shiwenLessHeights;
+@property(nonatomic, assign) CGFloat lessHeight;
+
 @end
 
+static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 @implementation GSDetailController
 
 -(GSDetailContent *)headerView{
@@ -51,13 +53,11 @@
 
     if (_tableV == nil) {
         _tableV = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        
+        [_tableV registerNib:[UINib nibWithNibName:@"GSAuthorTableViewCell" bundle:nil] forCellReuseIdentifier:GSAuthorTableViewCellId];
         _tableV.delegate = self;
         _tableV.dataSource = self;
         _tableV.tableFooterView = [[UIView alloc]init];
-        
         [self.view addSubview:_tableV];
-
     }
     return _tableV;
 }
@@ -66,11 +66,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.shiwenHeights = [NSMutableArray array];
+    self.shiwenLessHeights = [NSMutableArray array];
+    self.lessHeight = [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + [UIFont fontWithName:_FontName size:_Font(18)].lineHeight * 5 + 16 + 15;
     self.cellIsShowAll = [NSMutableDictionary dictionary];
     
     _share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
     
-//    [self clickLike];
     GSGushiContentModel *model = self.dataArray[0];
 
     //查找数据库
@@ -92,18 +94,18 @@
     
 }
 //分享
--(void)shareGushi{
+- (void)shareGushi{
 
-    //配置上面需求的参数
-    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = YES;
-    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.shareTitleViewTitleString = _Str(@"分享至");
-    [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType =
-    UMSocialSharePageGroupViewPositionType_Bottom;
-//    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 2;i
-    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 3;
-    [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
-    //去掉毛玻璃效果
-    [UMSocialShareUIConfig shareInstance].shareContainerConfig.isShareContainerHaveGradient = NO;
+//    //配置上面需求的参数
+//    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = YES;
+//    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.shareTitleViewTitleString = _Str(@"分享至");
+//    [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType =
+//    UMSocialSharePageGroupViewPositionType_Bottom;
+////    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 2;i
+//    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 3;
+//    [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
+//    //去掉毛玻璃效果
+//    [UMSocialShareUIConfig shareInstance].shareContainerConfig.isShareContainerHaveGradient = NO;
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType,NSDictionary *userInfo) {
     
         //创建分享消息对象
@@ -126,15 +128,15 @@
         //调用分享接口
         [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
             if (error) {
-//                NSLog(@"************Share fail with error %@*********",error);
+                [SVProgressHUD showErrorWithStatus:@"分享失败"];
             }else{
-//                NSLog(@"response data is %@",data);
+                [SVProgressHUD showSuccessWithStatus:@"分享成功"];
             }
         }];
     }];//打开分享面板
 }
-
--(void)clickLike{
+#pragma mark: - 收藏
+- (void)clickLike{
     UIBarButtonItem *unlike = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share_highlighted"] style:UIBarButtonItemStyleDone target:self action:@selector(clickunLike)];
     self.navigationItem.rightBarButtonItems = @[_share,unlike];
     
@@ -186,12 +188,11 @@
 
     _gushiID = gushiID;
     self.tableV.hidden = NO;
-    [self showRefresh:self.view];
     [self loadData:gushiID];
 }
 -(void)loadData:(NSInteger)iid {
     
-    
+    [SVProgressHUD show];
     NSDictionary *parmeters = @{@"id":@(iid),@"token":@"gswapi",@"random":@(2672180210)};
     NSString *urlStr;
     if (self.isMingjuSearch) {
@@ -205,40 +206,45 @@
     [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:parmeters finshed:
      ^(NSDictionary *responseObject, NSError *error) {
          
+         [SVProgressHUD dismiss];
          if (error != nil) {
-             [self hideHud];
              return ;
          }
          
          GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_gushiwen"]];
          
-         NSArray *fanyiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_fanyis"][@"fanyis"]];
+         NSArray<GSGushiContentModel *> *fanyiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_fanyis"][@"fanyis"]];
          
-         NSArray *shangxiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_shangxis"][@"shangxis"]];
+         NSArray<GSGushiContentModel *> *shangxiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_shangxis"][@"shangxis"]];
          
          GSGushiContentModel *authorModel = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
          //可能参数返回没有数据
          if (model.nameStr == nil) {
-             [self hideHud];
              return;
          }
          NSMutableArray *array = [NSMutableArray arrayWithObject:model];
-         if (((GSGushiContentModel *)(fanyiArray.firstObject)).nameStr != nil) {
-             ((GSGushiContentModel *)(fanyiArray.firstObject)).cankao = @"fanyi";
-             [array addObject:fanyiArray.firstObject];
+         if (fanyiArray[0].nameStr != nil) {
+             fanyiArray[0].cankao = @"fanyi";
+             [array addObject:fanyiArray[0]];
+             CGFloat fanyiHeight = [self getLableHeight:fanyiArray[0].cont];
+             [self.shiwenHeights addObject:@(fanyiHeight)];
+             fanyiHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(fanyiHeight + 10)];
          }
-         if (((GSGushiContentModel *)(shangxiArray.firstObject)).cont != nil) {
-             ((GSGushiContentModel *)(shangxiArray.firstObject)).cankao = @"shangxi";
-             [array addObject:shangxiArray.firstObject];
+         if (shangxiArray[0].cont != nil) {
+             shangxiArray[0].cankao = @"shangxi";
+             [array addObject:shangxiArray[0]];
+             CGFloat shangxiHeight = [self getLableHeight:shangxiArray[0].cont];
+             [self.shiwenHeights addObject:@(shangxiHeight)];
+             shangxiHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(shangxiHeight + 10)];
          }
          if (authorModel.nameStr != nil) {
-             
              [array addObject:authorModel];
+             CGFloat authorHeight = [self getLableHeight:authorModel.cont];
+             [self.shiwenHeights addObject:@(authorHeight)];
+             authorHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(authorHeight + 10)];
          }
          
          dispatch_async(dispatch_get_main_queue(), ^{
-             
-             [self hideHud];
              self.dataArray = array;
              [self.tableV reloadData];
          });
@@ -246,15 +252,33 @@
      }];
 }
 
+- (CGFloat)getLableHeight:(NSString *)contentStr {
+    
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</strong><br />" withString:@": "];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<strong>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</strong>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<br />" withString:@":"];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
+    contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<span style=\"font-family:FangSong_GB2312;\">" withString:@""];
+    NSLog(@"%@",contentStr);
+    
+    CGRect rect = [UILabel getLableRect:contentStr Size:CGSizeMake(UISCREENW-30, 999999) Font:[UIFont fontWithName:_FontName size:_Font(18)] LineSpace:5 WordSpace:2];
+    
+    CGFloat wucha = rect.size.height / 200.0 * 3;
+    return rect.size.height + [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + 16 + wucha;
+}
+
 -(void)setDataArray:(NSArray *)dataArray{
 
     _dataArray = dataArray;
-    
     __weak typeof(self) weakSelf = self;
     [self.headerView setHeightBlock:^(CGFloat x) {
         
         weakSelf.headerView.ljb_height = x ;
-       
         weakSelf.tableV.tableHeaderView = weakSelf.headerView;
     }];
     self.headerView.gushi = dataArray[0];
@@ -287,55 +311,29 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    static NSString *cellName = @"meTableViewCell";
-    RemarksTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
-    if (!cell) {
-        cell = [[RemarksTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellName];
-        cell.delegate = self;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
+    GSAuthorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GSAuthorTableViewCellId forIndexPath:indexPath];
+    cell.model = self.dataArray[indexPath.row + 1];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    GSGushiContentModel *model = [self.dataArray objectAtIndex:indexPath.row + 1];
-    
-    if (model.shiID) {
-        cell.infolable.text = model.nameStr;
-    }else{
-    
-        cell.infolable.text = @"作者";
-    }
-    
-    [cell setCellContent:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]] boolValue]  andCellIndexPath:indexPath];
-    
+    cell.needMoreButton.hidden = [self.shiwenLessHeights[indexPath.row] floatValue] < self.lessHeight;
+    cell.needMoreButton.selected = [self.shiwenLessHeights[indexPath.row] floatValue] != self.lessHeight;
+    __weak typeof(self) weakSelf = self;
+    cell.lookMoreClickBlock = ^(BOOL more) {
+        
+        if (more) {
+            weakSelf.shiwenLessHeights[indexPath.row] = @([self.shiwenHeights[indexPath.row] floatValue] + 20);
+        } else {
+            weakSelf.shiwenLessHeights[indexPath.row] = @(weakSelf.lessHeight);
+        }
+        [weakSelf.tableV beginUpdates];
+        [weakSelf.tableV endUpdates];
+    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 返回Cell高度
-    
-    GSGushiContentModel *model = [self.dataArray objectAtIndex:indexPath.row + 1];
-    
-    if (!model.isAreadlyRefresh && model.cankao != nil) {
-        
-        model.isAreadlyRefresh = YES;
-        [self loadcont:model.gushiID type:model.cankao completed:^(NSString *cont) {
-            
-           cont = [cont stringByReplacingOccurrencesOfString:@"</strong><br />" withString:@": "];
-            cont = [cont stringByReplacingOccurrencesOfString:@"<strong>" withString:@""];
-            cont = [cont stringByReplacingOccurrencesOfString:@"</strong>" withString:@""];
-            cont = [cont stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
-            cont = [cont stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
-            cont = [cont stringByReplacingOccurrencesOfString:@"<span style=\"font-family:FangSong_GB2312;\">" withString:@""];
-            
-            cont = [cont stringByReplacingOccurrencesOfString:@"<span style=\"font-family:SimSun;\">" withString:@""];
-            
-            model.cont = cont;
-            
-            [self.tableV reloadData];
-         }];
-       
-    }
-    
-    return [RemarksCellHeightModel cellHeightWith:model.cont andIsShow:[[self.cellIsShowAll objectForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]] boolValue] andLableWidth:[UIScreen mainScreen].bounds.size.width-30 andFont:_Font(18) andDefaultHeight:72 andFixedHeight:45 andIsShowBtn:8];
+    return [self.shiwenLessHeights[indexPath.row] floatValue];
 }
 
 #pragma mark -- Dalegate
@@ -409,19 +407,18 @@
 -(void)viewWillDisappear:(BOOL)animated{
 
     [super viewWillDisappear:animated];
-    
     [self.player pause];
     self.player = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
--(void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
 
     [super viewDidAppear:animated];
     [self instertSql];
 }
--(void)instertSql{
+- (void)instertSql{
 
     GSGushiContentModel *model = self.dataArray[0];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
@@ -438,7 +435,19 @@
         }
     }];
 }
-
+#pragma mark: - 3dTouch
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"收藏" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        [self clickLike];
+    }];
+//    UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"action2" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"Action2");
+//    }];
+//    UIPreviewAction *action3 = [UIPreviewAction actionWithTitle:@"action3" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"Action3");
+//    }];
+    return @[action1];
+}
 
 
 @end

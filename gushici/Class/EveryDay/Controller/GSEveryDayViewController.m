@@ -63,14 +63,13 @@
 
     self.count = 3;
     for (int i = 0; i <3; i++) {
-        [self hideHud];
+        [SVProgressHUD show];
         [self loadData];
     }
-    [self showHudInView:self.view hint:@"~正在刷新~"];
+    [SVProgressHUD show];
 }
 
 -(void)loadData{
-    
     
 //    NSMutableArray *arrays = [NSMutableArray array];
     NSInteger iid = arc4random_uniform(50000);
@@ -81,7 +80,7 @@
        ^(NSDictionary *responseObject, NSError *error) {
            
            if (error != nil) {
-               [weakSelf hideHud];
+               [SVProgressHUD dismiss];
                return ;
            }
            
@@ -117,7 +116,7 @@
            
         dispatch_async(dispatch_get_main_queue(), ^{
             if (weakSelf.contentModels.count == self.count) {
-                [weakSelf hideHud];
+                [SVProgressHUD dismiss];
                 [weakSelf loadUI:0];
             }
                 
@@ -144,8 +143,6 @@
 
 #pragma mark : - CCDraggableContainerDelegate
 -(void)draggableContainer:(CCDraggableContainer *)draggableContainer draggableDirection:(CCDraggableDirection)draggableDirection widthRatio:(CGFloat)widthRatio heightRatio:(CGFloat)heightRatio{
-
-    
 }
 
 -(void)draggableContainer:(CCDraggableContainer *)draggableContainer cardView:(CCDraggableCardView *)cardView didSelectIndex:(NSInteger)didSelectIndex{
