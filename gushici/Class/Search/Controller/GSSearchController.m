@@ -109,6 +109,7 @@
                     self.dict4[@"typekeys"] = typekeysArray;
                     [self.arrays addObject:self.dict4];
                 }
+                
                 // 显示建议搜索结果
                             NSMutableArray *searchSuggestionsM = [NSMutableArray array];
                             for (int i = 0; i < self.arrays.count  + 1; i++) {
@@ -119,8 +120,8 @@
                             searchViewController.searchSuggestions = searchSuggestionsM;
             });
             
+            [searchViewController.searchSuggestionView reloadData];
         }];
-        
 //        // 根据条件发送查询（这里模拟搜索）
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // 搜索完毕
 //            // 显示建议搜索结果
@@ -132,6 +133,7 @@
 //            // 返回
 //            searchViewController.searchSuggestions = searchSuggestionsM;
 //        });
+        
     }
 
     
