@@ -23,6 +23,7 @@
     self.title.font = [UIFont fontWithName:_FontName size:_Font(20)];
     self.contentLable.font = [UIFont fontWithName:_FontName size:_Font(18)];
     self.contentLable.textColor = [UIColor cz_colorWithRed:30 green:30 blue:30];
+    [self.contentView insertSubview:self.needMoreButton aboveSubview:self.contentLable];
 }
 
 - (void)setModel:(GSGushiContentModel *)model {

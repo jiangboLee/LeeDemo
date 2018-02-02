@@ -60,7 +60,7 @@ static NSString *baseTableCellID = @"baseTableCellID";
         url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [[LEEHTTPManager share] request:GET UrlString:url parameters:nil finshed:^(NSDictionary *responseObject, NSError *error) {
             if (error != nil) {
-                [self showHint:@"网络有问题"];
+                [SVProgressHUD showErrorWithStatus:@"网络有问题"];
                 return ;
             }
             
@@ -87,12 +87,12 @@ static NSString *baseTableCellID = @"baseTableCellID";
         
         if (error != nil) {
             
-            [self showHint:@"网络有问题"];
+            [SVProgressHUD showErrorWithStatus:@"网络有问题"];
             return ;
         }
         if ([responseObject[@"sumCount"] integerValue] == 0) {
             
-            [self showHint:@"该筛选没结果哦"];
+            [SVProgressHUD showInfoWithStatus:@"该筛选没结果哦"];
             [self.tableView.mj_header endRefreshing];
             [self.tableView.mj_footer endRefreshing];
             return;

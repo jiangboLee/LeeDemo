@@ -91,7 +91,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
             make.right.equalTo(_headerView).offset(-15);
             make.bottom.offset(-10);
         }];
-        _headerView.ljb_height = rect.size.height + 170;
+        _headerView.ljb_height = rect.size.height + 175;
         
     }
     return _headerView;
@@ -108,7 +108,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     self.allHeights = [NSMutableArray array];
     self.allLessHeights = [NSMutableArray array];
     self.cellIsShowAll = [NSMutableDictionary dictionary];
-    self.lessHeight = [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + [UIFont fontWithName:_FontName size:_Font(18)].lineHeight * 5 + 16 + 10;
+    self.lessHeight = [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + [UIFont fontWithName:_FontName size:_Font(18)].lineHeight * 5 + 16 + 15;
     [self loadData];
 }
 
@@ -125,15 +125,15 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 
 - (void)loadData{
     
-    [self showRefresh:self.view];
+    [SVProgressHUD show];
     NSDictionary *parmeters = @{@"id":@(self.model.gushiID),@"token":@"gswapi",@"random":@(2672190210)};
     NSString *urlStr = @"http://app.gushiwen.org/api/author/author.aspx";
 //    __weak typeof(self) weakSelf = self;
     [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:parmeters finshed:
      ^(NSDictionary *responseObject, NSError *error) {
-         [self hideHud];
+         [SVProgressHUD dismiss];
          if (error != nil) {
-             
+             [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
              return ;
          }
          
@@ -210,50 +210,18 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     cell.model = self.totaldataArray[indexPath.section][indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.needMoreButton.hidden = [self.allLessHeights[indexPath.section][indexPath.row] floatValue] != self.lessHeight;
-    
+    cell.needMoreButton.hidden = [self.allLessHeights[indexPath.section][indexPath.row] floatValue] < self.lessHeight;
+    cell.needMoreButton.selected = [self.allLessHeights[indexPath.section][indexPath.row] floatValue] != self.lessHeight;
+    __weak typeof(self) weakSelf = self;
     cell.lookMoreClickBlock = ^(BOOL more) {
         
         if (more) {
-            self.allLessHeights[indexPath.section][indexPath.row] = self.allHeights[indexPath.section][indexPath.row];
+            weakSelf.allLessHeights[indexPath.section][indexPath.row] = @([weakSelf.allHeights[indexPath.section][indexPath.row] floatValue] + 20);
         } else {
-            self.allLessHeights[indexPath.section][indexPath.row] = @(self.lessHeight);
+            weakSelf.allLessHeights[indexPath.section][indexPath.row] = @(weakSelf.lessHeight);
         }
-        
-/** 2018-02-02 15:00:40
-        switch (indexPath.section) {
-            case 0:
-            {
-                if (self.isZiliao) {
-                    if (more) {
-                        self.ziliaoLessHeights[indexPath.row] = self.ziliaoHeights[indexPath.row];
-                    } else {
-                        self.ziliaoHeights[indexPath.row] = @(self.lessHeight);
-                    }
-                } else {
-                    if (more) {
-                        self.gushiwenLessHeights[indexPath.row] = self.gushiwenHeights[indexPath.row];
-                    } else {
-                        self.gushiwenLessHeights[indexPath.row] = @(self.lessHeight);
-                    }
-                }
-            }
-                break;
-            case 1:
-            {
-                if (more) {
-                    self.gushiwenLessHeights[indexPath.row] = self.gushiwenHeights[indexPath.row];
-                } else {
-                    self.gushiwenLessHeights[indexPath.row] = @(self.lessHeight);
-                }
-            }
-                break;
-            default:
-                break;
-*/
-//        }
-        [tableView beginUpdates];
-        [tableView endUpdates];
+        [weakSelf.tableV beginUpdates];
+        [weakSelf.tableV endUpdates];
     };
     
     return cell;
@@ -262,60 +230,8 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 {
     // 返回Cell高度
     return  [self.allLessHeights[indexPath.section][indexPath.row] floatValue];
-/** 2018-02-02 14:56:55
-    switch (indexPath.section) {
-        case 0:
-        {
-            if (self.isZiliao) {
-                return [self.ziliaoLessHeights[indexPath.row] floatValue];
-            } else {
-                return [self.gushiwenLessHeights[indexPath.row] floatValue];
-            }
-        }
-            break;
-        case 1:
-        {
-            return [self.gushiwenLessHeights[indexPath.row] floatValue];
-        }
-            break;
-        default:
-            return 44;
-            break;
-    }
-*/
-    
-    
+  
 }
-
-/** 2018-02-02 13:46:26
--(void)loadcont:(NSInteger)shiID completed:(void(^)(NSString *cont))completed{
-    
-    NSString *urlStr = [NSString stringWithFormat:@"http://app.gushiwen.org/api/author/ziliao.aspx?id=%zd&token=gswapi&random=2557059046",shiID];
-    //    __weak typeof(self) weakSelf = self;
-    [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:nil finshed:
-     ^(NSDictionary *responseObject, NSError *error) {
-         
-         if (error != nil) {
-             
-             return ;
-         }
-         
-         GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject];
-         
-         completed(model.cont);
-         
-     }];
-    
-}
-*/
-
-//#pragma mark -- Dalegate
-//- (void)remarksCellShowContrntWithDic:(NSDictionary *)dic andCellIndexPath:(NSIndexPath *)indexPath
-//{
-//    [self.cellIsShowAll setObject:[dic objectForKey:@"isShow"] forKey:[NSString stringWithFormat:@"%@",[dic objectForKey:@"row"]]];
-//
-//    [_tableV reloadData];
-//}
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 

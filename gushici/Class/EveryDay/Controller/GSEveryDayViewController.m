@@ -63,10 +63,10 @@
 
     self.count = 3;
     for (int i = 0; i <3; i++) {
-        [self hideHud];
+        [SVProgressHUD show];
         [self loadData];
     }
-    [self showHudInView:self.view hint:@"~正在刷新~"];
+    [SVProgressHUD show];
 }
 
 -(void)loadData{
@@ -81,7 +81,7 @@
        ^(NSDictionary *responseObject, NSError *error) {
            
            if (error != nil) {
-               [weakSelf hideHud];
+               [SVProgressHUD dismiss];
                return ;
            }
            
@@ -117,7 +117,7 @@
            
         dispatch_async(dispatch_get_main_queue(), ^{
             if (weakSelf.contentModels.count == self.count) {
-                [weakSelf hideHud];
+                [SVProgressHUD dismiss];
                 [weakSelf loadUI:0];
             }
                 

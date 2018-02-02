@@ -186,7 +186,7 @@
 
     _gushiID = gushiID;
     self.tableV.hidden = NO;
-    [self showRefresh:self.view];
+    [SVProgressHUD show];
     [self loadData:gushiID];
 }
 -(void)loadData:(NSInteger)iid {
@@ -206,7 +206,7 @@
      ^(NSDictionary *responseObject, NSError *error) {
          
          if (error != nil) {
-             [self hideHud];
+             [SVProgressHUD dismiss];
              return ;
          }
          
@@ -219,7 +219,7 @@
          GSGushiContentModel *authorModel = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
          //可能参数返回没有数据
          if (model.nameStr == nil) {
-             [self hideHud];
+             [SVProgressHUD dismiss];
              return;
          }
          NSMutableArray *array = [NSMutableArray arrayWithObject:model];
@@ -238,7 +238,7 @@
          
          dispatch_async(dispatch_get_main_queue(), ^{
              
-             [self hideHud];
+             [SVProgressHUD dismiss];
              self.dataArray = array;
              [self.tableV reloadData];
          });
