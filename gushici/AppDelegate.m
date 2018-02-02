@@ -25,7 +25,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    [MobClick setLogEnabled:YES];
+//    [MobClick setLogEnabled:YES];
     UMConfigInstance.appKey = @"58a70c0d65b6d647cb001209";
     UMConfigInstance.channelId = @"App Store";
 //    UMConfigInstance.eSType = E_UM_GAME; //仅适用于游戏场景，应用统计不用设置

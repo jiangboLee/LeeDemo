@@ -25,4 +25,6 @@ target 'gushici' do
   
   # 集成QQ
   pod ‘UMengUShare/Social/QQ'
+  
+  pod 'Bugly'
 end
