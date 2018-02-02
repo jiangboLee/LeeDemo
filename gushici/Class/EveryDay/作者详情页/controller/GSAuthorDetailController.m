@@ -8,8 +8,6 @@
 
 #import "GSAuthorDetailController.h"
 #import "GSGushiContentModel.h"
-#import "RemarksTableViewCell.h"
-#import "RemarksCellHeightModel.h"
 #import <UIImageView+WebCache.h>
 #import "GSDetailController.h"
 #import "GSAuthorTableViewCell.h"

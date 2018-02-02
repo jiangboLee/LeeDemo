@@ -22,8 +22,6 @@
 		B721FF301E51FA31006546E5 /* GSBaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = B721FF2F1E51FA31006546E5 /* GSBaseNavController.m */; };
 		B721FF3B1E51FE56006546E5 /* GSDetailContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = B721FF3A1E51FE56006546E5 /* GSDetailContent.xib */; };
 		B721FF3E1E520B63006546E5 /* GSDetailContent.m in Sources */ = {isa = PBXBuildFile; fileRef = B721FF3D1E520B63006546E5 /* GSDetailContent.m */; };
-		B72653031E52CF8600D6CA5F /* RemarksCellHeightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B72652FE1E52CF8600D6CA5F /* RemarksCellHeightModel.m */; };
-		B72653041E52CF8600D6CA5F /* RemarksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653011E52CF8600D6CA5F /* RemarksTableViewCell.m */; };
 		B726530E1E52F6D800D6CA5F /* GSShiwenController.m in Sources */ = {isa = PBXBuildFile; fileRef = B726530D1E52F6D800D6CA5F /* GSShiwenController.m */; };
 		B72653111E52FF0B00D6CA5F /* GSGushiwenController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653101E52FF0B00D6CA5F /* GSGushiwenController.m */; };
 		B72653141E52FF1800D6CA5F /* GSMingjuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72653131E52FF1800D6CA5F /* GSMingjuController.m */; };
@@ -119,10 +117,6 @@
 		B721FF3A1E51FE56006546E5 /* GSDetailContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSDetailContent.xib; sourceTree = "<group>"; };
 		B721FF3C1E520B63006546E5 /* GSDetailContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDetailContent.h; sourceTree = "<group>"; };
 		B721FF3D1E520B63006546E5 /* GSDetailContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSDetailContent.m; sourceTree = "<group>"; };
-		B72652FD1E52CF8600D6CA5F /* RemarksCellHeightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemarksCellHeightModel.h; sourceTree = "<group>"; };
-		B72652FE1E52CF8600D6CA5F /* RemarksCellHeightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemarksCellHeightModel.m; sourceTree = "<group>"; };
-		B72653001E52CF8600D6CA5F /* RemarksTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemarksTableViewCell.h; sourceTree = "<group>"; };
-		B72653011E52CF8600D6CA5F /* RemarksTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemarksTableViewCell.m; sourceTree = "<group>"; };
 		B726530C1E52F6D800D6CA5F /* GSShiwenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSShiwenController.h; sourceTree = "<group>"; };
 		B726530D1E52F6D800D6CA5F /* GSShiwenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSShiwenController.m; sourceTree = "<group>"; };
 		B726530F1E52FF0B00D6CA5F /* GSGushiwenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSGushiwenController.h; sourceTree = "<group>"; };
@@ -310,36 +304,8 @@
 				B721FF3C1E520B63006546E5 /* GSDetailContent.h */,
 				B721FF3D1E520B63006546E5 /* GSDetailContent.m */,
 				B721FF3A1E51FE56006546E5 /* GSDetailContent.xib */,
-				B72652F81E52CF8600D6CA5F /* Cell中文字自适应高度 */,
 			);
 			path = "诗文详情页";
-			sourceTree = "<group>";
-		};
-		B72652F81E52CF8600D6CA5F /* Cell中文字自适应高度 */ = {
-			isa = PBXGroup;
-			children = (
-				B72652FC1E52CF8600D6CA5F /* Model */,
-				B72652FF1E52CF8600D6CA5F /* View */,
-			);
-			path = "Cell中文字自适应高度";
-			sourceTree = "<group>";
-		};
-		B72652FC1E52CF8600D6CA5F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B72652FD1E52CF8600D6CA5F /* RemarksCellHeightModel.h */,
-				B72652FE1E52CF8600D6CA5F /* RemarksCellHeightModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B72652FF1E52CF8600D6CA5F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B72653001E52CF8600D6CA5F /* RemarksTableViewCell.h */,
-				B72653011E52CF8600D6CA5F /* RemarksTableViewCell.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		B72653311E55A6CB00D6CA5F /* 作者详情页 */ = {
@@ -889,7 +855,6 @@
 				B7F005BE1E5F22FF0057DEBC /* GSAboutMeController.m in Sources */,
 				B75A47B71E4F45BD00FCC0C5 /* NSAttributedString+CZAdditon.m in Sources */,
 				B72653371E55A6FF00D6CA5F /* GSAuthorDetailController.m in Sources */,
-				B72653031E52CF8600D6CA5F /* RemarksCellHeightModel.m in Sources */,
 				3FBE4C962024565E007BB78B /* UIView+PYSearchExtension.m in Sources */,
 				B721FF301E51FA31006546E5 /* GSBaseNavController.m in Sources */,
 				B72653171E52FF2400D6CA5F /* GSAuthorController.m in Sources */,
@@ -920,7 +885,6 @@
 				B75A47BA1E4F45BD00FCC0C5 /* NSString+CZHash.m in Sources */,
 				B78FF78B1E588923007EDD2A /* GSClickSearchViewController.m in Sources */,
 				B75A47BE1E4F45BD00FCC0C5 /* UIColor+CZAddition.m in Sources */,
-				B72653041E52CF8600D6CA5F /* RemarksTableViewCell.m in Sources */,
 				3FBE4C902024565E007BB78B /* NSBundle+PYSearchExtension.m in Sources */,
 				B75A47CF1E4F46AE00FCC0C5 /* Reachability.m in Sources */,
 				B75A48161E51C97200FCC0C5 /* GSTheme.m in Sources */,

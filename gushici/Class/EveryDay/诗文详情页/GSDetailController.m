@@ -73,7 +73,6 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     
     _share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
     
-//    [self clickLike];
     GSGushiContentModel *model = self.dataArray[0];
 
     //查找数据库
@@ -276,7 +275,6 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 -(void)setDataArray:(NSArray *)dataArray{
 
     _dataArray = dataArray;
-    
     __weak typeof(self) weakSelf = self;
     [self.headerView setHeightBlock:^(CGFloat x) {
         

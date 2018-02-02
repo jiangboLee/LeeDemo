@@ -36,10 +36,12 @@ static NSString *baseTableCellID = @"baseTableCellID";
     self.tableV = tableV;
     
     if (!self.isLikeHistory) {
-       
+        self.title = @"浏览记录";
         UIBarButtonItem *deleteAll = [[UIBarButtonItem alloc]initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAll)];
         self.navigationItem.rightBarButtonItem = deleteAll;
         [deleteAll setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:_FontName size:17],NSForegroundColorAttributeName :[UIColor redColor]} forState:UIControlStateNormal];
+    } else {
+        self.title = @"我的收藏";
     }
 }
 

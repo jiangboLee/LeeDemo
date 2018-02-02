@@ -55,7 +55,7 @@ static NSString *cellID = @"cellID";
             return 2;
             break;
         case 2:
-            return 2;
+            return 1;
             break;
         default:
             return 0;
@@ -114,10 +114,10 @@ static NSString *cellID = @"cellID";
         {
             if (indexPath.row == 0) {
                 
-                cell.textLabel.text = _Str(@"去好评");
+                cell.textLabel.text = _Str(@"反馈与意见");
             }else{
                 
-                cell.textLabel.text = _Str(@"反馈与意见");
+                cell.textLabel.text = _Str(@"去好评");
             }
             break;
         }
@@ -137,9 +137,9 @@ static NSString *cellID = @"cellID";
         {
             if (indexPath.row == 0) {
             
-            GSHistoryTableVC *likeVC = [[GSHistoryTableVC alloc]init];
-            likeVC.isLikeHistory = YES;
-            [self.navigationController pushViewController:likeVC animated:YES];
+                GSHistoryTableVC *likeVC = [[GSHistoryTableVC alloc]init];
+                likeVC.isLikeHistory = YES;
+                [self.navigationController pushViewController:likeVC animated:YES];
             
             } else {
                 GSHistoryTableVC *likeVC = [[GSHistoryTableVC alloc]init];
@@ -162,14 +162,14 @@ static NSString *cellID = @"cellID";
         {
             if (indexPath.row == 0) {
                 
+                GSAboutMeController *aboutMe = [[GSAboutMeController alloc]init];
+                [self.navigationController pushViewController:aboutMe animated:YES];
+            }else{
+            
                 NSString *url = @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1209480381&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8";
                 
                 // 实现跳转
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-            }else{
-            
-                GSAboutMeController *aboutMe = [[GSAboutMeController alloc]init];
-                [self.navigationController pushViewController:aboutMe animated:YES];
                 
             }
             break;

@@ -71,7 +71,6 @@
 
 -(void)loadData{
     
-    
 //    NSMutableArray *arrays = [NSMutableArray array];
     NSInteger iid = arc4random_uniform(50000);
     NSDictionary *parmeters = @{@"id":@(iid),@"token":@"gswapi",@"random":@(2672180210)};
@@ -144,8 +143,6 @@
 
 #pragma mark : - CCDraggableContainerDelegate
 -(void)draggableContainer:(CCDraggableContainer *)draggableContainer draggableDirection:(CCDraggableDirection)draggableDirection widthRatio:(CGFloat)widthRatio heightRatio:(CGFloat)heightRatio{
-
-    
 }
 
 -(void)draggableContainer:(CCDraggableContainer *)draggableContainer cardView:(CCDraggableCardView *)cardView didSelectIndex:(NSInteger)didSelectIndex{
