@@ -14,6 +14,9 @@
 #import <CoreSpotlight/CoreSpotlight.h>
 #import "GSDetailController.h"
 #import "GSTabBarController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
@@ -46,6 +49,8 @@
     UITabBarController *tabBarVc = (UITabBarController *)self.window.rootViewController;
     tabBarVc.delegate = self;
     
+    [Fabric with:@[[Crashlytics class]]];
+
     //3d touch
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
         

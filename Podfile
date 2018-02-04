@@ -27,4 +27,6 @@ target 'gushici' do
   pod ‘UMengUShare/Social/QQ'
   
 #  pod 'Bugly'
+    pod 'Fabric'
+    pod 'Crashlytics'
 end

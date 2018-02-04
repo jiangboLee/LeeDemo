@@ -712,6 +712,7 @@
 				B75A475B1E4F3A9200FCC0C5 /* Resources */,
 				38B5DBE1AB520F35477B5898 /* [CP] Embed Pods Frameworks */,
 				FCD772636183597E1013064E /* [CP] Copy Pods Resources */,
+				B7A9BFA12024B861003F8E38 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -801,6 +802,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gushici/Pods-gushici-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B7A9BFA12024B861003F8E38 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 532eed4f687418db0cc64a9548cbec9bc0b4e303 5e5607bf79a5f9edc67863f792733b5097da954f3dc5a5ba8fc42fb4b8bbbf5a";
 		};
 		CBB5CE30512A0C2E01429F3E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
