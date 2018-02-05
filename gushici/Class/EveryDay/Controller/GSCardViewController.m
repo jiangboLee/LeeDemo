@@ -9,6 +9,7 @@
 #import "GSCardViewController.h"
 #import "GSDetailController.h"
 #import "GSFilePresentAnimation.h"
+#import "GSFilpDismissAnimator.h"
 
 @interface GSCardViewController ()<UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
 
@@ -25,8 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.delegate = self;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    if (@available(iOS 11.0, *)) {
+        self.cont1.contentInsetAdjustmentBehavior =  UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    self.navigationController.navigationBar.translucent = NO;
     [self setupUI];
 }
 
@@ -99,6 +104,8 @@
     if (operation == UINavigationControllerOperationPush) {
         
         return  [[GSFilePresentAnimation alloc] initWithOriginFrame: self.cardView.frame];
+    } else if (operation == UINavigationControllerOperationPop){
+        return [[GSFilpDismissAnimator alloc] initWithDestinationFrame:self.cardView.frame];
     } else {
         return nil;
     }

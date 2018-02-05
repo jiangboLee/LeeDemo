@@ -83,6 +83,7 @@
 		B7A9BF9E2024B795003F8E38 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A9BF952024B795003F8E38 /* PYSearchViewController.m */; };
 		B7A9BF9F2024B795003F8E38 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A9BF972024B795003F8E38 /* UIColor+PYSearchExtension.m */; };
 		B7A9BFA02024B795003F8E38 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A9BF992024B795003F8E38 /* UIView+PYSearchExtension.m */; };
+		B7A9BFA4202891EB003F8E38 /* GSFilpDismissAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A9BFA3202891EB003F8E38 /* GSFilpDismissAnimator.m */; };
 		B7C036451F63AC200032311C /* GSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C036441F63AC200032311C /* GSTabBarController.m */; };
 		B7F005BE1E5F22FF0057DEBC /* GSAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F005BC1E5F22FF0057DEBC /* GSAboutMeController.m */; };
 		B7F005BF1E5F22FF0057DEBC /* GSAboutMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */; };
@@ -231,6 +232,8 @@
 		B7A9BF972024B795003F8E38 /* UIColor+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYSearchExtension.m"; sourceTree = "<group>"; };
 		B7A9BF982024B795003F8E38 /* UIView+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYSearchExtension.h"; sourceTree = "<group>"; };
 		B7A9BF992024B795003F8E38 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
+		B7A9BFA2202891EB003F8E38 /* GSFilpDismissAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSFilpDismissAnimator.h; sourceTree = "<group>"; };
+		B7A9BFA3202891EB003F8E38 /* GSFilpDismissAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSFilpDismissAnimator.m; sourceTree = "<group>"; };
 		B7C036431F63AC200032311C /* GSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTabBarController.h; sourceTree = "<group>"; };
 		B7C036441F63AC200032311C /* GSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTabBarController.m; sourceTree = "<group>"; };
 		B7F005BB1E5F22FF0057DEBC /* GSAboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAboutMeController.h; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 			children = (
 				3F6E5A7320283DE500688633 /* GSFilePresentAnimation.h */,
 				3F6E5A7420283DE500688633 /* GSFilePresentAnimation.m */,
+				B7A9BFA2202891EB003F8E38 /* GSFilpDismissAnimator.h */,
+				B7A9BFA3202891EB003F8E38 /* GSFilpDismissAnimator.m */,
 				3F6E5A76202840C500688633 /* GSAnimatorHelper.h */,
 				3F6E5A77202840C500688633 /* GSAnimatorHelper.m */,
 			);
@@ -715,7 +720,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = GS;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = lijiangbo;
 				TargetAttributes = {
 					B75A475C1E4F3A9200FCC0C5 = {
@@ -816,7 +821,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FCD772636183597E1013064E /* [CP] Copy Pods Resources */ = {
@@ -863,6 +868,7 @@
 				3FBE4C7F202406CE007BB78B /* GSAuthorTableViewCell.m in Sources */,
 				B72653281E548C8600D6CA5F /* LEECellModel.m in Sources */,
 				3FBE4C9A2027FC45007BB78B /* GSCardViewController.m in Sources */,
+				B7A9BFA4202891EB003F8E38 /* GSFilpDismissAnimator.m in Sources */,
 				3F6E5A7520283DE500688633 /* GSFilePresentAnimation.m in Sources */,
 				B75A47BD1E4F45BD00FCC0C5 /* UIButton+CZAddition.m in Sources */,
 				B7A9BF9E2024B795003F8E38 /* PYSearchViewController.m in Sources */,
@@ -956,7 +962,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -964,7 +972,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1006,7 +1018,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1014,7 +1028,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;

@@ -75,6 +75,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.translucent = NO;
     self.share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
 }
 

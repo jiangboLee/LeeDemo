@@ -25,14 +25,12 @@
 }
 
 - (NSTimeInterval)transitionDuration:(nullable id<UIViewControllerContextTransitioning>)transitionContext {
-    return 2;
+    return 1.5;
 }
 
 - (void)animateTransition:(nonnull id<UIViewControllerContextTransitioning>)transitionContext {
     
     UIPageViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-//    UIViewController *fromVC = pageVC.viewControllers[0];
-    
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     UIView *containerView = transitionContext.containerView;
@@ -42,9 +40,9 @@
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     
     UIImageView *snapshot = [[UIImageView alloc]initWithImage:[UIImage viewToImage:toVC.view]];
+    snapshot.contentMode = UIViewContentModeScaleAspectFit;
 //    UIView *snapshot = [toVC.view snapshotViewAfterScreenUpdates:YES];
-//        snapshot.backgroundColor = [UIColor redColor];
-    snapshot.frame = self.originFrame;
+    snapshot.frame = CGRectMake(self.originFrame.origin.x, self.originFrame.origin.y + 49, self.originFrame.size.width, self.originFrame.size.height);
     snapshot.layer.cornerRadius = 10;
     snapshot.layer.masksToBounds = YES;
     snapshot.layer.transform = [GSAnimatorHelper yRotation:M_PI_2];
