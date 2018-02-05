@@ -22,4 +22,28 @@
 @property CGFloat ljb_centerY;
 @property CGSize ljb_size;
 
+/**
+ 边框宽度
+ */
+@property(nonatomic, assign) IBInspectable CGFloat borderWidth;
+
+/**
+ 边框颜色
+ */
+@property(nonatomic, strong) IBInspectable UIColor *borderColor;
+
+/**
+ 圆角
+ */
+@property(nonatomic, assign) IBInspectable CGFloat cornerRadius;
+
+
+@property(nonatomic, assign) IBInspectable BOOL lee_hasShadown;
+
+/**
+ 返回视图截图
+ 
+ @return 图片
+ */
+- (UIImage *)lee_snapshotImage;
 @end

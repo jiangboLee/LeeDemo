@@ -20,9 +20,6 @@
 @property(nonatomic ,strong) UITableView *tableV;
 @property(nonatomic ,strong) GSDetailContent *headerView;
 
-// 存放cell视图展开状态的字典
-@property (nonatomic, strong) NSMutableDictionary *cellIsShowAll;
-
 @property(nonatomic ,copy) NSString *cont;
 
 //播放器
@@ -62,37 +59,45 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     return _tableV;
 }
 
+- (NSMutableArray *)shiwenHeights {
+    if (_shiwenHeights == nil) {
+        _shiwenHeights = [NSMutableArray array];
+    }
+    return _shiwenHeights;
+}
+
+- (NSMutableArray *)shiwenLessHeights {
+    if (_shiwenLessHeights == nil) {
+        _shiwenLessHeights = [NSMutableArray array];
+    }
+    return _shiwenLessHeights;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.shiwenHeights = [NSMutableArray array];
-    self.shiwenLessHeights = [NSMutableArray array];
-    self.lessHeight = [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + [UIFont fontWithName:_FontName size:_Font(18)].lineHeight * 5 + 16 + 15;
-    self.cellIsShowAll = [NSMutableDictionary dictionary];
-    
-    _share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
-    
-    GSGushiContentModel *model = self.dataArray[0];
-
-    //查找数据库
-        //@"SELECT * FROM t_likegushi WHERE gushiID = ?;", @(model.gushiID)
-        [[GSSQLiteTools shared].queue inDatabase:^(FMDatabase *db) {
-           
-            FMResultSet *reult = [db executeQuery:@"SELECT * FROM t_likegushi WHERE gushiID = ?;", @(model == nil ? self.gushiID : model.gushiID)];
-            if (reult.next) {
-                
-                UIBarButtonItem *unlike = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share_highlighted"] style:UIBarButtonItemStyleDone target:self action:@selector(clickunLike)];
-                self.navigationItem.rightBarButtonItems = @[_share,unlike];
-            }else{
-            
-                UIBarButtonItem *like = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_like"] style:UIBarButtonItemStyleDone target:self action:@selector(clickLike)];
-                self.navigationItem.rightBarButtonItems = @[_share,like];
-            }
-        }];
-     
-    
 }
+#pragma mark: - 查询数据库
+- (void)selectdSQL {
+    
+    self.share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
+    GSGushiContentModel *model = self.dataArray[0];
+    //查找数据库
+    //@"SELECT * FROM t_likegushi WHERE gushiID = ?;", @(model.gushiID)
+    [[GSSQLiteTools shared].queue inDatabase:^(FMDatabase *db) {
+        
+        FMResultSet *reult = [db executeQuery:@"SELECT * FROM t_likegushi WHERE gushiID = ?;", @(model == nil ? self.gushiID : model.gushiID)];
+        if (reult.next) {
+            
+            UIBarButtonItem *unlike = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share_highlighted"] style:UIBarButtonItemStyleDone target:self action:@selector(clickunLike)];
+            self.navigationItem.rightBarButtonItems = @[_share,unlike];
+        }else{
+            
+            UIBarButtonItem *like = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_like"] style:UIBarButtonItemStyleDone target:self action:@selector(clickLike)];
+            self.navigationItem.rightBarButtonItems = @[_share,like];
+        }
+    }];
+}
+
 //分享
 - (void)shareGushi{
 
@@ -191,7 +196,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     }else{
         urlStr = @"http://app.gushiwen.org/api/shiwen/view.aspx";
     }
-    //    __weak typeof(self) weakSelf = self;
+        __weak typeof(self) weakSelf = self;
     [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:parmeters finshed:
      ^(NSDictionary *responseObject, NSError *error) {
          
@@ -199,47 +204,51 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
          if (error != nil) {
              return ;
          }
-         
-         GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_gushiwen"]];
-         
-         NSArray<GSGushiContentModel *> *fanyiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_fanyis"][@"fanyis"]];
-         
-         NSArray<GSGushiContentModel *> *shangxiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_shangxis"][@"shangxis"]];
-         
-         GSGushiContentModel *authorModel = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
-         //可能参数返回没有数据
-         if (model.nameStr == nil) {
-             return;
-         }
-         NSMutableArray *array = [NSMutableArray arrayWithObject:model];
-         
-         if (fanyiArray.count > 0 && fanyiArray[0].nameStr != nil) {
-             fanyiArray[0].cankao = @"fanyi";
-             [array addObject:fanyiArray[0]];
-             CGFloat fanyiHeight = [self getLableHeight:fanyiArray[0].cont];
-             [self.shiwenHeights addObject:@(fanyiHeight)];
-             fanyiHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(fanyiHeight + 10)];
-         }
-         if (shangxiArray.count > 0 && shangxiArray[0].cont != nil) {
-             shangxiArray[0].cankao = @"shangxi";
-             [array addObject:shangxiArray[0]];
-             CGFloat shangxiHeight = [self getLableHeight:shangxiArray[0].cont];
-             [self.shiwenHeights addObject:@(shangxiHeight)];
-             shangxiHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(shangxiHeight + 10)];
-         }
-         if (authorModel.nameStr != nil) {
-             [array addObject:authorModel];
-             CGFloat authorHeight = [self getLableHeight:authorModel.cont];
-             [self.shiwenHeights addObject:@(authorHeight)];
-             authorHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(authorHeight + 10)];
-         }
-         
-         dispatch_async(dispatch_get_main_queue(), ^{
-             self.dataArray = array;
-             [self.tableV reloadData];
-         });
-         
-     }];
+         [weakSelf setResponseObject:responseObject];
+         [SVProgressHUD dismiss];
+    }];
+}
+
+- (void)setResponseObject:(NSDictionary *)responseObject {
+    
+    _responseObject = responseObject;
+    self.lessHeight = [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + [UIFont fontWithName:_FontName size:_Font(18)].lineHeight * 5 + 16 + 15;
+    GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_gushiwen"]];
+    NSArray<GSGushiContentModel *> *fanyiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_fanyis"][@"fanyis"]];
+    NSArray<GSGushiContentModel *> *shangxiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_shangxis"][@"shangxis"]];
+    GSGushiContentModel *authorModel = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_author"]];
+    //可能参数返回没有数据
+    if (model.nameStr == nil) {
+        return;
+    }
+    NSMutableArray *array = [NSMutableArray arrayWithObject:model];
+    
+    if (fanyiArray.count > 0 && fanyiArray[0].nameStr != nil) {
+        fanyiArray[0].cankao = @"fanyi";
+        [array addObject:fanyiArray[0]];
+        CGFloat fanyiHeight = [self getLableHeight:fanyiArray[0].cont];
+        [self.shiwenHeights addObject:@(fanyiHeight)];
+        fanyiHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(fanyiHeight + 10)];
+    }
+    if (shangxiArray.count > 0 && shangxiArray[0].cont != nil) {
+        shangxiArray[0].cankao = @"shangxi";
+        [array addObject:shangxiArray[0]];
+        CGFloat shangxiHeight = [self getLableHeight:shangxiArray[0].cont];
+        [self.shiwenHeights addObject:@(shangxiHeight)];
+        shangxiHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(shangxiHeight + 10)];
+    }
+    if (authorModel.nameStr != nil) {
+        [array addObject:authorModel];
+        CGFloat authorHeight = [self getLableHeight:authorModel.cont];
+        [self.shiwenHeights addObject:@(authorHeight)];
+        authorHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(authorHeight + 10)];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.dataArray = array;
+        [self selectdSQL];
+        [self.tableV reloadData];
+    });
 }
 
 - (CGFloat)getLableHeight:(NSString *)contentStr {

@@ -17,6 +17,7 @@
 
 #import "LEEHTTPManager.h"
 #import "GSBaseTableViewController.h"
+#import "GSGushiContentModel.h"
 
 #define UISCREENW [UIScreen mainScreen].bounds.size.width
 #define UISCREENH [UIScreen mainScreen].bounds.size.height

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3FBE4C7F202406CE007BB78B /* GSAuthorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE4C7D202406CE007BB78B /* GSAuthorTableViewCell.m */; };
 		3FBE4C80202406CE007BB78B /* GSAuthorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBE4C7E202406CE007BB78B /* GSAuthorTableViewCell.xib */; };
+		3FBE4C9A2027FC45007BB78B /* GSCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE4C982027FC45007BB78B /* GSCardViewController.m */; };
+		3FBE4C9B2027FC45007BB78B /* GSCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBE4C992027FC45007BB78B /* GSCardViewController.xib */; };
+		3FBE4C9E2027FC65007BB78B /* GSPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE4C9D2027FC65007BB78B /* GSPageViewController.m */; };
 		6E6A9ABBA176B834C3AD3331 /* libPods-gushici.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8D547B01B79F5D740D2BCD /* libPods-gushici.a */; };
 		B715FEAC1F8916140041ED5D /* GSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B715FEAB1F8916140041ED5D /* GSBaseTableViewController.m */; };
 		B721FF2D1E51F416006546E5 /* GSDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B721FF2C1E51F416006546E5 /* GSDetailController.m */; };
@@ -53,12 +56,6 @@
 		B75A47C81E4F45BD00FCC0C5 /* UIViewController+CZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47B51E4F45BD00FCC0C5 /* UIViewController+CZAddition.m */; };
 		B75A47CE1E4F46AE00FCC0C5 /* LEEHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47CB1E4F46AE00FCC0C5 /* LEEHTTPManager.m */; };
 		B75A47CF1E4F46AE00FCC0C5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47CD1E4F46AE00FCC0C5 /* Reachability.m */; };
-		B75A47D21E4F473000FCC0C5 /* GSEveryDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47D11E4F473000FCC0C5 /* GSEveryDayViewController.m */; };
-		B75A47D91E4F671C00FCC0C5 /* CCDraggableCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47D51E4F671C00FCC0C5 /* CCDraggableCardView.m */; };
-		B75A47DA1E4F671C00FCC0C5 /* CCDraggableContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47D81E4F671C00FCC0C5 /* CCDraggableContainer.m */; };
-		B75A47DD1E4F6D8100FCC0C5 /* GSCustomCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47DC1E4F6D8100FCC0C5 /* GSCustomCardView.m */; };
-		B75A47DF1E4F6F8000FCC0C5 /* GushiContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = B75A47DE1E4F6F8000FCC0C5 /* GushiContent.xib */; };
-		B75A47E21E4F6F9E00FCC0C5 /* GushiContent.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47E11E4F6F9E00FCC0C5 /* GushiContent.m */; };
 		B75A47E91E5005AD00FCC0C5 /* GSGushiContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A47E81E5005AD00FCC0C5 /* GSGushiContentModel.m */; };
 		B75A48021E508BC200FCC0C5 /* GSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48011E508BC200FCC0C5 /* GSSearchController.m */; };
 		B75A48051E50A51700FCC0C5 /* GSSearchSuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75A48041E50A51700FCC0C5 /* GSSearchSuggestionView.m */; };
@@ -94,6 +91,11 @@
 		3FBE4C7C202406CE007BB78B /* GSAuthorTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSAuthorTableViewCell.h; sourceTree = "<group>"; };
 		3FBE4C7D202406CE007BB78B /* GSAuthorTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSAuthorTableViewCell.m; sourceTree = "<group>"; };
 		3FBE4C7E202406CE007BB78B /* GSAuthorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSAuthorTableViewCell.xib; sourceTree = "<group>"; };
+		3FBE4C972027FC45007BB78B /* GSCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSCardViewController.h; sourceTree = "<group>"; };
+		3FBE4C982027FC45007BB78B /* GSCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSCardViewController.m; sourceTree = "<group>"; };
+		3FBE4C992027FC45007BB78B /* GSCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSCardViewController.xib; sourceTree = "<group>"; };
+		3FBE4C9C2027FC65007BB78B /* GSPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSPageViewController.h; sourceTree = "<group>"; };
+		3FBE4C9D2027FC65007BB78B /* GSPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSPageViewController.m; sourceTree = "<group>"; };
 		B715FEAA1F8916140041ED5D /* GSBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSBaseTableViewController.h; sourceTree = "<group>"; };
 		B715FEAB1F8916140041ED5D /* GSBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSBaseTableViewController.m; sourceTree = "<group>"; };
 		B721FF2B1E51F416006546E5 /* GSDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDetailController.h; sourceTree = "<group>"; };
@@ -176,18 +178,6 @@
 		B75A47CB1E4F46AE00FCC0C5 /* LEEHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEHTTPManager.m; sourceTree = "<group>"; };
 		B75A47CC1E4F46AE00FCC0C5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B75A47CD1E4F46AE00FCC0C5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		B75A47D01E4F473000FCC0C5 /* GSEveryDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSEveryDayViewController.h; sourceTree = "<group>"; };
-		B75A47D11E4F473000FCC0C5 /* GSEveryDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSEveryDayViewController.m; sourceTree = "<group>"; };
-		B75A47D41E4F671C00FCC0C5 /* CCDraggableCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDraggableCardView.h; sourceTree = "<group>"; };
-		B75A47D51E4F671C00FCC0C5 /* CCDraggableCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDraggableCardView.m; sourceTree = "<group>"; };
-		B75A47D61E4F671C00FCC0C5 /* CCDraggableConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDraggableConfig.h; sourceTree = "<group>"; };
-		B75A47D71E4F671C00FCC0C5 /* CCDraggableContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDraggableContainer.h; sourceTree = "<group>"; };
-		B75A47D81E4F671C00FCC0C5 /* CCDraggableContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDraggableContainer.m; sourceTree = "<group>"; };
-		B75A47DB1E4F6D8100FCC0C5 /* GSCustomCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCustomCardView.h; sourceTree = "<group>"; };
-		B75A47DC1E4F6D8100FCC0C5 /* GSCustomCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCustomCardView.m; sourceTree = "<group>"; };
-		B75A47DE1E4F6F8000FCC0C5 /* GushiContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GushiContent.xib; sourceTree = "<group>"; };
-		B75A47E01E4F6F9E00FCC0C5 /* GushiContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GushiContent.h; sourceTree = "<group>"; };
-		B75A47E11E4F6F9E00FCC0C5 /* GushiContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GushiContent.m; sourceTree = "<group>"; };
 		B75A47E71E5005AD00FCC0C5 /* GSGushiContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSGushiContentModel.h; sourceTree = "<group>"; };
 		B75A47E81E5005AD00FCC0C5 /* GSGushiContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSGushiContentModel.m; sourceTree = "<group>"; };
 		B75A48001E508BC200FCC0C5 /* GSSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSearchController.h; sourceTree = "<group>"; };
@@ -367,7 +357,6 @@
 				B721FF2A1E51F3EB006546E5 /* 诗文详情页 */,
 				B75A47791E4F42E600FCC0C5 /* Controller */,
 				B75A477A1E4F42E600FCC0C5 /* Model */,
-				B75A477B1E4F42E600FCC0C5 /* View */,
 			);
 			path = EveryDay;
 			sourceTree = "<group>";
@@ -375,8 +364,11 @@
 		B75A47791E4F42E600FCC0C5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B75A47D01E4F473000FCC0C5 /* GSEveryDayViewController.h */,
-				B75A47D11E4F473000FCC0C5 /* GSEveryDayViewController.m */,
+				3FBE4C9C2027FC65007BB78B /* GSPageViewController.h */,
+				3FBE4C9D2027FC65007BB78B /* GSPageViewController.m */,
+				3FBE4C972027FC45007BB78B /* GSCardViewController.h */,
+				3FBE4C982027FC45007BB78B /* GSCardViewController.m */,
+				3FBE4C992027FC45007BB78B /* GSCardViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -388,18 +380,6 @@
 				B75A47E81E5005AD00FCC0C5 /* GSGushiContentModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		B75A477B1E4F42E600FCC0C5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B75A47DB1E4F6D8100FCC0C5 /* GSCustomCardView.h */,
-				B75A47DC1E4F6D8100FCC0C5 /* GSCustomCardView.m */,
-				B75A47E01E4F6F9E00FCC0C5 /* GushiContent.h */,
-				B75A47E11E4F6F9E00FCC0C5 /* GushiContent.m */,
-				B75A47DE1E4F6F8000FCC0C5 /* GushiContent.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		B75A477C1E4F42E600FCC0C5 /* Mine */ = {
@@ -537,7 +517,6 @@
 		B75A478A1E4F442C00FCC0C5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B75A47D31E4F671C00FCC0C5 /* CCDraggableCard */,
 				B75A478B1E4F442C00FCC0C5 /* Controller */,
 			);
 			path = Main;
@@ -616,18 +595,6 @@
 				B75A47CD1E4F46AE00FCC0C5 /* Reachability.m */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		B75A47D31E4F671C00FCC0C5 /* CCDraggableCard */ = {
-			isa = PBXGroup;
-			children = (
-				B75A47D41E4F671C00FCC0C5 /* CCDraggableCardView.h */,
-				B75A47D51E4F671C00FCC0C5 /* CCDraggableCardView.m */,
-				B75A47D61E4F671C00FCC0C5 /* CCDraggableConfig.h */,
-				B75A47D71E4F671C00FCC0C5 /* CCDraggableContainer.h */,
-				B75A47D81E4F671C00FCC0C5 /* CCDraggableContainer.m */,
-			);
-			path = CCDraggableCard;
 			sourceTree = "<group>";
 		};
 		B75A47E31E4F700200FCC0C5 /* Theme */ = {
@@ -766,8 +733,8 @@
 			files = (
 				3FBE4C80202406CE007BB78B /* GSAuthorTableViewCell.xib in Resources */,
 				B75A480F1E51985A00FCC0C5 /* chaodai.plist in Resources */,
-				B75A47DF1E4F6F8000FCC0C5 /* GushiContent.xib in Resources */,
 				B726532A1E5497C600D6CA5F /* ThreeTableView.xib in Resources */,
+				3FBE4C9B2027FC45007BB78B /* GSCardViewController.xib in Resources */,
 				B72653601E58443D00D6CA5F /* 方正清刻本悦宋简体.TTF in Resources */,
 				B7A579E51E6BF50600326000 /* InfoPlist.strings in Resources */,
 				B7F005BF1E5F22FF0057DEBC /* GSAboutMeController.xib in Resources */,
@@ -873,15 +840,14 @@
 				B7A9BF9F2024B795003F8E38 /* UIColor+PYSearchExtension.m in Sources */,
 				B721FF301E51FA31006546E5 /* GSBaseNavController.m in Sources */,
 				B72653171E52FF2400D6CA5F /* GSAuthorController.m in Sources */,
-				B75A47DD1E4F6D8100FCC0C5 /* GSCustomCardView.m in Sources */,
 				B75A47BC1E4F45BD00FCC0C5 /* UIBarButtonItem+Item.m in Sources */,
 				B75A47C31E4F45BD00FCC0C5 /* UIScreen+CZAddition.m in Sources */,
 				3FBE4C7F202406CE007BB78B /* GSAuthorTableViewCell.m in Sources */,
 				B72653281E548C8600D6CA5F /* LEECellModel.m in Sources */,
+				3FBE4C9A2027FC45007BB78B /* GSCardViewController.m in Sources */,
 				B75A47BD1E4F45BD00FCC0C5 /* UIButton+CZAddition.m in Sources */,
 				B7A9BF9E2024B795003F8E38 /* PYSearchViewController.m in Sources */,
 				B782A8B11E5C6EF4000B8CA2 /* GSSQLiteTools.m in Sources */,
-				B75A47D91E4F671C00FCC0C5 /* CCDraggableCardView.m in Sources */,
 				B75A47C41E4F45BD00FCC0C5 /* UITextField+Placeholder.m in Sources */,
 				B72653141E52FF1800D6CA5F /* GSMingjuController.m in Sources */,
 				B75A47BB1E4F45BD00FCC0C5 /* NSString+CZPath.m in Sources */,
@@ -892,7 +858,6 @@
 				B75A47C01E4F45BD00FCC0C5 /* UIImage+Image.m in Sources */,
 				B72653221E53573300D6CA5F /* NSString+pinyin.m in Sources */,
 				B75A47C61E4F45BD00FCC0C5 /* UIView+Frame.m in Sources */,
-				B75A47D21E4F473000FCC0C5 /* GSEveryDayViewController.m in Sources */,
 				B75A47E91E5005AD00FCC0C5 /* GSGushiContentModel.m in Sources */,
 				B75A48191E51CCAD00FCC0C5 /* GSMineController.m in Sources */,
 				B75A47C71E4F45BD00FCC0C5 /* UIView+UIView_UIViewController.m in Sources */,
@@ -900,12 +865,12 @@
 				B75A47BA1E4F45BD00FCC0C5 /* NSString+CZHash.m in Sources */,
 				B78FF78B1E588923007EDD2A /* GSClickSearchViewController.m in Sources */,
 				B75A47BE1E4F45BD00FCC0C5 /* UIColor+CZAddition.m in Sources */,
+				3FBE4C9E2027FC65007BB78B /* GSPageViewController.m in Sources */,
 				B75A47CF1E4F46AE00FCC0C5 /* Reachability.m in Sources */,
 				B75A48161E51C97200FCC0C5 /* GSTheme.m in Sources */,
 				B75A47B91E4F45BD00FCC0C5 /* NSString+CZBase64.m in Sources */,
 				B72653251E54499800D6CA5F /* GSPickController.m in Sources */,
 				B75A48051E50A51700FCC0C5 /* GSSearchSuggestionView.m in Sources */,
-				B75A47DA1E4F671C00FCC0C5 /* CCDraggableContainer.m in Sources */,
 				B7C036451F63AC200032311C /* GSTabBarController.m in Sources */,
 				B75A47C21E4F45BD00FCC0C5 /* UILabel+CZAddition.m in Sources */,
 				B75A47C51E4F45BD00FCC0C5 /* UIView+CZAddition.m in Sources */,
@@ -918,7 +883,6 @@
 				B75A48021E508BC200FCC0C5 /* GSSearchController.m in Sources */,
 				B75A47621E4F3A9300FCC0C5 /* main.m in Sources */,
 				B75A481C1E51D07B00FCC0C5 /* GSBaseController.m in Sources */,
-				B75A47E21E4F6F9E00FCC0C5 /* GushiContent.m in Sources */,
 				B726531E1E53246F00D6CA5F /* GSBaseTableViewCell.m in Sources */,
 				B726532D1E54999F00D6CA5F /* ThreeTableView.m in Sources */,
 				B78FF78F1E588D10007EDD2A /* GSSearchGushiController.m in Sources */,
