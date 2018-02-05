@@ -90,7 +90,6 @@
 
     [super layoutSubviews];
     if (self.heightBlock != nil ) {
-        
         self.heightBlock(CGRectGetMaxY(self.cont.frame));
     }
 }

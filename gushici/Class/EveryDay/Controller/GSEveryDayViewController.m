@@ -19,6 +19,7 @@
 
 @property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *contentModels;
 @property(nonatomic ,strong) NSMutableArray *dataArrays;
+@property(nonatomic ,strong) NSMutableArray *gushiIdArrays;
 
 @property(nonatomic ,assign) BOOL isReload;
 @property(nonatomic ,assign) NSInteger count;
@@ -37,6 +38,7 @@
     
     self.contentModels = [NSMutableArray array];
     self.dataArrays = [NSMutableArray array];
+    self.gushiIdArrays = [NSMutableArray array];
     
     //监听网络
     AFNetworkReachabilityManager *netManager = [AFNetworkReachabilityManager sharedManager];
@@ -62,16 +64,14 @@
 -(void)reload{
 
     self.count = 3;
-    for (int i = 0; i <3; i++) {
+    for (int i = 0; i < 3; i++) {
         [SVProgressHUD show];
         [self loadData];
     }
-    [SVProgressHUD show];
 }
 
 -(void)loadData{
     
-//    NSMutableArray *arrays = [NSMutableArray array];
     NSInteger iid = arc4random_uniform(50000);
     NSDictionary *parmeters = @{@"id":@(iid),@"token":@"gswapi",@"random":@(2672180210)};
     NSString *urlStr = @"http://app.gushiwen.org/api/shiwen/view.aspx";
@@ -94,6 +94,7 @@
            //可能参数返回没有数据
            if (model.nameStr == nil) {
                self.count --;
+               [weakSelf loadData];
                return;
            }
            NSMutableArray *array = [NSMutableArray arrayWithObject:model];
@@ -106,20 +107,19 @@
                [array addObject:shangxiArray.firstObject];
            }
            if (authorModel.nameStr != nil) {
-               
                [array addObject:authorModel];
            }
 
            
            [weakSelf.contentModels addObject:model];
            [weakSelf.dataArrays addObject:array];
+           [weakSelf.gushiIdArrays addObject:@(iid)];
            
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (weakSelf.contentModels.count == self.count) {
-                [SVProgressHUD dismiss];
-                [weakSelf loadUI:0];
-            }
-                
+           dispatch_async(dispatch_get_main_queue(), ^{
+               if (weakSelf.contentModels.count == self.count) {
+                   [SVProgressHUD dismiss];
+                   [weakSelf loadUI:0];
+               }
             });
            
        }];
@@ -149,7 +149,7 @@
     
     GSDetailController *detailVc = [[GSDetailController alloc]init];
     
-    detailVc.dataArray = self.dataArrays[didSelectIndex];
+    detailVc.gushiID = [self.gushiIdArrays[didSelectIndex] integerValue];
     [self.navigationController pushViewController:detailVc animated:YES];
 }
 -(void)draggableContainer:(CCDraggableContainer *)draggableContainer finishedDraggableLastCard:(BOOL)finishedDraggableLastCard{

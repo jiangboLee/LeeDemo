@@ -96,16 +96,6 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 //分享
 - (void)shareGushi{
 
-//    //配置上面需求的参数
-//    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = YES;
-//    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.shareTitleViewTitleString = _Str(@"分享至");
-//    [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType =
-//    UMSocialSharePageGroupViewPositionType_Bottom;
-////    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 2;i
-//    [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageMaxColumnCountForPortraitAndBottom = 3;
-//    [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
-//    //去掉毛玻璃效果
-//    [UMSocialShareUIConfig shareInstance].shareContainerConfig.isShareContainerHaveGradient = NO;
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType,NSDictionary *userInfo) {
     
         //创建分享消息对象
@@ -148,7 +138,8 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
         BOOL isSuccess = [db executeUpdate:@"INSERT OR REPLACE INTO t_likegushi (gushiID, name, time) VALUES (?, ?, ?);", @(model.gushiID), data, @(time)];
         
         if (isSuccess) {
-//            NSLog(@"插入成功");
+
+            [SVProgressHUD showSuccessWithStatus:@"收藏成功"];
             //好评
             if ([UIDevice currentDevice].systemVersion.doubleValue >= 10.3) {
                 [SKStoreReviewController requestReview];
@@ -174,7 +165,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
         BOOL isSuccess = [db executeUpdate:@"DELETE FROM t_likegushi WHERE gushiID = ?;", @(model.gushiID)];
         
         if (isSuccess) {
-//            NSLog(@"删除成功");
+            [SVProgressHUD showSuccessWithStatus:@"取消成功"];
         }else{
             
             *rollback = YES;
@@ -196,10 +187,8 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     NSDictionary *parmeters = @{@"id":@(iid),@"token":@"gswapi",@"random":@(2672180210)};
     NSString *urlStr;
     if (self.isMingjuSearch) {
-        
         urlStr = @"http://app.gushiwen.org/api/mingju/ju.aspx";
     }else{
-    
         urlStr = @"http://app.gushiwen.org/api/shiwen/view.aspx";
     }
     //    __weak typeof(self) weakSelf = self;
@@ -223,14 +212,15 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
              return;
          }
          NSMutableArray *array = [NSMutableArray arrayWithObject:model];
-         if (fanyiArray[0].nameStr != nil) {
+         
+         if (fanyiArray.count > 0 && fanyiArray[0].nameStr != nil) {
              fanyiArray[0].cankao = @"fanyi";
              [array addObject:fanyiArray[0]];
              CGFloat fanyiHeight = [self getLableHeight:fanyiArray[0].cont];
              [self.shiwenHeights addObject:@(fanyiHeight)];
              fanyiHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(fanyiHeight + 10)];
          }
-         if (shangxiArray[0].cont != nil) {
+         if (shangxiArray.count > 0 && shangxiArray[0].cont != nil) {
              shangxiArray[0].cankao = @"shangxi";
              [array addObject:shangxiArray[0]];
              CGFloat shangxiHeight = [self getLableHeight:shangxiArray[0].cont];
@@ -336,14 +326,8 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     return [self.shiwenLessHeights[indexPath.row] floatValue];
 }
 
-#pragma mark -- Dalegate
-- (void)remarksCellShowContrntWithDic:(NSDictionary *)dic andCellIndexPath:(NSIndexPath *)indexPath
-{
-    [self.cellIsShowAll setObject:[dic objectForKey:@"isShow"] forKey:[NSString stringWithFormat:@"%@",[dic objectForKey:@"row"]]];
-    
-    [_tableV reloadData];
-}
 
+/** 2018-02-05 10:23:30
 -(void)loadcont:(NSInteger)shiID type:(NSString *)typeStr completed:(void(^)(NSString *cont))completed{
 
     NSDictionary *parmeters = @{@"id":@(shiID),@"token":@"gswapi",@"random":@(2672180110)};
@@ -364,6 +348,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
      }];
 
 }
+*/
 
 #pragma mark- 音乐播放相关
 //播放音乐
@@ -440,12 +425,6 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"收藏" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
         [self clickLike];
     }];
-//    UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"action2" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-//        NSLog(@"Action2");
-//    }];
-//    UIPreviewAction *action3 = [UIPreviewAction actionWithTitle:@"action3" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-//        NSLog(@"Action3");
-//    }];
     return @[action1];
 }
 
