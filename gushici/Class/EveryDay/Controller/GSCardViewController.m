@@ -8,34 +8,48 @@
 
 #import "GSCardViewController.h"
 #import "GSDetailController.h"
+#import "GSFilePresentAnimation.h"
 
-@interface GSCardViewController ()<UINavigationControllerDelegate>
+@interface GSCardViewController ()<UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *clickChangeBotton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UILabel *authorLable;
 @property (weak, nonatomic) IBOutlet UITextView *cont1;
+@property (weak, nonatomic) IBOutlet UIView *cardView;
+
 @end
 
 @implementation GSCardViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.navigationController.delegate = self;
+    self.navigationController.delegate = self;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self setupUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+   
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)setupUI {
     
     [UITextView changeLineSpaceForLabel:self.cont1 WithSpace:10];
-    [_cont1 layoutIfNeeded];
+    self.cont1.font = [UIFont fontWithName:_FontName size:_Font(20)];
+    [self setModel];
+    [self.view layoutIfNeeded];
     _cont1.layoutManager.allowsNonContiguousLayout = false;
-    [_cont1 scrollRangeToVisible:NSMakeRange(0, 1)];
+    [_cont1 scrollRangeToVisible:NSMakeRange(1, 1)];
+    [self.cont1 setContentOffset:CGPointMake(0, 0)];
     
     self.titleLable.font = [UIFont fontWithName:_FontName size:_Font(28)];
     self.authorLable.font = [UIFont fontWithName:_FontName size:_Font(16)];
-    self.cont1.font = [UIFont fontWithName:_FontName size:_Font(20)];
-    [self setModel];
     //设置按钮下划线
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:_Str(@"换一波看看") attributes:@{NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle),NSForegroundColorAttributeName : [UIColor redColor]}];
     [self.clickChangeBotton setAttributedTitle:attributedStr forState:UIControlStateNormal];
@@ -47,7 +61,6 @@
     self.titleLable.text = self.model.nameStr;
     self.authorLable.text = [NSString stringWithFormat:@"作者: %@",self.model.author];
     //内容处理
-    //    [self.cont1 setContentOffset:CGPointZero animated:NO];
     NSString *cont0 = [self.model.cont stringByReplacingOccurrencesOfString:@"\n\n" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     cont0 = [cont0 stringByReplacingOccurrencesOfString:@"\n<br />\n" withString:@""];
@@ -75,11 +88,20 @@
     [self.navigationController pushViewController:detailVc animated:YES];
 }
 
+//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+//    return  [[GSFilePresentAnimation alloc] initWithOriginFrame: self.cardView.frame];
+//}
+
 - (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                             animationControllerForOperation:(UINavigationControllerOperation)operation
                                                          fromViewController:(UIViewController *)fromVC
                                                            toViewController:(UIViewController *)toVC {
-    return  nil;
+    if (operation == UINavigationControllerOperationPush) {
+        
+        return  [[GSFilePresentAnimation alloc] initWithOriginFrame: self.cardView.frame];
+    } else {
+        return nil;
+    }
 }
 
 @end

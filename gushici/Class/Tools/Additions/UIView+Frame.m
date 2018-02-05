@@ -154,16 +154,12 @@
     CGContextDrawPath(context, kCGPathFillStroke);
     if( [self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)])
     {
-        [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:NO];
+        [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
     }
     else
     {
         [self.layer renderInContext:UIGraphicsGetCurrentContext()];
     }
-    
-    
-    
-    
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return screenshot;

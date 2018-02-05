@@ -75,11 +75,11 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
 }
+
 #pragma mark: - 查询数据库
 - (void)selectdSQL {
-    
-    self.share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
     GSGushiContentModel *model = self.dataArray[0];
     //查找数据库
     //@"SELECT * FROM t_likegushi WHERE gushiID = ?;", @(model.gushiID)
@@ -212,6 +212,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 - (void)setResponseObject:(NSDictionary *)responseObject {
     
     _responseObject = responseObject;
+    self.tableV.hidden = NO;
     self.lessHeight = [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + [UIFont fontWithName:_FontName size:_Font(18)].lineHeight * 5 + 16 + 15;
     GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_gushiwen"]];
     NSArray<GSGushiContentModel *> *fanyiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_fanyis"][@"fanyis"]];
@@ -244,11 +245,9 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
         authorHeight > self.lessHeight ? [self.shiwenLessHeights addObject:@(self.lessHeight)] : [self.shiwenLessHeights addObject:@(authorHeight + 10)];
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.dataArray = array;
-        [self selectdSQL];
-        [self.tableV reloadData];
-    });
+    self.dataArray = array;
+    [self selectdSQL];
+    [self.tableV reloadData];
 }
 
 - (CGFloat)getLableHeight:(NSString *)contentStr {
@@ -271,7 +270,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     return rect.size.height + [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + 16 + wucha;
 }
 
--(void)setDataArray:(NSArray *)dataArray{
+- (void)setDataArray:(NSArray *)dataArray{
 
     _dataArray = dataArray;
     __weak typeof(self) weakSelf = self;
@@ -334,30 +333,6 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     // 返回Cell高度
     return [self.shiwenLessHeights[indexPath.row] floatValue];
 }
-
-
-/** 2018-02-05 10:23:30
--(void)loadcont:(NSInteger)shiID type:(NSString *)typeStr completed:(void(^)(NSString *cont))completed{
-
-    NSDictionary *parmeters = @{@"id":@(shiID),@"token":@"gswapi",@"random":@(2672180110)};
-    NSString *urlStr = [NSString stringWithFormat:@"http://app.gushiwen.org/api/shiwen/%@.aspx",typeStr];//@"http://app.gushiwen.org/api/shiwen/%@.aspx";
-//    __weak typeof(self) weakSelf = self;
-    [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:parmeters finshed:
-     ^(NSDictionary *responseObject, NSError *error) {
-         
-         if (error != nil) {
-             
-             return ;
-         }
-         
-         GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject];
-        
-         completed(model.cont);
-        
-     }];
-
-}
-*/
 
 #pragma mark- 音乐播放相关
 //播放音乐

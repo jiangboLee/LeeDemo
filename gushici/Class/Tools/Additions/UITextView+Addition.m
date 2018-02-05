@@ -10,7 +10,7 @@
 
 @implementation UITextView (Addition)
 
-+(void)changeLineSpaceForLabel:(UITextView *)textView WithSpace:(float)space{
++ (void)changeLineSpaceForLabel:(UITextView *)textView WithSpace:(float)space{
 
     NSString *labelText = textView.text;
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:labelText];

@@ -18,6 +18,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GSCardViewController">
             <connections>
                 <outlet property="authorLable" destination="QXU-iV-pBc" id="aIS-7o-OBi"/>
+                <outlet property="cardView" destination="jec-jH-yyB" id="tSZ-5c-gPr"/>
                 <outlet property="clickChangeBotton" destination="9f8-dW-ERx" id="sJc-aZ-2N5"/>
                 <outlet property="cont1" destination="52U-fd-BBW" id="RRo-om-hMo"/>
                 <outlet property="titleLable" destination="haI-a5-Xn6" id="fF9-kU-dOm"/>
@@ -29,8 +30,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jec-jH-yyB" customClass="GushiContent">
-                    <rect key="frame" x="30" y="150" width="315" height="517"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jec-jH-yyB">
+                    <rect key="frame" x="30" y="150" width="315" height="467"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haI-a5-Xn6">
                             <rect key="frame" x="0.0" y="120" width="315" height="23"/>
@@ -39,7 +40,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="正在加载。。。。" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52U-fd-BBW">
-                            <rect key="frame" x="0.0" y="178" width="315" height="299"/>
+                            <rect key="frame" x="0.0" y="178" width="315" height="249"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -58,7 +59,7 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9f8-dW-ERx">
-                            <rect key="frame" x="230" y="476.5" width="75" height="29"/>
+                            <rect key="frame" x="230" y="429" width="75" height="29"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="75" id="YF9-JY-z1f"/>
@@ -106,7 +107,7 @@
             <constraints>
                 <constraint firstItem="jec-jH-yyB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7zz-x4-tCn"/>
                 <constraint firstItem="jec-jH-yyB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="AHK-Vo-bZ7"/>
-                <constraint firstAttribute="bottom" secondItem="jec-jH-yyB" secondAttribute="bottom" id="HvF-wS-3xy"/>
+                <constraint firstAttribute="bottom" secondItem="jec-jH-yyB" secondAttribute="bottom" constant="50" id="HvF-wS-3xy"/>
                 <constraint firstItem="jec-jH-yyB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="150" id="Tt6-ZW-yST"/>
             </constraints>
         </view>
