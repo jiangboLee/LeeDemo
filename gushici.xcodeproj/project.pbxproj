@@ -84,6 +84,7 @@
 		B7A9BF9F2024B795003F8E38 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A9BF972024B795003F8E38 /* UIColor+PYSearchExtension.m */; };
 		B7A9BFA02024B795003F8E38 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A9BF992024B795003F8E38 /* UIView+PYSearchExtension.m */; };
 		B7A9BFA4202891EB003F8E38 /* GSFilpDismissAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A9BFA3202891EB003F8E38 /* GSFilpDismissAnimator.m */; };
+		B7A9BFA720289CC2003F8E38 /* GSInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A9BFA620289CC2003F8E38 /* GSInteractionController.m */; };
 		B7C036451F63AC200032311C /* GSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C036441F63AC200032311C /* GSTabBarController.m */; };
 		B7F005BE1E5F22FF0057DEBC /* GSAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F005BC1E5F22FF0057DEBC /* GSAboutMeController.m */; };
 		B7F005BF1E5F22FF0057DEBC /* GSAboutMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */; };
@@ -234,6 +235,8 @@
 		B7A9BF992024B795003F8E38 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
 		B7A9BFA2202891EB003F8E38 /* GSFilpDismissAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSFilpDismissAnimator.h; sourceTree = "<group>"; };
 		B7A9BFA3202891EB003F8E38 /* GSFilpDismissAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSFilpDismissAnimator.m; sourceTree = "<group>"; };
+		B7A9BFA520289CC2003F8E38 /* GSInteractionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSInteractionController.h; sourceTree = "<group>"; };
+		B7A9BFA620289CC2003F8E38 /* GSInteractionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSInteractionController.m; sourceTree = "<group>"; };
 		B7C036431F63AC200032311C /* GSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTabBarController.h; sourceTree = "<group>"; };
 		B7C036441F63AC200032311C /* GSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTabBarController.m; sourceTree = "<group>"; };
 		B7F005BB1E5F22FF0057DEBC /* GSAboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAboutMeController.h; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				B7A9BFA3202891EB003F8E38 /* GSFilpDismissAnimator.m */,
 				3F6E5A76202840C500688633 /* GSAnimatorHelper.h */,
 				3F6E5A77202840C500688633 /* GSAnimatorHelper.m */,
+				B7A9BFA520289CC2003F8E38 /* GSInteractionController.h */,
+				B7A9BFA620289CC2003F8E38 /* GSInteractionController.m */,
 			);
 			path = Animator;
 			sourceTree = "<group>";
@@ -873,6 +878,7 @@
 				B75A47BD1E4F45BD00FCC0C5 /* UIButton+CZAddition.m in Sources */,
 				B7A9BF9E2024B795003F8E38 /* PYSearchViewController.m in Sources */,
 				B782A8B11E5C6EF4000B8CA2 /* GSSQLiteTools.m in Sources */,
+				B7A9BFA720289CC2003F8E38 /* GSInteractionController.m in Sources */,
 				B75A47C41E4F45BD00FCC0C5 /* UITextField+Placeholder.m in Sources */,
 				B72653141E52FF1800D6CA5F /* GSMingjuController.m in Sources */,
 				B75A47BB1E4F45BD00FCC0C5 /* NSString+CZPath.m in Sources */,

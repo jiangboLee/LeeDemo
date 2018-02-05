@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+@class GSInteractionController;
 
 @interface GSFilpDismissAnimator : NSObject<UIViewControllerAnimatedTransitioning>
 
-- (instancetype)initWithDestinationFrame:(CGRect)rect;
+@property(nonatomic, strong) GSInteractionController *interactionController;
+
+- (instancetype)initWithDestinationFrame:(CGRect)rect interactionController:(GSInteractionController *)interactionController;
 @end

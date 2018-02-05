@@ -15,6 +15,7 @@
 #import <StoreKit/StoreKit.h>
 #import "GSAuthorTableViewCell.h"
 
+
 @interface GSDetailController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic ,strong) UITableView *tableV;
@@ -76,6 +77,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = NO;
+    self.interactionController = [[GSInteractionController alloc] initWithViewController:self];
     self.share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
 }
 

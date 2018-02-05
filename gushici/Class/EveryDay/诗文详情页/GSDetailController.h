@@ -7,6 +7,7 @@
 //
 
 #import "GSBaseController.h"
+#import "GSInteractionController.h"
 
 @interface GSDetailController : GSBaseController
 
@@ -16,4 +17,5 @@
 @property(nonatomic, assign) BOOL isMingjuSearch;
 
 @property(nonatomic, strong) NSDictionary *responseObject;
+@property(nonatomic, strong) GSInteractionController *interactionController;
 @end

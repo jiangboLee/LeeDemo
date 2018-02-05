@@ -105,12 +105,29 @@
         
         return  [[GSFilePresentAnimation alloc] initWithOriginFrame: self.cardView.frame];
     } else if (operation == UINavigationControllerOperationPop){
-        return [[GSFilpDismissAnimator alloc] initWithDestinationFrame:self.cardView.frame];
+        GSDetailController *detailVC;
+        if ([[fromVC class] isEqual:[GSDetailController class]]) {
+            detailVC = (GSDetailController *)fromVC;
+        }
+        return [[GSFilpDismissAnimator alloc] initWithDestinationFrame:self.cardView.frame interactionController:detailVC.interactionController];
     } else {
         return nil;
     }
 }
 
+- (nullable id <UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>) animationController {
+    if (![[animationController class] isEqual:[GSFilpDismissAnimator class]]) {
+        return nil;
+    }
+    GSFilpDismissAnimator *dismissAnimator = (GSFilpDismissAnimator *)animationController;
+    GSInteractionController *interactionController = dismissAnimator.interactionController;
+    if (interactionController.interactionInProgress) {
+        return interactionController;
+    } else {
+        return nil;
+    }
+}
 @end
 
 

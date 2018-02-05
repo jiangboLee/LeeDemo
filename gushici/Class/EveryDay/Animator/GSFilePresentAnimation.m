@@ -49,39 +49,22 @@
     [containerView addSubview:toVC.view];
     [containerView addSubview:snapshot];
     [toVC.view setHidden:YES];
-//    [UIView animateKeyframesWithDuration:duration delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
-////        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:1 animations:^{
-////            fromVC.view.layer.transform = [GSAnimatorHelper yRotation:- M_PI_2];
-////        }];
-//        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:1/2 animations:^{
-//            snapshot.layer.transform = [GSAnimatorHelper yRotation:0];
-//        }];
-//        [UIView addKeyframeWithRelativeStartTime:1/2 relativeDuration:1/2 animations:^{
-//            snapshot.frame = finalFrame;
-//            snapshot.layer.cornerRadius = 0;
-//        }];
-//    } completion:^(BOOL finished) {
-//        [toVC.view setHidden:NO];
-//        [snapshot removeFromSuperview];
-//        fromVC.view.layer.transform = CATransform3DIdentity;
-//        [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
-//    }];
-    [UIView animateWithDuration:duration/3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-        fromVC.view.layer.transform = [GSAnimatorHelper yRotation:- M_PI_2];
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:duration/3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            snapshot.layer.transform = [GSAnimatorHelper yRotation:0];
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:duration/3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-                snapshot.frame = finalFrame;
-                snapshot.layer.cornerRadius = 0;
-            } completion:^(BOOL finished) {
-                [toVC.view setHidden:NO];
-                [snapshot removeFromSuperview];
-                fromVC.view.layer.transform = CATransform3DIdentity;
-                [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
-            }];
+    [UIView animateKeyframesWithDuration:duration delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:1/3.0 animations:^{
+            fromVC.view.layer.transform = [GSAnimatorHelper yRotation:- M_PI_2];
         }];
+        [UIView addKeyframeWithRelativeStartTime:1/3.0 relativeDuration:1/3.0 animations:^{
+            snapshot.layer.transform = [GSAnimatorHelper yRotation:0];
+        }];
+        [UIView addKeyframeWithRelativeStartTime:1/3.0 relativeDuration:1/3.0 animations:^{
+            snapshot.frame = finalFrame;
+            snapshot.layer.cornerRadius = 0;
+        }];
+    } completion:^(BOOL finished) {
+        [toVC.view setHidden:NO];
+        [snapshot removeFromSuperview];
+        fromVC.view.layer.transform = CATransform3DIdentity;
+        [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
     }];
 }
 
