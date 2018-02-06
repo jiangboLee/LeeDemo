@@ -103,13 +103,13 @@
                                                            toViewController:(UIViewController *)toVC {
     if (operation == UINavigationControllerOperationPush) {
         
-        return  [[GSFilePresentAnimation alloc] initWithOriginFrame: self.cardView.frame];
+        return  [[GSFilePresentAnimation alloc] initWithOriginFrame: CGRectMake(self.cardView.frame.origin.x, self.cardView.frame.origin.y, UISCREENW - 60, self.cardView.frame.size.height)];
     } else if (operation == UINavigationControllerOperationPop){
         GSDetailController *detailVC;
         if ([[fromVC class] isEqual:[GSDetailController class]]) {
             detailVC = (GSDetailController *)fromVC;
         }
-        return [[GSFilpDismissAnimator alloc] initWithDestinationFrame:self.cardView.frame interactionController:detailVC.interactionController];
+        return [[GSFilpDismissAnimator alloc] initWithDestinationFrame:CGRectMake(self.cardView.frame.origin.x, self.cardView.frame.origin.y, UISCREENW - 60, self.cardView.frame.size.height) interactionController:detailVC.interactionController];
     } else {
         return nil;
     }
