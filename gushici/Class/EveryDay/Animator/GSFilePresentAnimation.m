@@ -25,7 +25,7 @@
 }
 
 - (NSTimeInterval)transitionDuration:(nullable id<UIViewControllerContextTransitioning>)transitionContext {
-    return 1.5;
+    return 1.1;
 }
 
 - (void)animateTransition:(nonnull id<UIViewControllerContextTransitioning>)transitionContext {
@@ -38,8 +38,8 @@
     
     [GSAnimatorHelper perspectiveTransform:containerView];
     NSTimeInterval duration = [self transitionDuration:transitionContext];
-    
-    UIImageView *snapshot = [[UIImageView alloc]initWithImage:[UIImage viewToImage:toVC.view]];
+    //，10.3.3有问题，要传个尺寸；
+    UIImageView *snapshot = [[UIImageView alloc]initWithImage:[UIImage viewToImage:toVC.view size:finalFrame.size]];
     snapshot.contentMode = UIViewContentModeScaleAspectFit;
 //    UIView *snapshot = [toVC.view snapshotViewAfterScreenUpdates:YES];
     snapshot.frame = CGRectMake(self.originFrame.origin.x, self.originFrame.origin.y + 49, self.originFrame.size.width, self.originFrame.size.height);
@@ -49,6 +49,7 @@
     [containerView addSubview:toVC.view];
     [containerView addSubview:snapshot];
     [toVC.view setHidden:YES];
+    
     [UIView animateKeyframesWithDuration:duration delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
         [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:1/3.0 animations:^{
             fromVC.view.layer.transform = [GSAnimatorHelper yRotation:- M_PI_2];
@@ -57,6 +58,7 @@
             snapshot.layer.transform = [GSAnimatorHelper yRotation:0];
         }];
         [UIView addKeyframeWithRelativeStartTime:1/3.0 relativeDuration:1/3.0 animations:^{
+            
             snapshot.frame = finalFrame;
             snapshot.layer.cornerRadius = 0;
         }];

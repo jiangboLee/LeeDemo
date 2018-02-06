@@ -37,7 +37,7 @@
 static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 @implementation GSDetailController
 
--(GSDetailContent *)headerView{
+- (GSDetailContent *)headerView{
 
     if (_headerView == nil) {
         
@@ -47,7 +47,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     return _headerView;
 }
 
--(UITableView *)tableV{
+- (UITableView *)tableV{
 
     if (_tableV == nil) {
         _tableV = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -77,6 +77,11 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = NO;
+    if (@available(iOS 11.0, *)) {
+        self.tableV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+    }else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     self.interactionController = [[GSInteractionController alloc] initWithViewController:self];
     self.share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
 }
@@ -197,7 +202,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     }else{
         urlStr = @"http://app.gushiwen.org/api/shiwen/view.aspx";
     }
-        __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     [[LEEHTTPManager share] request:GET UrlString:urlStr parameters:parmeters finshed:
      ^(NSDictionary *responseObject, NSError *error) {
          
@@ -214,6 +219,12 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     
     _responseObject = responseObject;
     self.tableV.hidden = NO;
+    if (@available(iOS 11.0, *)) {
+        self.tableV.contentInset = UIEdgeInsetsMake(0, 0, 70, 0);
+    }else {
+        self.tableV.contentInset = UIEdgeInsetsMake(self.gushiID ? 64 : 0, 0, 70, 0);
+    }
+    
     self.lessHeight = [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + [UIFont fontWithName:_FontName size:_Font(18)].lineHeight * 5 + 16 + 15;
     GSGushiContentModel *model = [GSGushiContentModel yy_modelWithDictionary:responseObject[@"tb_gushiwen"]];
     NSArray<GSGushiContentModel *> *fanyiArray = [NSArray yy_modelArrayWithClass:[GSGushiContentModel class] json:responseObject[@"tb_fanyis"][@"fanyis"]];
@@ -263,7 +274,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<br />" withString:@":"];
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<span style=\"font-family:FangSong_GB2312;\">" withString:@""];
-//    NSLog(@"%@",contentStr);
+    NSLog(@"%@",contentStr);
     
     CGRect rect = [UILabel getLableRect:contentStr Size:CGSizeMake(UISCREENW-30, 999999) Font:[UIFont fontWithName:_FontName size:_Font(18)] LineSpace:5 WordSpace:2];
     
@@ -334,7 +345,6 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     // 返回Cell高度
     return [self.shiwenLessHeights[indexPath.row] floatValue];
 }
-
 #pragma mark- 音乐播放相关
 //播放音乐
 -(void)playWithUrl

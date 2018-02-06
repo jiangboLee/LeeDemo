@@ -21,6 +21,7 @@
     pageControl.pageIndicatorTintColor = [UIColor whiteColor];
     pageControl.currentPageIndicatorTintColor = [UIColor redColor];
     pageControl.backgroundColor = [UIColor clearColor];
+    self.tabBar.translucent = NO;
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {

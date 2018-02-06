@@ -414,8 +414,6 @@
 			isa = PBXGroup;
 			children = (
 				B75A477D1E4F42E600FCC0C5 /* Controller */,
-				B75A477E1E4F42E600FCC0C5 /* Model */,
-				B75A477F1E4F42E600FCC0C5 /* View */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -432,20 +430,6 @@
 				B7F005BD1E5F22FF0057DEBC /* GSAboutMeController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		B75A477E1E4F42E600FCC0C5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B75A477F1E4F42E600FCC0C5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		B75A47801E4F42E600FCC0C5 /* Search */ = {

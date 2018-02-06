@@ -46,5 +46,6 @@
 + (UIImage *)blurImage:(UIImage *)image blur:(CGFloat)blur;
 
 + (UIImage *)viewToImage:(UIView *)view;
++ (UIImage *)viewToImage:(UIView *)view size:(CGSize)size;
 
 @end

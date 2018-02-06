@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *authorLable;
 @property (weak, nonatomic) IBOutlet UITextView *cont1;
 @property (weak, nonatomic) IBOutlet UIView *cardView;
+//适配
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottonConstraint;
 
 @end
 
@@ -45,6 +48,8 @@
 
 - (void)setupUI {
     
+    self.topConstraint.constant = SCREEN_Size * 50;
+    self.bottonConstraint.constant = SCREEN_Size * 0;
     [UITextView changeLineSpaceForLabel:self.cont1 WithSpace:10];
     self.cont1.font = [UIFont fontWithName:_FontName size:_Font(20)];
     [self setModel];

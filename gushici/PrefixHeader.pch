@@ -21,7 +21,7 @@
 
 #define UISCREENW [UIScreen mainScreen].bounds.size.width
 #define UISCREENH [UIScreen mainScreen].bounds.size.height
-
+#define SCREEN_Size ([UIScreen mainScreen].bounds.size.width / 375.0)
 //诗文类型选择通知名字
 #define TRUECLICKNotificationName @"TRUECLICKNotificationName"
 #define TRUECLICKNotificationNameKey @"TRUECLICKNotificationNameKey"

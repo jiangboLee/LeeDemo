@@ -45,6 +45,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
         [_tableV registerNib:[UINib nibWithNibName:@"GSAuthorTableViewCell" bundle:nil] forCellReuseIdentifier:GSAuthorTableViewCellId];
         _tableV.delegate = self;
         _tableV.dataSource = self;
+        _tableV.contentInset = UIEdgeInsetsMake(0, 0, 64, 0);
         _tableV.tableFooterView = [[UIView alloc]init];
         [self.view addSubview:_tableV];
         

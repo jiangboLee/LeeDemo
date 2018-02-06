@@ -29,4 +29,5 @@ target 'gushici' do
 #  pod 'Bugly'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'DZNEmptyDataSet'
 end

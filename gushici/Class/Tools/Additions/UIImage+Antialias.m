@@ -144,12 +144,15 @@
 }
 
 + (UIImage *)viewToImage:(UIView *)view {
-    UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, [UIScreen mainScreen].scale);
+    
+    return [UIImage viewToImage:view size:view.frame.size];
+}
++ (UIImage *)viewToImage:(UIView *)view size:(CGSize)size {
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     [view.layer renderInContext:context];
     UIImage *targetImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return targetImage;
 }
-
 @end
