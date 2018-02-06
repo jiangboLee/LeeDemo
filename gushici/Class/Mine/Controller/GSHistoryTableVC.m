@@ -11,8 +11,9 @@
 #import "GSGushiContentModel.h"
 #import "GSBaseTableViewCell.h"
 #import "GSDetailController.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface GSHistoryTableVC ()<UITableViewDelegate ,UITableViewDataSource>
+@interface GSHistoryTableVC ()<UITableViewDelegate ,UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *dataArray;
 @property(nonatomic ,strong) UITableView *tableV;
@@ -29,6 +30,8 @@ static NSString *baseTableCellID = @"baseTableCellID";
     
     tableV.delegate = self;
     tableV.dataSource = self;
+    tableV.emptyDataSetSource = self;
+    tableV.emptyDataSetDelegate = self;
     tableV.rowHeight = 100;
     tableV.tableFooterView = [[UIView alloc]init];
     
@@ -101,8 +104,12 @@ static NSString *baseTableCellID = @"baseTableCellID";
     }
     self.dataArray = arrayM;
     [self.tableV reloadData];
-    
 }
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"home_pic"];
+}
+
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
 
