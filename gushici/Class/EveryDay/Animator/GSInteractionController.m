@@ -35,7 +35,7 @@
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view.superview];
     CGFloat progess = translation.x / 200;
     progess = fminf(fmaxf(progess, 0.0), 1.0);
-    NSLog(@"%f",progess);
+//    NSLog(@"%f",progess);
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:
         {

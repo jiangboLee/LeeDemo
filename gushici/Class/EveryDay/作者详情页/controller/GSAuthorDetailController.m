@@ -80,7 +80,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
         lab.font = [UIFont fontWithName:_FontName size:_Font(18)];//[UIFont systemFontOfSize:_Font(18)];
         [UILabel changeSpaceForLabel:lab withLineSpace:5 WordSpace:2];
         
-        CGRect rect = [UILabel getLableRect:cont2 Size:CGSizeMake(UISCREENW-30, 4000) Font:[UIFont systemFontOfSize:lab.font.pointSize] LineSpace:5 WordSpace:2];
+        CGRect rect = [UILabel getLableRect:cont2 Size:CGSizeMake(UISCREENW-30, MAXFLOAT) Font:[UIFont systemFontOfSize:lab.font.pointSize] LineSpace:5 WordSpace:2];
         
         [_headerView addSubview:lab];
         [lab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -186,7 +186,7 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<br />" withString:@":"];
     NSLog(@"%@",contentStr);
-    CGRect rect = [UILabel getLableRect:contentStr Size:CGSizeMake(UISCREENW-30, 999999) Font:[UIFont fontWithName:_FontName size:_Font(18)] LineSpace:5 WordSpace:2];
+    CGRect rect = [UILabel getLableRect:contentStr Size:CGSizeMake(UISCREENW-30, MAXFLOAT) Font:[UIFont fontWithName:_FontName size:_Font(18)] LineSpace:5 WordSpace:2];
     
     CGFloat wucha = rect.size.height / 200.0 * 3;
     return rect.size.height + [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + 16 + wucha;

@@ -107,7 +107,22 @@ static NSString *baseTableCellID = @"baseTableCellID";
 }
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"home_pic"];
+    if (self.isLikeHistory) {
+        return [UIImage imageNamed:@"nosave"];
+    } else {
+        return [UIImage imageNamed:@"nolook"];
+    }
+}
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    if (self.isLikeHistory) {
+        return [[NSAttributedString alloc] initWithString:@"暂无收藏" attributes:@{NSFontAttributeName : [UIFont fontWithName:_FontName size:_Font(17)]}];
+    } else {
+         return [[NSAttributedString alloc] initWithString:@"暂无浏览记录" attributes:@{NSFontAttributeName : [UIFont fontWithName:_FontName size:_Font(17)]}];
+    }
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
+    return -100;
 }
 
 

@@ -274,9 +274,9 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<br />" withString:@":"];
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     contentStr = [contentStr stringByReplacingOccurrencesOfString:@"<span style=\"font-family:FangSong_GB2312;\">" withString:@""];
-    NSLog(@"%@",contentStr);
+//    NSLog(@"%@",contentStr);
     
-    CGRect rect = [UILabel getLableRect:contentStr Size:CGSizeMake(UISCREENW-30, 999999) Font:[UIFont fontWithName:_FontName size:_Font(18)] LineSpace:5 WordSpace:2];
+    CGRect rect = [UILabel getLableRect:contentStr Size:CGSizeMake(UISCREENW-30, MAXFLOAT) Font:[UIFont fontWithName:_FontName size:_Font(18)] LineSpace:5 WordSpace:2];
     
     CGFloat wucha = rect.size.height / 200.0 * 3;
     return rect.size.height + [UIFont fontWithName:_FontName size:_Font(20)].lineHeight + 16 + wucha;

@@ -73,7 +73,7 @@
             return NO;
         }
     }
-
+    [SVProgressHUD setMaximumDismissTimeInterval:2];
  
     return YES;
 }
