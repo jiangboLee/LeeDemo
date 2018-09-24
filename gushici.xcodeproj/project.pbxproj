@@ -15,6 +15,8 @@
 		3FBE4C9B2027FC45007BB78B /* GSCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBE4C992027FC45007BB78B /* GSCardViewController.xib */; };
 		3FBE4C9E2027FC65007BB78B /* GSPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE4C9D2027FC65007BB78B /* GSPageViewController.m */; };
 		6E6A9ABBA176B834C3AD3331 /* libPods-gushici.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8D547B01B79F5D740D2BCD /* libPods-gushici.a */; };
+		9BECDF9B215919F2001CEC5D /* GSARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BECDF99215919F2001CEC5D /* GSARViewController.m */; };
+		9BECDF9C215919F2001CEC5D /* GSARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BECDF9A215919F2001CEC5D /* GSARViewController.xib */; };
 		B715FEAC1F8916140041ED5D /* GSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B715FEAB1F8916140041ED5D /* GSBaseTableViewController.m */; };
 		B721FF2D1E51F416006546E5 /* GSDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B721FF2C1E51F416006546E5 /* GSDetailController.m */; };
 		B721FF301E51FA31006546E5 /* GSBaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = B721FF2F1E51FA31006546E5 /* GSBaseNavController.m */; };
@@ -104,6 +106,9 @@
 		3FBE4C992027FC45007BB78B /* GSCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSCardViewController.xib; sourceTree = "<group>"; };
 		3FBE4C9C2027FC65007BB78B /* GSPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSPageViewController.h; sourceTree = "<group>"; };
 		3FBE4C9D2027FC65007BB78B /* GSPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSPageViewController.m; sourceTree = "<group>"; };
+		9BECDF98215919F2001CEC5D /* GSARViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSARViewController.h; sourceTree = "<group>"; };
+		9BECDF99215919F2001CEC5D /* GSARViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSARViewController.m; sourceTree = "<group>"; };
+		9BECDF9A215919F2001CEC5D /* GSARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSARViewController.xib; sourceTree = "<group>"; };
 		B715FEAA1F8916140041ED5D /* GSBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSBaseTableViewController.h; sourceTree = "<group>"; };
 		B715FEAB1F8916140041ED5D /* GSBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSBaseTableViewController.m; sourceTree = "<group>"; };
 		B721FF2B1E51F416006546E5 /* GSDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDetailController.h; sourceTree = "<group>"; };
@@ -283,6 +288,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9BECDF97215919C1001CEC5D /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				9BECDF98215919F2001CEC5D /* GSARViewController.h */,
+				9BECDF99215919F2001CEC5D /* GSARViewController.m */,
+				9BECDF9A215919F2001CEC5D /* GSARViewController.xib */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
 		AFA44FD9C17C632D0292D528 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +395,7 @@
 		B75A47781E4F42E600FCC0C5 /* EveryDay */ = {
 			isa = PBXGroup;
 			children = (
+				9BECDF97215919C1001CEC5D /* AR */,
 				B72653311E55A6CB00D6CA5F /* 作者详情页 */,
 				B721FF2A1E51F3EB006546E5 /* 诗文详情页 */,
 				B75A47791E4F42E600FCC0C5 /* Controller */,
@@ -759,6 +775,7 @@
 				B7A579DE1E6BF26E00326000 /* Localizable.strings in Resources */,
 				B75A48131E519B7800FCC0C5 /* mingjuTheme.plist in Resources */,
 				B7A9BF9B2024B795003F8E38 /* PYSearch.bundle in Resources */,
+				9BECDF9C215919F2001CEC5D /* GSARViewController.xib in Resources */,
 				B75A476D1E4F3A9300FCC0C5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -834,6 +851,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B721FF3E1E520B63006546E5 /* GSDetailContent.m in Sources */,
+				9BECDF9B215919F2001CEC5D /* GSARViewController.m in Sources */,
 				B7A9BF9D2024B795003F8E38 /* PYSearchSuggestionViewController.m in Sources */,
 				B7A9BF9A2024B795003F8E38 /* NSBundle+PYSearchExtension.m in Sources */,
 				B7F005BE1E5F22FF0057DEBC /* GSAboutMeController.m in Sources */,

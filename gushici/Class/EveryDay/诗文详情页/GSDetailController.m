@@ -14,6 +14,7 @@
 #import "GSSQLiteTools.h"
 #import <StoreKit/StoreKit.h>
 #import "GSAuthorTableViewCell.h"
+#import "GSARViewController.h"
 
 
 @interface GSDetailController ()<UITableViewDelegate,UITableViewDataSource>
@@ -84,6 +85,14 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     }
     self.interactionController = [[GSInteractionController alloc] initWithViewController:self];
     self.share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
+    
+    UIBarButtonItem *AR = [[UIBarButtonItem alloc] initWithTitle:@"AR" style:UIBarButtonItemStyleDone target:self action:@selector(lookAR)];
+    self.navigationItem.rightBarButtonItems = @[_share,AR];
+}
+
+- (void)lookAR {
+    GSARViewController *ARVc = [[GSARViewController alloc] init];
+    [self.navigationController pushViewController:ARVc animated:YES];
 }
 
 #pragma mark: - 查询数据库
@@ -258,7 +267,8 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     }
     
     self.dataArray = array;
-    [self selectdSQL];
+#warning 要打开
+    //    [self selectdSQL];
     [self.tableV reloadData];
 }
 
