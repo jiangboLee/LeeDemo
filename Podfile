@@ -25,4 +25,9 @@ target 'gushici' do
   
   # 集成QQ
   pod ‘UMengUShare/Social/QQ'
+  
+#  pod 'Bugly'
+    pod 'Fabric'
+    pod 'Crashlytics'
+    pod 'DZNEmptyDataSet'
 end

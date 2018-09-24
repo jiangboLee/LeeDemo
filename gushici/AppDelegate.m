@@ -14,6 +14,9 @@
 #import <CoreSpotlight/CoreSpotlight.h>
 #import "GSDetailController.h"
 #import "GSTabBarController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
@@ -25,7 +28,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    [MobClick setLogEnabled:YES];
+//    [MobClick setLogEnabled:YES];
     UMConfigInstance.appKey = @"58a70c0d65b6d647cb001209";
     UMConfigInstance.channelId = @"App Store";
 //    UMConfigInstance.eSType = E_UM_GAME; //仅适用于游戏场景，应用统计不用设置
@@ -46,6 +49,8 @@
     UITabBarController *tabBarVc = (UITabBarController *)self.window.rootViewController;
     tabBarVc.delegate = self;
     
+    [Fabric with:@[[Crashlytics class]]];
+
     //3d touch
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
         
@@ -68,7 +73,7 @@
             return NO;
         }
     }
-
+    [SVProgressHUD setMaximumDismissTimeInterval:2];
  
     return YES;
 }

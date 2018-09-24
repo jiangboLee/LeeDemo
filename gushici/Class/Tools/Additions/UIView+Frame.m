@@ -82,15 +82,86 @@
     return self.center.y;
 }
 
--(void)setLjb_size:(CGSize)ljb_size{
+- (void)setLjb_size:(CGSize)ljb_size{
     
     CGRect rect = self.bounds;
     rect.size = ljb_size;
     self.bounds = rect;
 }
 
--(CGSize)ljb_size{
+- (CGSize)ljb_size{
 
     return self.bounds.size;
+}
+- (void)setBorderWidth:(CGFloat)borderWidth {
+    
+    if (borderWidth < 0) {
+        return;
+    }
+    self.layer.borderWidth = borderWidth;
+}
+- (void)setBorderColor:(UIColor *)borderColor {
+    
+    self.layer.borderColor = borderColor.CGColor;
+}
+- (void)setCornerRadius:(CGFloat)cornerRadius {
+    
+    self.layer.cornerRadius = cornerRadius;
+    self.layer.masksToBounds = cornerRadius > 0;
+}
+- (void)setLee_hasShadown:(BOOL)lee_hasShadown {
+    
+    if (lee_hasShadown) {
+        self.layer.shadowRadius = 1;
+        //        self.layer.shadowOpacity = 0.1;
+        self.layer.shadowOffset = CGSizeMake(0, 0.5);
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+    }
+}
+- (BOOL)lee_hasShadown {
+    
+    return YES;
+}
+- (CGFloat)borderWidth {
+    
+    return self.layer.borderWidth;
+}
+- (UIColor *)borderColor {
+    
+    return [UIColor colorWithCGColor:self.layer.borderColor];
+}
+- (CGFloat)cornerRadius {
+    
+    return self.layer.cornerRadius;
+}
+
+- (UIImage *)lee_snapshotImage {
+    /*
+     UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, 0);
+     [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
+     UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+     UIGraphicsEndImageContext();
+     return result;
+     */
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    UIColor *bgColor = [UIColor whiteColor];
+    CGContextSetStrokeColorWithColor(context, bgColor.CGColor);
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, bgColor.CGColor);
+    CGRect bgRect = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+    CGContextAddRect(context, bgRect);
+    CGContextDrawPath(context, kCGPathFillStroke);
+    if( [self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)])
+    {
+        [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
+    }
+    else
+    {
+        [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    }
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return screenshot;
 }
 @end

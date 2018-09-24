@@ -11,8 +11,9 @@
 #import "GSGushiContentModel.h"
 #import "GSBaseTableViewCell.h"
 #import "GSDetailController.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface GSHistoryTableVC ()<UITableViewDelegate ,UITableViewDataSource>
+@interface GSHistoryTableVC ()<UITableViewDelegate ,UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property(nonatomic ,strong) NSMutableArray<GSGushiContentModel *> *dataArray;
 @property(nonatomic ,strong) UITableView *tableV;
@@ -29,6 +30,8 @@ static NSString *baseTableCellID = @"baseTableCellID";
     
     tableV.delegate = self;
     tableV.dataSource = self;
+    tableV.emptyDataSetSource = self;
+    tableV.emptyDataSetDelegate = self;
     tableV.rowHeight = 100;
     tableV.tableFooterView = [[UIView alloc]init];
     
@@ -101,8 +104,27 @@ static NSString *baseTableCellID = @"baseTableCellID";
     }
     self.dataArray = arrayM;
     [self.tableV reloadData];
-    
 }
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    if (self.isLikeHistory) {
+        return [UIImage imageNamed:@"nosave"];
+    } else {
+        return [UIImage imageNamed:@"nolook"];
+    }
+}
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    if (self.isLikeHistory) {
+        return [[NSAttributedString alloc] initWithString:@"暂无收藏" attributes:@{NSFontAttributeName : [UIFont fontWithName:_FontName size:_Font(17)]}];
+    } else {
+         return [[NSAttributedString alloc] initWithString:@"暂无浏览记录" attributes:@{NSFontAttributeName : [UIFont fontWithName:_FontName size:_Font(17)]}];
+    }
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
+    return -100;
+}
+
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
 
