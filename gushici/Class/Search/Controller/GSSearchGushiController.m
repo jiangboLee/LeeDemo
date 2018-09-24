@@ -51,6 +51,7 @@ static NSString *baseTableCellID = @"baseTableCellID";
         
     }];
     self.tableView.mj_footer.hidden = YES;
+   
 }
 -(void)loadData {
 

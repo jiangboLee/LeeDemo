@@ -54,6 +54,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAction2) name:@"doubleClickDidSelectedNotification" object:nil];
     
 }
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 -(void)dealloc{
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];

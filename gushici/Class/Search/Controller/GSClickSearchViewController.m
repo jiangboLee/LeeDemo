@@ -128,8 +128,8 @@
     [_authorVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(scrollV);
-        make.left.equalTo(_gushiwenVC.view.mas_right);
-        make.size.equalTo(_gushiwenVC.view);
+        make.left.equalTo(self.gushiwenVC.view.mas_right);
+        make.size.equalTo(self.gushiwenVC.view);
         make.right.equalTo(scrollV);
         make.bottom.equalTo(scrollV);
         
@@ -168,7 +168,5 @@
     
     [self ClickBotton:btn];
 }
-
-
 
 @end

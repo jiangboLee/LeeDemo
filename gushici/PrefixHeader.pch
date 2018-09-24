@@ -20,6 +20,8 @@
 
 #define UISCREENW [UIScreen mainScreen].bounds.size.width
 #define UISCREENH [UIScreen mainScreen].bounds.size.height
+#define IPHON_X [UIScreen mainScreen].bounds.size.height >= 812
+#define LNavgationBarHeight ([UIScreen mainScreen].bounds.size.height >= 812 ? 88 : 64)
 
 //诗文类型选择通知名字
 #define TRUECLICKNotificationName @"TRUECLICKNotificationName"
