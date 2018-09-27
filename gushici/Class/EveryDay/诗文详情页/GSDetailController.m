@@ -15,6 +15,7 @@
 #import <StoreKit/StoreKit.h>
 #import "GSAuthorTableViewCell.h"
 #import "GSARViewController.h"
+#import <ARKit/ARKit.h>
 
 
 @interface GSDetailController ()<UITableViewDelegate,UITableViewDataSource>
@@ -28,6 +29,9 @@
 @property(nonatomic,strong) AVPlayer *player;
 //分享按钮
 @property(nonatomic ,strong) UIBarButtonItem *share;
+//AR
+@property(nonatomic ,strong) UIBarButtonItem *ARButton;
+
 
 @property(nonatomic, strong) NSMutableArray *shiwenHeights;
 @property(nonatomic, strong) NSMutableArray *shiwenLessHeights;
@@ -86,12 +90,29 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     self.interactionController = [[GSInteractionController alloc] initWithViewController:self];
     self.share = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share"] style:UIBarButtonItemStyleDone target:self action:@selector(shareGushi)];
     
-    UIBarButtonItem *AR = [[UIBarButtonItem alloc] initWithTitle:@"AR" style:UIBarButtonItemStyleDone target:self action:@selector(lookAR)];
-    self.navigationItem.rightBarButtonItems = @[_share,AR];
+    if (@available(iOS 11.0, *)) {
+        if (ARWorldTrackingConfiguration.isSupported) {
+            self.ARButton = [[UIBarButtonItem alloc] initWithTitle:@"AR" style:UIBarButtonItemStyleDone target:self action:@selector(lookAR)];
+            self.navigationItem.rightBarButtonItems = @[self.share,self.ARButton];
+        }
+    }
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.player pause];
+    self.player = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self instertSql];
+}
 - (void)lookAR {
     GSARViewController *ARVc = [[GSARViewController alloc] init];
+    ARVc.contentStr = self.headerView.cont.text;
     [self.navigationController pushViewController:ARVc animated:YES];
 }
 
@@ -107,10 +128,20 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
             
             UIBarButtonItem *unlike = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_share_highlighted"] style:UIBarButtonItemStyleDone target:self action:@selector(clickunLike)];
             self.navigationItem.rightBarButtonItems = @[_share,unlike];
+            if (@available(iOS 11.0, *)) {
+                if (ARWorldTrackingConfiguration.isSupported) {
+                    self.navigationItem.rightBarButtonItems = @[_share,unlike, self.ARButton];
+                }
+            }
         }else{
             
             UIBarButtonItem *like = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_like"] style:UIBarButtonItemStyleDone target:self action:@selector(clickLike)];
             self.navigationItem.rightBarButtonItems = @[_share,like];
+            if (@available(iOS 11.0, *)) {
+                if (ARWorldTrackingConfiguration.isSupported) {
+                    self.navigationItem.rightBarButtonItems = @[_share,like, self.ARButton];
+                }
+            }
         }
     }];
 }
@@ -267,8 +298,8 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     }
     
     self.dataArray = array;
-#warning 要打开
-    //    [self selectdSQL];
+    
+    [self selectdSQL];
     [self.tableV reloadData];
 }
 
@@ -394,20 +425,6 @@ static NSString *GSAuthorTableViewCellId = @"GSAuthorTableViewCellId";
     return _player;
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-
-    [super viewWillDisappear:animated];
-    [self.player pause];
-    self.player = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-
-- (void)viewDidAppear:(BOOL)animated{
-
-    [super viewDidAppear:animated];
-    [self instertSql];
-}
 - (void)instertSql{
 
     GSGushiContentModel *model = self.dataArray[0];

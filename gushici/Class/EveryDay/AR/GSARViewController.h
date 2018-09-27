@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GSARViewController : UIViewController
 
+@property(nonatomic, copy) NSString *contentStr;
 @end
 
 NS_ASSUME_NONNULL_END
